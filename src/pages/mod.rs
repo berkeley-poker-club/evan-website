@@ -1,15 +1,13 @@
-pub mod home;
-pub mod sponsors;
-pub mod people;
-pub mod tournaments;
 pub mod decal;
-pub mod contact;
+pub mod home;
+pub mod people;
 pub mod resources;
+pub mod sponsors;
+pub mod tournaments;
 
-pub use home::*;
-pub use sponsors::*;
-pub use people::*;
-pub use tournaments::*;
 pub use decal::*;
-pub use contact::*;
+pub use home::*;
+pub use people::*;
 pub use resources::*;
+pub use sponsors::*;
+pub use tournaments::*;

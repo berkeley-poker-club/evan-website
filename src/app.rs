@@ -1,7 +1,10 @@
-use leptos::prelude::*;
-use leptos_router::{components::{Router, Routes, Route}, path};
 use crate::components::*;
 use crate::pages::*;
+use leptos::prelude::*;
+use leptos_router::{
+    components::{Route, Router, Routes},
+    path,
+};
 
 #[component]
 pub fn App() -> impl IntoView {
@@ -27,7 +30,6 @@ pub fn App() -> impl IntoView {
                         <Route path=path!("tournaments") view=TournamentsPage/>
                         <Route path=path!("decal") view=DecalPage/>
                         <Route path=path!("resources") view=ResourcesPage/>
-                        <Route path=path!("contact") view=ContactPage/>
                     </Routes>
                 </main>
                 <Footer />
