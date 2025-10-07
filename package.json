@@ -4,7 +4,7 @@
   "description": "Modern poker club website built with Tauri + Leptos",
   "scripts": {
     "dev": "trunk serve --open",
-    "build": "trunk build --release",
+    "build": "trunk build --release && sed -i '' 's|<base href=\"/\" />|<base href=\"/evan-website/\" />|g' dist/index.html",
     "tauri": "tauri",
     "tauri:dev": "tauri dev",
     "tauri:build": "tauri build"
