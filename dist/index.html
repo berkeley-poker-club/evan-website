@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <base href="/evan-website/" />
+        <base href="/" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Poker at Berkeley</title>
@@ -16,20 +16,27 @@
             href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="/evan-website/styles-974d7ff1dacae3d4.css" integrity="sha384-sOA/jsASfOj5ElNjpD0A+4ObEFNA492SOQ9ODL4hjkHDq6zuoVpcHR+aCKIhD/11"/>
-        
-        
-<script type="module">
-import init, * as bindings from '/evan-website/newsite-ui-db84f145323df9fe.js';
-const wasm = await init({ module_or_path: '/evan-website/newsite-ui-db84f145323df9fe_bg.wasm' });
+        <link
+            rel="stylesheet"
+            href="/evan-website/styles-974d7ff1dacae3d4.css"
+            integrity="sha384-sOA/jsASfOj5ElNjpD0A+4ObEFNA492SOQ9ODL4hjkHDq6zuoVpcHR+aCKIhD/11"
+        />
 
+        <script type="module">
+            import init, * as bindings from "/evan-website/newsite-ui-db84f145323df9fe.js";
+            const wasm = await init({
+                module_or_path:
+                    "/evan-website/newsite-ui-db84f145323df9fe_bg.wasm",
+            });
 
-window.wasmBindings = bindings;
+            window.wasmBindings = bindings;
 
-
-dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
-
-</script>
+            dispatchEvent(
+                new CustomEvent("TrunkApplicationStarted", {
+                    detail: { wasm },
+                }),
+            );
+        </script>
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
             (function (l) {
@@ -72,6 +79,20 @@ dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
                 },
             };
         </script>
-    <link rel="modulepreload" href="/evan-website/newsite-ui-db84f145323df9fe.js" crossorigin="anonymous" integrity="sha384-Aj4WbXWrz9cLo9vPNXgOmKHeL59d7baQtYDd9LHGB9xlb/oPWU7KX1dBtUxYuFaF"><link rel="preload" href="/evan-website/newsite-ui-db84f145323df9fe_bg.wasm" crossorigin="anonymous" integrity="sha384-H9Dptefux1OBeUfaq0zKyWPM6PJtByscCXBN5lgGeVdKZ67Mq1M6VuLxWiX1kItN" as="fetch" type="application/wasm"></head>
+        <link
+            rel="modulepreload"
+            href="/evan-website/newsite-ui-db84f145323df9fe.js"
+            crossorigin="anonymous"
+            integrity="sha384-Aj4WbXWrz9cLo9vPNXgOmKHeL59d7baQtYDd9LHGB9xlb/oPWU7KX1dBtUxYuFaF"
+        />
+        <link
+            rel="preload"
+            href="/evan-website/newsite-ui-db84f145323df9fe_bg.wasm"
+            crossorigin="anonymous"
+            integrity="sha384-H9Dptefux1OBeUfaq0zKyWPM6PJtByscCXBN5lgGeVdKZ67Mq1M6VuLxWiX1kItN"
+            as="fetch"
+            type="application/wasm"
+        />
+    </head>
     <body class="bg-gray-900"></body>
 </html>
