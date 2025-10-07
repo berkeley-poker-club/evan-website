@@ -29,7 +29,11 @@ jobs:
         run: cargo install trunk
 
       - name: Build with Trunk
-        run: trunk build --release
+        run: trunk build --release --public-url /evan-website/
+
+      - name: Update base href for GitHub Pages
+        run: |
+          sed -i 's|<base href="/" />|<base href="/evan-website/" />|g' dist/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
