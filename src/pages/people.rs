@@ -151,9 +151,10 @@ fn AlumniSection() -> impl IntoView {
                 </h2>
 
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
-                    <AlumniCard name="Rick Zhao" image="public/images/officers/rick.png" />
-                    <AlumniCard name="Welford Chen" image="public/images/officers/welford.png" />
-                    <AlumniCard name="Darsh Patel" image="public/images/officers/darsh.png" />
+                    <AlumniCard name="Rick Zhao" image="public/images/alumni/rick.png" />
+                    <AlumniCard name="Welford Chen" image="public/images/alumni/welford.png" />
+                    <AlumniCard name="Darsh Patel" image="public/images/alumni/darsh.png" />
+                    <AlumniCard name="Brian Tong" image="public/images/alumni/brian.png" />
                     <AlumniCard name="Ariel Qian" image="public/images/alumni/ariel.jpeg" />
                     <AlumniCard name="Samarth Goel" image="public/images/alumni/samarth.jpeg" />
                     <AlumniCard name="Reagan Lee" image="public/images/alumni/reagan.jpeg" />
