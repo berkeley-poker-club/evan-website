@@ -4,7 +4,7 @@ const JOIN_FORM: &str =
     "https://docs.google.com/forms/d/1G1wLFNxLb-dXbT75VViyZuVlFoghDj5zliyPZHtbHp8/edit";
 const OFFICER_FORM: &str =
     "https://docs.google.com/forms/d/1blZ5sOtsFsjfakVdsHZ2YtnjJBr1J2_Hn3XmIXL6Vlc/edit";
-// const DECAL_FORM: &str = "https://forms.gle/your-decal-form-id";
+const DECAL: &str = "/evan-website/decal";
 
 #[component]
 pub fn HomePage() -> impl IntoView {
@@ -34,7 +34,7 @@ fn HeroSection() -> impl IntoView {
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href=JOIN_FORM class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">"Become a Member"</a>
                     <a href=OFFICER_FORM class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">"Become an Officer"</a>
-                    <a href="/decal" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">"Learn About DeCal"</a>
+                    <a href=DECAL class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">"Learn About DeCal"</a>
                 </div>
             </div>
         </section>
