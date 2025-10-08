@@ -169,7 +169,7 @@ fn AlumniSection() -> impl IntoView {
                 </h2>
 
                 <div class="text-center">
-                    <img src="public/images/destinations.png" alt="Member Destinations" class="max-w-4xl mx-auto rounded-lg shadow-lg" />
+                    <img src="public/images/destinations.png" alt="Member Destinations" class="w-full max-w-4xl mx-auto rounded-lg shadow-lg" />
                 </div>
             </div>
         </section>
