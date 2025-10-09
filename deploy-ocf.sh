@@ -13,6 +13,3 @@ rsync -avz --delete \
     dist/ $OCF_USER@$OCF_HOST:~/public_html/
 
 echo "deployment complete"
-echo "site should be available at:"
-echo "   https://poker.berkeley.edu (once virtual host is set up)"
-echo "   https://www.ocf.berkeley.edu/~pokeratberkeley (default)"
