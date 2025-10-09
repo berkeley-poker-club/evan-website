@@ -160,10 +160,11 @@ fn CourseScheduleSection() -> impl IntoView {
                     <table class="w-full">
                         <thead class="bg-blue-600 text-white">
                             <tr>
-                                <th class="px-4 py-3 text-left font-semibold">"Week"</th>
+                                <th class="px-4 py-3 text-left font-semibold w-16">"Week"</th>
                                 <th class="px-4 py-3 text-left font-semibold">"Topic/Lecture"</th>
-                                <th class="px-4 py-3 text-left font-semibold">"Reading"</th>
-                                <th class="px-4 py-3 text-left font-semibold">"Assignment"</th>
+                                <th class="px-4 py-3 text-left font-semibold w-48">"Reading"</th>
+                                <th class="px-4 py-3 text-left font-semibold w-48">"Assignment"</th>
+                                <th class="px-4 py-3 text-left font-semibold w-32">"Slides"</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
@@ -178,18 +179,21 @@ fn CourseScheduleSection() -> impl IntoView {
                                 topics=vec!["Wed 9/17 - Course Structure: Rules of Play, Expected Value, and Variance", "Fri 9/19 - Introduction to Game Theory Optimal (GTO) Play and Hand Ranges"]
                                 reading="Play Optimal Poker (Brokos), Ch. 1–2"
                                 assignment="Homework 1: Rules of Poker"
+                                slides=vec![("Lecture 1", "public/lecture_slides/Lecture1_F25_Stat198.pdf")]
                             />
                             <ScheduleRow
                                 week="3"
                                 topics=vec!["Wed 9/24 - Preflop Fundamentals: Open Raising, Big Blind Defense, and Constructing Ranges", "Fri 9/26 - Preflop Strategy II: Combinatorics and Relative vs. Absolute Hand Strength"]
                                 reading="Play Optimal Poker (Brokos), Ch. 3–4"
                                 assignment="Homework 2: Open-Raising"
+                                slides=vec![("Lecture 2", "public/lecture_slides/Lecture2_F25_Stat198.pdf")]
                             />
                             <ScheduleRow
                                 week="4"
                                 topics=vec!["Wed 10/1 - Advanced Preflop: Pot Odds, Equity Realization, Combo/Draw Math, Isolation Plays", "Fri 10/3 - Advanced Preflop II: 3-Betting, 4-Betting, Flatting, Squeezing, and Exploitative Adjustments"]
                                 reading="Play Optimal Poker (Brokos), Ch. 5–6"
                                 assignment="Homework 3: Advanced Preflop"
+                                slides=vec![("Lecture 3", "public/lecture_slides/Lecture3_F25_Stat198.pdf")]
                             />
                             <ScheduleRow
                                 week="5"
@@ -259,6 +263,7 @@ fn ScheduleRow(
     topics: Vec<&'static str>,
     reading: &'static str,
     assignment: &'static str,
+    #[prop(optional)] slides: Option<Vec<(&'static str, &'static str)>>,
 ) -> impl IntoView {
     view! {
         <tr class="hover:bg-gray-50">
@@ -274,6 +279,23 @@ fn ScheduleRow(
             </td>
             <td class="px-4 py-4 text-sm text-gray-600">{reading}</td>
             <td class="px-4 py-4 text-sm text-gray-600">{assignment}</td>
+            <td class="px-4 py-4 whitespace-nowrap">
+                {slides.map(|slide_list| {
+                    view! {
+                        <ul class="space-y-2">
+                            {slide_list.into_iter().map(|(label, url)| {
+                                view! {
+                                    <li>
+                                        <a href=url target="_blank" class="text-sm text-blue-600 hover:text-blue-800 underline">
+                                            {label}
+                                        </a>
+                                    </li>
+                                }
+                            }).collect::<Vec<_>>()}
+                        </ul>
+                    }
+                })}
+            </td>
         </tr>
     }
 }

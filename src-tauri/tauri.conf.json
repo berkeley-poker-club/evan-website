@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "newsite",
+  "productName": "Poker at Berkeley",
   "version": "0.1.0",
-  "identifier": "org.pokeratberkeley.newsite",
+  "identifier": "org.pokeratberkeley.app",
   "build": {
     "beforeDevCommand": "trunk serve",
     "devUrl": "http://localhost:1420",
@@ -13,7 +13,7 @@
     "withGlobalTauri": true,
     "windows": [
       {
-        "title": "newsite",
+        "title": "Poker at Berkeley",
         "width": 800,
         "height": 600
       }
