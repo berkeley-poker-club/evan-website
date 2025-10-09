@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "trunk serve --open",
     "build": "trunk build --release && cp public/404.html dist/404.html && cp .htaccess dist/.htaccess",
+    "deploy": "./deploy-ocf.sh",
+    "deploy:all": "git push origin main && ./deploy-ocf.sh",
     "tauri": "tauri",
     "tauri:dev": "tauri dev",
     "tauri:build": "tauri build"
