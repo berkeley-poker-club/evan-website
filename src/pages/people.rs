@@ -100,9 +100,9 @@ fn BoardSection() -> impl IntoView {
                     <MemberCard
                         name="Evan Luo"
                         role="Special Projects Team"
-                        image=""
+                        image="public/images/officers/levan.png"
                         bio=""
-                        linkedin=""
+                        linkedin="https://www.linkedin.com/in/theevanluo/"
                     />
                     <MemberCard
                         name="Johan Ko"
