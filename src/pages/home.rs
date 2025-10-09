@@ -4,7 +4,7 @@ const JOIN_FORM: &str =
     "https://docs.google.com/forms/d/1G1wLFNxLb-dXbT75VViyZuVlFoghDj5zliyPZHtbHp8/edit";
 const OFFICER_FORM: &str =
     "https://docs.google.com/forms/d/1blZ5sOtsFsjfakVdsHZ2YtnjJBr1J2_Hn3XmIXL6Vlc/edit";
-const DECAL: &str = "/evan-website/decal";
+const DECAL: &str = "/decal";
 
 #[component]
 pub fn HomePage() -> impl IntoView {
