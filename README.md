@@ -2,6 +2,12 @@
 
 A modern website for Poker at Berkeley
 
+### install deps (MacOS / Linux)
+
+```bash
+./setup.sh
+```
+
 ### starting local dev server
 
 ```bash
