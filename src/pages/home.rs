@@ -97,12 +97,17 @@ fn WhatWeDoSection() -> impl IntoView {
                     <WhatWeDoCard
                         title="The Poker Decal"
                         description="Stat 198: Introduction to Poker - an official university course covering poker theory, strategy, and mathematical concepts."
-                        color="green"
+                        color="blue"
                     />
                     <WhatWeDoCard
                         title="Career Development"
                         description="Career opportunities for Berkeley students passionate about math, probability, quantitative research, and trading."
-                        color="purple"
+                        color="blue"
+                    />
+                    <WhatWeDoCard
+                        title="Special Projects"
+                        description="We are working on building out a suite of solvers and open source tools for Berkeley students to use."
+                        color="blue"
                     />
                 </div>
             </div>
