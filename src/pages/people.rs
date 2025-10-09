@@ -47,7 +47,7 @@ fn BoardSection() -> impl IntoView {
                     <MemberCard
                         name="Evan Yeager"
                         role="Co-President, Head of External"
-                        image="public/images/officers/evan.png"
+                        image="public/images/officers/yevan.png"
                         bio="I'm Evan, a Chicago native majoring in Poker who happens to study EECS as well. My playstyle is loose and aggressive with excessive hand commentary. When I'm not playing poker I enjoy weightlifting, travel, and predictive modeling."
                         linkedin="https://www.linkedin.com/in/evanyeager/"
                     />
@@ -67,71 +67,71 @@ fn BoardSection() -> impl IntoView {
                     />
                     <MemberCard
                         name="Jones Dickerson"
-                        role="Board Member"
+                        role="Head of IPA"
                         image="public/images/decal-staff/jones.png"
                         bio=""
                         linkedin=""
                     />
                     <MemberCard
                         name="Juan Belza-Garcia"
-                        role="Board Member"
-                        image=""
+                        role="External"
+                        image="public/images/officers/juan.png"
                         bio=""
                         linkedin=""
                     />
                     <MemberCard
                         name="David Chen"
-                        role="Board Member"
+                        role="DeCal Staff"
                         image="public/images/officers/dc.jpg"
                         bio=""
                         linkedin="https://www.linkedin.com/in/david-chen-b639a4274"
                     />
                     <MemberCard
                         name="Jennifer Ren"
-                        role="Board Member"
-                        image=""
+                        role="External"
+                        image="public/images/officers/jen.png"
                         bio=""
                         linkedin=""
                     />
                     <MemberCard
                         name="Jonathan James"
-                        role="Board Member"
+                        role="Internal"
                         image=""
                         bio=""
                         linkedin=""
                     />
                     <MemberCard
                         name="Evan Luo"
-                        role="Board Member"
+                        role="Special Projects Team"
                         image=""
                         bio=""
                         linkedin=""
                     />
                     <MemberCard
                         name="Johan Ko"
-                        role="Board Member"
-                        image=""
+                        role="Special Projects Team"
+                        image="public/images/officers/johan.png"
                         bio=""
                         linkedin=""
                     />
                     <MemberCard
                         name="Nicolas Bruzzeze"
-                        role="Board Member"
-                        image=""
+                        role="IPA Team"
+                        image="public/images/officers/nic.png"
                         bio=""
                         linkedin=""
                     />
                     <MemberCard
                         name="Sriram Srivatsan"
-                        role="Board Member"
-                        image=""
+                        role="Special Projects Team"
+                        image="public/images/officers/sriram.png"
                         bio=""
                         linkedin=""
                     />
                     <MemberCard
                         name="Chris Dodla"
-                        role="Board Member"
-                        image=""
+                        role="DeCal Staff"
+                        image="public/images/officers/chris.png"
                         bio=""
                         linkedin=""
                     />

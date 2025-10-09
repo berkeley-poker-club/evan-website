@@ -1,6 +1,6 @@
 [build]
 target = "./index.html"
-public_url = "/evan-website/"
+public_url = "/"
 
 [watch]
 ignore = ["./src-tauri"]
