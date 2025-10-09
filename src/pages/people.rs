@@ -74,7 +74,7 @@ fn BoardSection() -> impl IntoView {
                         role="External"
                         image="public/images/officers/juan.png"
                         bio=""
-                        linkedin=""
+                        linkedin="https://www.linkedin.com/in/juan-belza"
                     />
                     <MemberCard
                         name="David Chen"
@@ -109,7 +109,7 @@ fn BoardSection() -> impl IntoView {
                         role="Special Projects Team"
                         image="public/images/officers/johan.png"
                         bio=""
-                        linkedin=""
+                        linkedin="https://www.linkedin.com/in/kojohan"
                     />
                     <MemberCard
                         name="Nicolas Bruzzeze"
