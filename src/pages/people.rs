@@ -64,7 +64,7 @@ fn BoardSection() -> impl IntoView {
                     />
                     <MemberCard
                         name="Jones Dickerson"
-                        role="Head of IPA"
+                        role="Head of IPA, DeCal Instructor"
                         image="public/images/decal-staff/jones.png"
                         bio=""
                         linkedin=""
@@ -93,7 +93,7 @@ fn BoardSection() -> impl IntoView {
                     <MemberCard
                         name="Jonathan James"
                         role="Internal"
-                        image=""
+                        image="public/images/officers/jj.png"
                         bio=""
                         linkedin=""
                     />
