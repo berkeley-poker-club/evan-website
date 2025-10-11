@@ -377,7 +377,7 @@ fn InstructorCard(
     view! {
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
             <div class="w-full h-64">
-                <img src=image alt=name class="w-full h-64 object-cover" />
+                <img src=image alt=name class="w-full h-64 object-cover" loading="lazy" />
             </div>
             <div class="p-6 text-center">
                 <h3 class="text-xl font-bold text-gray-900 mb-2">{name}</h3>

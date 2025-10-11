@@ -167,7 +167,7 @@ fn AlumniSection() -> impl IntoView {
                 </h2>
 
                 <div class="text-center">
-                    <img src="public/images/destinations.png" alt="Member Destinations" class="w-full max-w-4xl mx-auto rounded-lg shadow-lg" />
+                    <img src="public/images/destinations.png" alt="Member Destinations" class="w-full max-w-4xl mx-auto rounded-lg shadow-lg" loading="lazy" />
                 </div>
             </div>
         </section>
@@ -195,7 +195,7 @@ fn MemberCard(
             } else {
                 view! {
                     <div class="w-full h-64">
-                        <img src=image alt=name class="w-full h-64 object-cover" />
+                        <img src=image alt=name class="w-full h-64 object-cover" loading="lazy" />
                     </div>
                 }.into_any()
             }}
@@ -226,7 +226,7 @@ fn MemberCard(
 fn AlumniCard(name: &'static str, image: &'static str) -> impl IntoView {
     view! {
         <div class="text-center">
-            <img src=image alt=name class="w-20 h-20 rounded-full mx-auto mb-2 object-cover shadow-lg" />
+            <img src=image alt=name class="w-20 h-20 rounded-full mx-auto mb-2 object-cover shadow-lg" loading="lazy" />
             <p class="text-sm text-gray-700 font-medium">{name}</p>
         </div>
     }
