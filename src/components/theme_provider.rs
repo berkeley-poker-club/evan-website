@@ -29,19 +29,29 @@ pub struct ThemeContext {
     pub toggle: Arc<dyn Fn() + Send + Sync>,
 }
 
+fn get_system_theme() -> Theme {
+    if let Some(window) = web_sys::window() {
+        if let Ok(Some(media_query)) = window.match_media("(prefers-color-scheme: dark)") {
+            if media_query.matches() {
+                return Theme::Dark;
+            }
+        }
+    }
+    Theme::Light
+}
+
 #[component]
 pub fn ThemeProvider(children: Children) -> impl IntoView {
-    // Initialize theme from localStorage or default to light
     let initial_theme = {
         if let Some(window) = web_sys::window() {
             if let Ok(Some(storage)) = window.local_storage() {
                 if let Ok(Some(theme_str)) = storage.get_item("theme") {
                     Theme::from_str(&theme_str)
                 } else {
-                    Theme::Light
+                    get_system_theme()
                 }
             } else {
-                Theme::Light
+                get_system_theme()
             }
         } else {
             Theme::Light
@@ -50,14 +60,12 @@ pub fn ThemeProvider(children: Children) -> impl IntoView {
 
     let (theme, set_theme) = signal(initial_theme);
 
-    // Apply theme to document on initialization and changes
     Effect::new(move |_| {
         let current_theme = theme.get();
 
         if let Some(window) = web_sys::window() {
             if let Some(document) = window.document() {
                 if let Some(html) = document.document_element() {
-                    // Add or remove 'dark' class on <html> element
                     let class_list = html.class_list();
                     match current_theme {
                         Theme::Dark => {
@@ -96,8 +104,6 @@ pub fn ThemeProvider(children: Children) -> impl IntoView {
     children()
 }
 
-// Hook to use theme in components
 pub fn use_theme() -> ThemeContext {
-    use_context::<ThemeContext>()
-        .expect("ThemeProvider must be present in component tree")
+    use_context::<ThemeContext>().expect("ThemeProvider must be present in component tree")
 }

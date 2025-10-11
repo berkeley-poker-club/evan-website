@@ -52,7 +52,7 @@
         </script>
         <script>
             tailwind.config = {
-                darkMode: 'class',
+                darkMode: "class",
                 theme: {
                     extend: {
                         fontFamily: {
@@ -113,31 +113,31 @@
             }
         </style>
         <script>
-            // Hide loading skeleton once Leptos app renders
-            (function() {
+            (function () {
                 var checkCount = 0;
-                var maxChecks = 50; // 5 seconds max (50 * 100ms)
+                var maxChecks = 50;
 
-                var checkInterval = setInterval(function() {
+                var checkInterval = setInterval(function () {
                     checkCount++;
                     var body = document.body;
-                    var skeleton = document.getElementById('loading-skeleton');
+                    var skeleton = document.getElementById("loading-skeleton");
 
-                    // Look for any rendered content (nav, sections, etc)
-                    var hasContent = body.querySelector('nav') ||
-                                    body.querySelector('section') ||
-                                    body.querySelector('div:not(#loading-skeleton)');
+                    var hasContent =
+                        body.querySelector("nav") ||
+                        body.querySelector("section") ||
+                        body.querySelector("div:not(#loading-skeleton)");
 
                     if (hasContent) {
                         if (skeleton) {
-                            skeleton.style.display = 'none';
+                            skeleton.style.display = "none";
                         }
                         clearInterval(checkInterval);
                     } else if (checkCount >= maxChecks) {
-                        // Timeout after 5 seconds
-                        console.warn('Loading skeleton timeout - hiding anyway');
+                        console.warn(
+                            "Loading skeleton timeout - hiding anyway",
+                        );
                         if (skeleton) {
-                            skeleton.style.display = 'none';
+                            skeleton.style.display = "none";
                         }
                         clearInterval(checkInterval);
                     }
