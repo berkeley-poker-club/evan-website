@@ -29,3 +29,9 @@ npm run deploy # deploys to OCF only (poker.berkeley.edu) ; will prompt you for 
 
 npm run deploy:all # deploys to pokeratberkeley.com and poker.berkeley.edu ; will prompt you for OCF password
 ```
+
+## Documentation on Libraries
+
+[Tauri](https://v2.tauri.app)
+
+[Leptos](https://book.leptos.dev)
