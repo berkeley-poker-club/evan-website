@@ -31,8 +31,8 @@
         
         
 <script type="module">
-import init, * as bindings from '/newsite-ui-f11dec2d84e4d7ec.js';
-const wasm = await init({ module_or_path: '/newsite-ui-f11dec2d84e4d7ec_bg.wasm' });
+import init, * as bindings from '/newsite-ui-ea8e02bb67748625.js';
+const wasm = await init({ module_or_path: '/newsite-ui-ea8e02bb67748625_bg.wasm' });
 
 
 window.wasmBindings = bindings;
@@ -63,6 +63,7 @@ dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
         </script>
         <script>
             tailwind.config = {
+                darkMode: 'class',
                 theme: {
                     extend: {
                         fontFamily: {
@@ -84,7 +85,7 @@ dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
                 },
             };
         </script>
-    <link rel="modulepreload" href="/newsite-ui-f11dec2d84e4d7ec.js" crossorigin="anonymous" integrity="sha384-4QnTv9BgufMstVidMTo8lwWsrq1B2Cwx7stFUfOTLmQp5kN6x87/Xwh8I05lOGZ8"><link rel="preload" href="/newsite-ui-f11dec2d84e4d7ec_bg.wasm" crossorigin="anonymous" integrity="sha384-1/dVZZ9vNoCmmWDdgIhI8p3wpdx4UGvD7G/ul4rG6bG56OUyheZwc/YW0CyEWIFr" as="fetch" type="application/wasm"></head>
+    <link rel="modulepreload" href="/newsite-ui-ea8e02bb67748625.js" crossorigin="anonymous" integrity="sha384-OTpTNftfI1KrPjvDGT+o9IwhDR0uKQzRW+XrB/KTnN+Q351vZkBHY3hkg74baZK7"><link rel="preload" href="/newsite-ui-ea8e02bb67748625_bg.wasm" crossorigin="anonymous" integrity="sha384-A5o0Bv6IHkrVlmETQOK0neHC82SL7RgmVLDB+mYMeDiK9NZMV1jmLKzvU7Z8wkSP" as="fetch" type="application/wasm"></head>
     <body class="bg-gray-900">
         <div
             id="loading-skeleton"

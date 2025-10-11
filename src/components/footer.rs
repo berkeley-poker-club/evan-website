@@ -3,7 +3,7 @@ use leptos::prelude::*;
 #[component]
 pub fn Footer() -> impl IntoView {
     view! {
-        <footer class="bg-gray-900 text-white py-16">
+        <footer class="bg-gray-800 dark:bg-gray-950 text-white py-16">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                     <div>
@@ -45,12 +45,12 @@ pub fn Footer() -> impl IntoView {
 
                 </div>
 
-                <div class="border-t border-gray-800 pt-8">
+                <div class="border-t border-gray-700 dark:border-gray-800 pt-8">
                     <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                        <div class="text-sm text-gray-400">
+                        <div class="text-sm text-gray-400 dark:text-gray-500">
                             "© 2025 Poker at Berkeley. All rights reserved."
                         </div>
-                        <div class="text-sm text-gray-400">
+                        <div class="text-sm text-gray-400 dark:text-gray-500">
                             "Hosted by the "
                             <a href="https://ocf.berkeley.edu" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors">
                                 "Open Computing Facility"
@@ -81,7 +81,7 @@ fn SocialLink(icon_svg: &'static str, href: &'static str, label: &'static str) -
         <a
             href=href
             target="_blank"
-            class="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 text-gray-300 hover:text-white"
+            class="w-10 h-10 bg-gray-700 dark:bg-gray-900 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 text-gray-300 hover:text-white"
             aria-label=label
             inner_html=icon_svg
         >

@@ -13,7 +13,7 @@ pub fn ResourcesPage() -> impl IntoView {
 #[component]
 fn HeroBanner() -> impl IntoView {
     view! {
-        <section id="banner" class="py-32 bg-gradient-to-r from-gray-900 to-gray-800">
+        <section id="banner" class="py-32 bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-950 dark:to-gray-900">
             <div class="max-w-4xl mx-auto text-center px-6">
                 <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">
                     "Resources"
@@ -29,7 +29,7 @@ fn HeroBanner() -> impl IntoView {
 #[component]
 fn ResourcesSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-white">
+        <section class="py-20 bg-white dark:bg-gray-800">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     <ResourceCategory
@@ -99,9 +99,9 @@ fn ResourceCategory(
     items: Vec<(&'static str, &'static str, &'static str)>,
 ) -> impl IntoView {
     view! {
-        <div class="bg-gray-50 rounded-lg p-8 shadow-md">
-            <h3 class="text-2xl font-bold text-gray-900 mb-3">{title}</h3>
-            <p class="text-gray-600 mb-6">{description}</p>
+        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-8 shadow-md">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">{title}</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-6">{description}</p>
             <ul class="space-y-4">
                 {items.into_iter().map(|(name, desc, url)| {
                     view! {
@@ -109,8 +109,8 @@ fn ResourceCategory(
                             {if url.is_empty() {
                                 view! {
                                     <div>
-                                        <p class="font-semibold text-gray-900">{name}</p>
-                                        <p class="text-sm text-gray-600">{desc}</p>
+                                        <p class="font-semibold text-gray-900 dark:text-white">{name}</p>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">{desc}</p>
                                     </div>
                                 }.into_any()
                             } else {
@@ -119,11 +119,11 @@ fn ResourceCategory(
                                         <a
                                             href=url
                                             target="_blank"
-                                            class="font-semibold text-blue-600 hover:text-blue-800 transition-colors"
+                                            class="font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
                                         >
                                             {name}
                                         </a>
-                                        <p class="text-sm text-gray-600">{desc}</p>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">{desc}</p>
                                     </div>
                                 }.into_any()
                             }}

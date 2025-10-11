@@ -33,9 +33,9 @@ fn HeroBanner() -> impl IntoView {
 #[component]
 fn UpcomingTournamentSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-white">
+        <section class="py-20 bg-white dark:bg-gray-800">
             <div class="max-w-6xl mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">
+                <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
                     "Upcoming Tournaments"
                 </h2>
 
@@ -107,9 +107,9 @@ fn TournamentDetail(label: &'static str, value: &'static str) -> impl IntoView {
 #[component]
 fn TournamentHistorySection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-gray-50">
+        <section class="py-20 bg-gray-50 dark:bg-gray-900">
             <div class="max-w-6xl mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">
+                <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
                     "Past Tournaments"
                 </h2>
 
@@ -154,22 +154,22 @@ fn TournamentHistoryCard(
     notion_link: &'static str,
 ) -> impl IntoView {
     view! {
-        <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-            <h3 class="text-xl font-bold text-gray-900 mb-2">{title}</h3>
-            <p class="text-gray-600 mb-4">{date}</p>
+        <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{title}</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">{date}</p>
 
             <div class=format!("space-y-3 {}", if notion_link.is_empty() { "" } else { "mb-4" })>
                 <div>
-                    <span class="text-gray-600 text-sm">"Qualifier:"</span>
-                    <p class="font-semibold text-gray-900">{qualifier_date}</p>
+                    <span class="text-gray-600 dark:text-gray-400 text-sm">"Qualifier:"</span>
+                    <p class="font-semibold text-gray-900 dark:text-white">{qualifier_date}</p>
                 </div>
                 <div>
-                    <span class="text-gray-600 text-sm">"Prize Pool:"</span>
-                    <p class="font-semibold text-green-600 text-lg">{prize_pool}</p>
+                    <span class="text-gray-600 dark:text-gray-400 text-sm">"Prize Pool:"</span>
+                    <p class="font-semibold text-green-600 dark:text-green-400 text-lg">{prize_pool}</p>
                 </div>
                 <div>
-                    <span class="text-gray-600 text-sm">"Sponsors:"</span>
-                    <p class="text-gray-800 text-sm leading-relaxed">{sponsors}</p>
+                    <span class="text-gray-600 dark:text-gray-400 text-sm">"Sponsors:"</span>
+                    <p class="text-gray-800 dark:text-gray-200 text-sm leading-relaxed">{sponsors}</p>
                 </div>
             </div>
 

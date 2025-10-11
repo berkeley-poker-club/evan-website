@@ -32,7 +32,7 @@ fn HeroBanner() -> impl IntoView {
 #[component]
 fn BoardSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-white">
+        <section class="py-20 bg-white dark:bg-gray-800">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <MemberCard
@@ -142,9 +142,9 @@ fn BoardSection() -> impl IntoView {
 #[component]
 fn AlumniSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-white">
+        <section class="py-20 bg-white dark:bg-gray-900">
             <div class="max-w-6xl mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center text-gray-900 mb-8">
+                <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-8">
                     "Alumni"
                 </h2>
 
@@ -163,7 +163,7 @@ fn AlumniSection() -> impl IntoView {
                     <AlumniCard name="Kevin An" image="public/images/alumni/kevin.jpeg" />
                 </div>
 
-                <h2 class="text-4xl font-bold text-center text-gray-900 mb-8">
+                <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-8">
                     "Officer career destinations"
                 </h2>
 
@@ -184,11 +184,11 @@ fn MemberCard(
     linkedin: &'static str,
 ) -> impl IntoView {
     view! {
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+        <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
             {if image.is_empty() {
                 view! {
-                    <div class="w-full h-64 bg-gray-200 flex items-center justify-center">
-                        <span class="text-gray-500 text-4xl font-bold">
+                    <div class="w-full h-64 bg-gray-200 dark:bg-gray-600 flex items-center justify-center">
+                        <span class="text-gray-500 dark:text-gray-300 text-4xl font-bold">
                             {name.chars().next().unwrap_or('?').to_string()}
                         </span>
                     </div>
@@ -201,20 +201,20 @@ fn MemberCard(
                 }.into_any()
             }}
             <div class="p-6">
-                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">
                     {if linkedin.is_empty() {
                         view! { <span>{name}</span> }.into_any()
                     } else {
                         view! {
-                            <a href=linkedin target="_blank" class="hover:text-blue-600 transition-colors">
+                            <a href=linkedin target="_blank" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                                 {name}
                             </a>
                         }.into_any()
                     }}
                 </h3>
-                <p class="text-blue-600 font-semibold mb-3">{role}</p>
+                <p class="text-blue-600 dark:text-blue-400 font-semibold mb-3">{role}</p>
                 {if !bio.is_empty() {
-                    view! { <p class="text-gray-600 text-sm">{bio}</p> }.into_any()
+                    view! { <p class="text-gray-600 dark:text-gray-300 text-sm">{bio}</p> }.into_any()
                 } else {
                     view! { <div></div> }.into_any()
                 }}
@@ -228,7 +228,7 @@ fn AlumniCard(name: &'static str, image: &'static str) -> impl IntoView {
     view! {
         <div class="text-center">
             <img src=image alt=name class="w-20 h-20 rounded-full mx-auto mb-2 object-cover shadow-lg" loading="lazy" />
-            <p class="text-sm text-gray-700 font-medium">{name}</p>
+            <p class="text-sm text-gray-700 dark:text-gray-300 font-medium">{name}</p>
         </div>
     }
 }

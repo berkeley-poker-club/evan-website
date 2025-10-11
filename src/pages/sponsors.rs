@@ -13,7 +13,7 @@ pub fn SponsorsPage() -> impl IntoView {
 #[component]
 fn HeroBanner() -> impl IntoView {
     view! {
-        <section id="banner" class="py-32 bg-gradient-to-r from-gray-900 to-gray-800">
+        <section id="banner" class="py-32 bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-950 dark:to-gray-900">
             <div class="max-w-4xl mx-auto text-center px-6">
                 <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">
                     "Our Sponsors"
@@ -21,7 +21,7 @@ fn HeroBanner() -> impl IntoView {
                 <p class="text-xl text-white/90 mb-4">
                     "Proud to be supported by leading firms in finance, technology, and trading"
                 </p>
-                <p class="text-lg text-blue-300 font-semibold">
+                <p class="text-lg text-blue-300 dark:text-blue-400 font-semibold">
                     "Interested in partnering with Poker at Berkeley? Email yeager@berkeley.edu with inquiries."
                 </p>
             </div>
@@ -32,7 +32,7 @@ fn HeroBanner() -> impl IntoView {
 #[component]
 fn SponsorsSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-white">
+        <section class="py-20 bg-white dark:bg-gray-800">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="space-y-16">
                     <SponsorTier
@@ -45,7 +45,7 @@ fn SponsorsSection() -> impl IntoView {
                                 description: ""
                             },
                         ]
-                        tier_class="border-purple-400 bg-gradient-to-r from-purple-50 to-purple-100"
+                        tier_class="border-purple-400 bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-900 dark:to-purple-800"
                     />
 
                     <SponsorTier
@@ -58,7 +58,7 @@ fn SponsorsSection() -> impl IntoView {
                                 description: ""
                             },
                         ]
-                        tier_class="border-yellow-400 bg-gradient-to-r from-yellow-50 to-yellow-100"
+                        tier_class="border-yellow-400 bg-gradient-to-r from-yellow-50 to-yellow-100 dark:from-yellow-900 dark:to-yellow-800"
                     />
 
                     <SponsorTier
@@ -76,7 +76,7 @@ fn SponsorsSection() -> impl IntoView {
                                 description: ""
                             },
                         ]
-                        tier_class="border-gray-400 bg-gradient-to-r from-gray-50 to-gray-100"
+                        tier_class="border-gray-400 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-650"
                     />
 
                     <SponsorTier
@@ -89,7 +89,7 @@ fn SponsorsSection() -> impl IntoView {
                                 description: ""
                             },
                         ]
-                        tier_class="border-amber-600 bg-gradient-to-r from-amber-50 to-amber-100"
+                        tier_class="border-amber-600 bg-gradient-to-r from-amber-50 to-amber-100 dark:from-amber-900 dark:to-amber-800"
                     />
                 </div>
             </div>
@@ -111,10 +111,10 @@ fn SponsorTier(
     tier_class: &'static str,
 ) -> impl IntoView {
     view! {
-        <div class=format!("border-2 rounded-lg p-8 {}", tier_class)>
+        <div class=format!("border-2 rounded-lg p-8 dark:border-opacity-50 {}", tier_class)>
             <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-gray-900 mb-3">{title}</h2>
-                <p class="text-lg text-gray-700">{description}</p>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-3">{title}</h2>
+                <p class="text-lg text-gray-700 dark:text-gray-300">{description}</p>
             </div>
 
             <div class="flex flex-wrap justify-center gap-8">

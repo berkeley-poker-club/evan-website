@@ -44,15 +44,15 @@ fn HeroSection() -> impl IntoView {
 #[component]
 fn AboutSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-white">
+        <section class="py-20 bg-white dark:bg-gray-800">
             <div class="max-w-4xl mx-auto px-6">
-                <h2 class="text-4xl font-bold text-gray-900 mb-6 text-center">
+                <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-6 text-center">
                     "About Poker at Berkeley"
                 </h2>
-                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
                     "We are UC Berkeley's premier poker organization, dedicated to fostering a community of strategic thinkers and skilled players. Our club provides opportunities for students to learn, compete, and network in a professional environment."
                 </p>
-                <p class="text-lg text-gray-700 leading-relaxed">
+                <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                     "Through weekly game nights, our renowned DeCal course, and major tournaments, we help members develop critical thinking skills that extend far beyond the poker table."
                 </p>
             </div>
@@ -83,9 +83,9 @@ fn JoinUsSection() -> impl IntoView {
 #[component]
 fn WhatWeDoSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-gray-50">
+        <section class="py-20 bg-gray-50 dark:bg-gray-900">
             <div class="max-w-6xl mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">
+                <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
                     "What We Do"
                 </h2>
                 <div class="space-y-8">
@@ -129,9 +129,9 @@ fn WhatWeDoCard(
     };
 
     view! {
-        <div class=format!("bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow border-l-4 {}", border_color)>
-            <h3 class="text-2xl font-bold text-gray-900 mb-3">{title}</h3>
-            <p class="text-gray-600 leading-relaxed">{description}</p>
+        <div class=format!("bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow border-l-4 {}", border_color)>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">{title}</h3>
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">{description}</p>
         </div>
     }
 }
@@ -139,15 +139,15 @@ fn WhatWeDoCard(
 #[component]
 fn UpcomingEventsSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-white">
+        <section class="py-20 bg-white dark:bg-gray-800">
             <div class="max-w-6xl mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">
+                <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
                     "Upcoming Events"
                 </h2>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     <div>
-                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">
+                        <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
                             "Fall 2025"
                         </h3>
                         <div class="space-y-6">
@@ -165,7 +165,7 @@ fn UpcomingEventsSection() -> impl IntoView {
                     </div>
 
                     <div>
-                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">
+                        <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
                             "Spring 2026"
                         </h3>
                         <div class="space-y-6">
@@ -215,21 +215,21 @@ fn EventCard(
     let border_class = if highlight {
         "border-l-4 border-l-blue-600"
     } else {
-        "border-l-4 border-l-gray-300"
+        "border-l-4 border-l-gray-300 dark:border-l-gray-600"
     };
 
     view! {
-        <div class=format!("bg-gray-50 rounded-lg p-6 {}", border_class)>
+        <div class=format!("bg-gray-50 dark:bg-gray-700 rounded-lg p-6 {}", border_class)>
             <div class="mb-4">
-                <h4 class="text-xl font-bold text-gray-900 mb-2">{title}</h4>
-                <p class="text-blue-600 font-semibold">{date}</p>
+                <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{title}</h4>
+                <p class="text-blue-600 dark:text-blue-400 font-semibold">{date}</p>
             </div>
             <ul class="space-y-2">
                 {details.into_iter().map(|detail| {
                     view! {
                         <li class="flex items-start space-x-2">
-                            <div class="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                            <span class="text-gray-700 text-sm">{detail}</span>
+                            <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                            <span class="text-gray-700 dark:text-gray-300 text-sm">{detail}</span>
                         </li>
                     }
                 }).collect::<Vec<_>>()}
