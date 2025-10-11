@@ -1,4 +1,5 @@
 use leptos::prelude::*;
+use crate::components::OptimizedImage;
 
 #[component]
 pub fn PeoplePage() -> impl IntoView {
@@ -167,7 +168,7 @@ fn AlumniSection() -> impl IntoView {
                 </h2>
 
                 <div class="text-center">
-                    <img src="public/images/destinations.png" alt="Member Destinations" class="w-full max-w-4xl mx-auto rounded-lg shadow-lg" loading="lazy" />
+                    <OptimizedImage src="public/images/destinations.png" alt="Member Destinations" class="w-full max-w-4xl mx-auto rounded-lg shadow-lg" loading="lazy" />
                 </div>
             </div>
         </section>
