@@ -468,7 +468,7 @@ fn ApplicationSection() -> impl IntoView {
                     "Ready to Apply?"
                 </h2>
                 <div class="flex justify-center">
-                    <button disabled class="bg-gray-300 text-gray-600 font-semibold py-3 px-8 rounded-lg cursor-not-allowed">
+                    <button disabled aria-label="Applications are currently closed" class="bg-gray-300 text-gray-600 font-semibold py-3 px-8 rounded-lg cursor-not-allowed">
                         "Applications Closed"
                     </button>
                 </div>

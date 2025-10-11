@@ -1,0 +1,8 @@
+# Poker at Berkeley - robots.txt
+# Allow all crawlers to access all content
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.pokeratberkeley.com/sitemap.xml
