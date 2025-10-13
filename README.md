@@ -1,6 +1,6 @@
 # Poker at Berkeley - Website
 
-A modern website for Poker at Berkeley
+A modern website for Poker at Berkeley; current website live as of 10/9/25
 
 ### install deps (MacOS / Linux)
 
