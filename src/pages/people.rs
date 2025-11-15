@@ -58,9 +58,9 @@ fn BoardSection() -> impl IntoView {
                     />
                     <MemberCard
                         name="Maysa Barandish"
-                        role="Head of Media & DeCal"
+                        role="Head of DeCal & Communicatons"
                         image="public/images/officers/maysa.png"
-                        bio="I'm Maysa, A Dallas native in my third-year majoring in Economics and Data Science. My favorite hobbies include 5bet shoving A5s into aces, bubbling final tables, never realizing my equity, rationalizing my punts, and chasing gutters."
+                        bio="Born and raised in Dallas, now studying econ + ds at Berkeley. My favorite hand is the changed diaper (dirty diaper but suited), a fully operational wealth-redistribution machine that has never once redistributed in my direction. I will still play it every time. When I’m not playing poker, I’m usually engaging in some other form of gambling. Outside of that, I enjoy backgammon and hikes with my dog."
                         linkedin="https://www.linkedin.com/in/maysa-barandish-5ba59084/"
                     />
                     <MemberCard
