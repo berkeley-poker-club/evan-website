@@ -20,9 +20,21 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - name: Install trunk
+        run: cargo install trunk
+
+      - name: Build site
+        run: trunk build --release
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
