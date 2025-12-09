@@ -22,7 +22,7 @@ fn HeroBanner() -> impl IntoView {
                     "Proud to be supported by leading firms in finance, technology, and trading"
                 </p>
                 <p class="text-lg text-blue-300 dark:text-blue-400 font-semibold">
-                    "Interested in partnering with Poker at Berkeley? Email yeager@berkeley.edu with inquiries."
+                    "Interested in partnering with Poker at Berkeley? Email davidchen2027@berkeley.edu with inquiries."
                 </p>
             </div>
         </section>

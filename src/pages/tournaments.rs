@@ -35,62 +35,78 @@ fn UpcomingTournamentSection() -> impl IntoView {
     view! {
         <section class="py-20 bg-white dark:bg-gray-800">
             <div class="max-w-6xl mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
+                <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-4">
                     "Upcoming Tournaments"
                 </h2>
+                <h3 class="text-2xl font-semibold text-center text-blue-600 dark:text-blue-400 mb-12">
+                    "Spring 2026"
+                </h3>
 
-                <div class="max-w-4xl mx-auto">
-                    <div class="bg-gradient-to-r from-blue-900 to-blue-950 rounded-xl shadow-2xl overflow-hidden">
-                        <div class="p-8 md:p-12">
-                            <div class="text-center mb-8">
-                                <h3 class="text-3xl md:text-4xl font-bold text-white mb-2">
-                                    "Fall Tournament 2025"
-                                </h3>
-                                <p class="text-xl text-blue-100">
-                                    "October 9-11, 2025"
-                                </p>
-                            </div>
-
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                                <TournamentDetail label="Format" value="Online + In-Person" />
-                                <TournamentDetail label="Qualifier" value="250 Players" />
-                                <TournamentDetail label="Finals" value="70 Players" />
-                                <TournamentDetail label="Prize Pool" value="$5,000" />
-                            </div>
-
-                            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-6">
-                                <h4 class="text-xl font-bold text-white mb-4">"Event Schedule"</h4>
-                                <ul class="space-y-3 text-white/90">
-                                    <li class="flex items-start space-x-3">
-                                        <div class="w-2 h-2 bg-blue-300 rounded-full mt-2 flex-shrink-0"></div>
-                                        <span>"October 9th: 250 person qualifying round (online)"</span>
-                                    </li>
-                                    <li class="flex items-start space-x-3">
-                                        <div class="w-2 h-2 bg-blue-300 rounded-full mt-2 flex-shrink-0"></div>
-                                        <span>"October 11th: 70 person final day (in-person)"</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="bg-yellow-400/20 backdrop-blur-sm rounded-lg p-6 border border-yellow-400/30">
-                                <h4 class="text-xl font-bold text-yellow-100 mb-2">"Special Guest"</h4>
-                                <p class="text-white text-lg font-semibold">"Citadel"</p>
-                            </div>
-
-                            <div class="mt-8 text-center">
-                                <a
-                                    href="https://pokeratberkeley.notion.site/2025-Poker-at-Berkeley-Fall-Tournament-2909b562b20148c48d49465a8d331d33"
-                                    target="_blank"
-                                    class="inline-block bg-white text-blue-700 font-bold px-8 py-3 rounded-lg hover:bg-blue-50 transition-colors shadow-lg"
-                                >
-                                    "View Full Tournament Wiki"
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <UpcomingTournamentCard
+                        title="3rd Annual Berkeley x Stanford Tournament"
+                        date="Late April"
+                        details=vec![
+                            "150 participants: 75 from Berkeley, 75 from Stanford",
+                            "Online qualifier, 2 full days of in-person play",
+                            "Mini career fairs both in-person days",
+                        ]
+                        highlight=true
+                    />
+                    <UpcomingTournamentCard
+                        title="Berkeley Poker Bots Competition"
+                        date="TBD"
+                        details=vec![
+                            "More details coming soon",
+                        ]
+                        highlight=false
+                    />
+                    <UpcomingTournamentCard
+                        title="Jump Trading Mini-Tournament"
+                        date="TBD"
+                        details=vec![
+                            "50 people",
+                            "1 day in-person",
+                            "Guest speakers from Jump Trading",
+                        ]
+                        highlight=false
+                    />
                 </div>
             </div>
         </section>
+    }
+}
+
+#[component]
+fn UpcomingTournamentCard(
+    title: &'static str,
+    date: &'static str,
+    details: Vec<&'static str>,
+    highlight: bool,
+) -> impl IntoView {
+    let border_class = if highlight {
+        "border-l-4 border-l-blue-600"
+    } else {
+        "border-l-4 border-l-gray-300 dark:border-l-gray-600"
+    };
+
+    view! {
+        <div class=format!("bg-gray-50 dark:bg-gray-700 rounded-lg p-6 {}", border_class)>
+            <div class="mb-4">
+                <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{title}</h4>
+                <p class="text-blue-600 dark:text-blue-400 font-semibold">{date}</p>
+            </div>
+            <ul class="space-y-2">
+                {details.into_iter().map(|detail| {
+                    view! {
+                        <li class="flex items-start space-x-2">
+                            <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                            <span class="text-gray-700 dark:text-gray-300 text-sm">{detail}</span>
+                        </li>
+                    }
+                }).collect::<Vec<_>>()}
+            </ul>
+        </div>
     }
 }
 
@@ -114,6 +130,14 @@ fn TournamentHistorySection() -> impl IntoView {
                 </h2>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <TournamentHistoryCard
+                        title="2025 Fall Tournament"
+                        date="October 9-11, 2025"
+                        qualifier_date="October 9, 2025"
+                        prize_pool="$5,000"
+                        sponsors="Citadel"
+                        notion_link="https://pokeratberkeley.notion.site/2025-Poker-at-Berkeley-Fall-Tournament-2909b562b20148c48d49465a8d331d33"
+                    />
                     <TournamentHistoryCard
                         title="2025 Berkeley x Stanford Tournament"
                         date="April 26-27, 2025"

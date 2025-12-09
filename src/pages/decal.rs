@@ -18,7 +18,8 @@ pub fn DecalPage() -> impl IntoView {
 #[component]
 fn HeroBanner() -> impl IntoView {
     view! {
-        <section id="banner" class="py-32 bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-950 dark:to-gray-900">
+        <section id="banner" class="py-32"
+            style="background-image: url('public/images/decal_banner.png'); background-size: cover; background-position: center;">
             <div class="max-w-4xl mx-auto text-center px-6">
                 <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">
                     "Poker DeCal"

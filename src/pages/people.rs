@@ -15,8 +15,8 @@ pub fn PeoplePage() -> impl IntoView {
 #[component]
 fn HeroBanner() -> impl IntoView {
     view! {
-        <section id="banner" class="py-32"
-                 style="background-image: url('public/images/pab_board_apr25.jpg'); background-size: cover; background-position: center;">
+        <section id="banner" class="py-40"
+                 style="background-image: url('public/images/board_fall25_tourney.jpg'); background-size: cover; background-position: center;">
             <div class="max-w-4xl mx-auto text-center px-6">
                 <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">
                     "Who We Are"
@@ -34,41 +34,41 @@ fn BoardSection() -> impl IntoView {
     view! {
         <section class="py-20 bg-white dark:bg-gray-800">
             <div class="max-w-6xl mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"> 
                     <MemberCard
-                        name="Grace Tang"
-                        role="Co-President, Head of Internal"
-                        image="public/images/officers/grace.png"
-                        bio="I'm Grace, a third-year studying EECS and math! My favorite hand is A4s. When I'm not playing poker, I can be found at the climbing gym, or more commonly at the research lab trying to teach robots to learn!"
-                        linkedin="https://www.linkedin.com/in/grace-j-tang/"
-                    />
-                    <MemberCard
-                        name="Evan Yeager"
-                        role="Co-President, Head of External"
-                        image="public/images/officers/yevan.png"
-                        bio="I'm Evan, a Chicago native majoring in Poker who happens to study EECS as well. My playstyle is loose and aggressive with excessive hand commentary. When I'm not playing poker I enjoy weightlifting, travel, and predictive modeling."
-                        linkedin="https://www.linkedin.com/in/evanyeager/"
+                        name="Maysa Barandish"
+                        role="President"
+                        image="public/images/officers/maysa.png"
+                        bio=""//"Dallas native studying econ + ds at Berkeley. My favorite hand is the changed diaper (dirty diaper but suited), a reliable wealth redistributor that has never once redistributed toward me. When I’m not playing poker, I’m usually engaging in some other form of gambling. Outside of that, I enjoy backgammon and hikes with my dog."
+                        linkedin="https://www.linkedin.com/in/maysa-barandish-5ba59084/"
                     />
                     <MemberCard
                         name="Pranshu Rao"
                         role="Head of Special Projects"
                         image="public/images/officers/pranshu.png"
-                        bio="Hey, I'm Pranshu, another Chicago native who happens to also study EECS. My VPIP is close to 70% and when I'm not punting my money away I enjoy watching soccer, hiking, and going on late night drives."
+                        bio=""// "Hey, I'm Pranshu, another Chicago native who happens to also study EECS. My VPIP is close to 70% and when I'm not punting my money away I enjoy watching soccer, hiking, and going on late night drives."
                         linkedin="https://www.linkedin.com/in/pranshurao/"
                     />
                     <MemberCard
-                        name="Maysa Barandish"
-                        role="Head of DeCal & Media"
-                        image="public/images/officers/maysa.png"
-                        bio="Dallas native studying econ + ds at Berkeley. My favorite hand is the changed diaper (dirty diaper but suited), a reliable wealth redistributor that has never once redistributed toward me. When I’m not playing poker, I’m usually engaging in some other form of gambling. Outside of that, I enjoy backgammon and hikes with my dog."
-                        linkedin="https://www.linkedin.com/in/maysa-barandish-5ba59084/"
-                    />
-                    <MemberCard
                         name="Jones Dickerson"
-                        role="Head of IPA, DeCal Instructor"
+                        role="Head of Tournaments"
                         image="public/images/decal-staff/jones.png"
                         bio=""
                         linkedin=""
+                    />
+                    <MemberCard
+                        name="David Chen"
+                        role="Head of Sponsorships"
+                        image="public/images/officers/dc.jpg"
+                        bio=""
+                        linkedin="https://www.linkedin.com/in/david-chen-b639a4274"
+                    />
+                    <MemberCard
+                        name="Evan Luo"
+                        role="Head of Finance"
+                        image="public/images/officers/levan.png"
+                        bio=""
+                        linkedin="https://www.linkedin.com/in/theevanluo/"
                     />
                     <MemberCard
                         name="Juan Belza-Garcia"
@@ -76,13 +76,6 @@ fn BoardSection() -> impl IntoView {
                         image="public/images/officers/juan.png"
                         bio=""
                         linkedin="https://www.linkedin.com/in/juan-belza"
-                    />
-                    <MemberCard
-                        name="David Chen"
-                        role="DeCal Staff"
-                        image="public/images/officers/dc.jpg"
-                        bio=""
-                        linkedin="https://www.linkedin.com/in/david-chen-b639a4274"
                     />
                     <MemberCard
                         name="Jennifer Ren"
@@ -97,20 +90,6 @@ fn BoardSection() -> impl IntoView {
                         image="public/images/officers/jj.png"
                         bio=""
                         linkedin="https://www.linkedin.com/in/jonathan-c-james/"
-                    />
-                    <MemberCard
-                        name="Evan Luo"
-                        role="Special Projects Team"
-                        image="public/images/officers/levan.png"
-                        bio=""
-                        linkedin="https://www.linkedin.com/in/theevanluo/"
-                    />
-                    <MemberCard
-                        name="Johan Ko"
-                        role="Special Projects Team"
-                        image="public/images/officers/johan.png"
-                        bio=""
-                        linkedin="https://www.linkedin.com/in/kojohan"
                     />
                     <MemberCard
                         name="Nicolas Bruzzeze"
@@ -149,6 +128,9 @@ fn AlumniSection() -> impl IntoView {
                 </h2>
 
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+                    <AlumniCard name="Evan Yeager" image="public/images/officers/yevan.png" />
+                    <AlumniCard name="Grace Tang" image="public/images/officers/grace.png" />
+                    <AlumniCard name="Johan Ko" image="public/images/officers/johan.png" />
                     <AlumniCard name="Rick Zhao" image="public/images/alumni/rick.png" />
                     <AlumniCard name="Welford Chen" image="public/images/alumni/welford.png" />
                     <AlumniCard name="Darsh Patel" image="public/images/alumni/darsh.png" />
