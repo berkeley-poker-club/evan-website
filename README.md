@@ -1,20 +1,29 @@
-# Poker at Berkeley - Website
+# Poker at Berkeley Website
 
-A modern website for Poker at Berkeley; current website live as of 10/9/25
-
-### install deps (MacOS / Linux)
+### Install deps
 
 ```bash
 ./setup.sh
 ```
 
-### starting local dev server
+### Starting local dev server (preview website locally with hot reloading)
+
+```bash
+cargo tauri dev
+```
+or:
 
 ```bash
 npm run dev
 ```
 
-### building
+### Building
+
+```bash
+cargo tauri build
+```
+
+or:
 
 ```bash
 npm run build
@@ -22,7 +31,7 @@ npm run build
 
 The built site is in `dist/`
 
-## deploying
+## Deploying
 
 ```bash
 npm run deploy # deploys to OCF only (poker.berkeley.edu) ; will prompt you for OCF password

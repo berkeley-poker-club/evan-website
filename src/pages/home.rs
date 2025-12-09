@@ -145,59 +145,39 @@ fn UpcomingEventsSection() -> impl IntoView {
                     "Upcoming Events"
                 </h2>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    <div>
-                        <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-                            "Fall 2025"
-                        </h3>
-                        <div class="space-y-6">
-                            <EventCard
-                                title="Fall Tournament"
-                                date="October 9-11"
-                                details=vec![
-                                    "250 person qualifying round (online) on October 9th",
-                                    "70 person final day (in-person) on October 11th",
-                                    "Special guest: Citadel",
-                                ]
-                                highlight=true
-                            />
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-                            "Spring 2026"
-                        </h3>
-                        <div class="space-y-6">
-                            <EventCard
-                                title="3rd Annual Berkeley x Stanford Tournament"
-                                date="Late April"
-                                details=vec![
-                                    "150 participants: 75 from Berkeley, 75 from Stanford",
-                                    "Online qualifier, 2 full days of in-person play",
-                                    "Mini career fairs both in-person days",
-                                ]
-                                highlight=true
-                            />
-                            <EventCard
-                                title="Berkeley Poker Bots Competition"
-                                date="TBD"
-                                details=vec![
-                                    "More details coming soon"
-                                ]
-                                highlight=false
-                            />
-                            <EventCard
-                                title="Jump Trading Mini-Tournament"
-                                date="TBD"
-                                details=vec![
-                                    "50 people",
-                                    "1 day in-person",
-                                    "Guest speakers from Jump Trading"
-                                ]
-                                highlight=false
-                            />
-                        </div>
+                <div class="max-w-2xl mx-auto">
+                    <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+                        "Spring 2026"
+                    </h3>
+                    <div class="space-y-6">
+                        <EventCard
+                            title="3rd Annual Berkeley x Stanford Tournament"
+                            date="Late April"
+                            details=vec![
+                                "150 participants: 75 from Berkeley, 75 from Stanford",
+                                "Online qualifier, 2 full days of in-person play",
+                                "Mini career fairs both in-person days",
+                            ]
+                            highlight=true
+                        />
+                        <EventCard
+                            title="Berkeley Poker Bots Competition"
+                            date="TBD"
+                            details=vec![
+                                "More details coming soon"
+                            ]
+                            highlight=false
+                        />
+                        <EventCard
+                            title="Jump Trading Mini-Tournament"
+                            date="TBD"
+                            details=vec![
+                                "50 people",
+                                "1 day in-person",
+                                "Guest speakers from Jump Trading"
+                            ]
+                            highlight=false
+                        />
                     </div>
                 </div>
             </div>
