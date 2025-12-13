@@ -1,17 +1,43 @@
 use leptos::prelude::*;
+use crate::components::MediaCarousel;
+
 
 const JOIN_FORM: &str =
     "https://docs.google.com/forms/d/1G1wLFNxLb-dXbT75VViyZuVlFoghDj5zliyPZHtbHp8/edit";
 const OFFICER_FORM: &str =
     "https://docs.google.com/forms/d/1blZ5sOtsFsjfakVdsHZ2YtnjJBr1J2_Hn3XmIXL6Vlc/edit";
 const DECAL: &str = "/decal";
+const STANFORD_JOIN_FORM: &str =
+    "https://forms.gle/QB9ETHXtZyvwEsdp9";
+
 
 #[component]
 pub fn HomePage() -> impl IntoView {
     view! {
-        <div class="min-h-screen">
+        <div class="min-h-screen bg-stone-100 dark:bg-gray-900">
             <HeroSection />
             <AboutSection />
+
+            <MediaCarousel
+                images=vec![
+                    "public/images/stanfxcal25/DSCF1288.jpg",
+                    "public/images/falltourney/DSCF4016.jpg",
+                    "public/images/falltourney/DSCF2022.jpg",
+                    "public/images/stanfxcal25/DSCF0839.jpg",
+                    "public/images/stanfxcal25/DSCF0964.jpg",
+                    "public/images/falltourney/DSCF2937.jpg",
+                    "public/images/stanfxcal25/DSCF1494.jpg",
+                    "public/images/stanfxcal25/DSCF1495.jpg",
+                    "public/images/stanfxcal25/DSCF1505.jpg",
+                    "public/images/falltourney/DSCF2753.jpg",
+                    "public/images/falltourney/DSCF2756.jpg",
+                    "public/images/stanfxcal25/DSCF0929.jpg",
+                    "public/images/officergroup/DSCF4009.jpg",
+                    "public/images/stanfxcal25/DSCF1092.jpg",                    "public/images/stanfxcal25/DSCF1341.jpg",
+                    "public/images/stanfxcal25/DSCF1412.jpg",
+                    "public/images/stanfxcal25/DSCF0978.jpg",
+                ]
+            />
             <WhatWeDoSection />
             <UpcomingEventsSection />
         </div>
@@ -32,9 +58,11 @@ fn HeroSection() -> impl IntoView {
                     "UC Berkeley's Premier Poker Organization"
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href=JOIN_FORM class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">"Become a Member"</a>
-                    <a href=OFFICER_FORM class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">"Become an Officer"</a>
-                    <a href=DECAL class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">"Learn About DeCal"</a>
+                    <a href=JOIN_FORM class="bg-slate-400 hover:bg-slate-500 text-white font-semibold py-2 px-4 rounded-lg transition-colors">"Become a Member"</a>
+                    <a href=OFFICER_FORM class="bg-[#B2A08E] hover:bg-[#A49382] text-white font-semibold py-2 px-4 rounded-lg transition-colors">"Become an Officer"</a>
+                    <a href=DECAL class="bg-[#A87454] hover:bg-[#9A6A4C] font-semibold py-2 px-4 rounded-lg transition-colors">"Learn About DeCal"</a>
+                    <a href=STANFORD_JOIN_FORM class="bg-[#8E3E3B] hover:bg-[#7F3835] text-white font-semibold py-2 px-4 rounded-lg transition-colors"> "Stanford Students"</a>
+
                 </div>
             </div>
         </section>
@@ -44,7 +72,7 @@ fn HeroSection() -> impl IntoView {
 #[component]
 fn AboutSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-white dark:bg-gray-800">
+        <section class="py-20 dark:bg-gray-800">
             <div class="max-w-4xl mx-auto px-6">
                 <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-6 text-center">
                     "About Poker at Berkeley"
@@ -59,6 +87,7 @@ fn AboutSection() -> impl IntoView {
         </section>
     }
 }
+
 
 #[component]
 fn JoinUsSection() -> impl IntoView {
@@ -83,7 +112,7 @@ fn JoinUsSection() -> impl IntoView {
 #[component]
 fn WhatWeDoSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-gray-50 dark:bg-gray-900">
+        <section class="py-20 dark:bg-gray-900">
             <div class="max-w-6xl mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
                     "What We Do"
@@ -129,7 +158,8 @@ fn WhatWeDoCard(
     };
 
     view! {
-        <div class=format!("bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow border-l-4 {}", border_color)>
+        <div class=format!(
+            "bg-white dark:bg-slate-800/90 ring-1 ring-black/5 dark:ring-white/10 rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow border-l-4 {}",border_color)>
             <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">{title}</h3>
             <p class="text-gray-600 dark:text-gray-300 leading-relaxed">{description}</p>
         </div>
@@ -139,7 +169,7 @@ fn WhatWeDoCard(
 #[component]
 fn UpcomingEventsSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-white dark:bg-gray-800">
+        <section class="py-20">
             <div class="max-w-6xl mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
                     "Upcoming Events"
@@ -149,7 +179,7 @@ fn UpcomingEventsSection() -> impl IntoView {
                     <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
                         "Spring 2026"
                     </h3>
-                    <div class="space-y-6">
+                    <div class="space-y-">
                         <EventCard
                             title="3rd Annual Berkeley x Stanford Tournament"
                             date="Late April"

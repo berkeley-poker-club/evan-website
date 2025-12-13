@@ -10,9 +10,11 @@ pub mod sponsors;
 pub mod team;
 pub mod theme_provider;
 pub mod theme_toggle;
+pub mod media_carousel;
 
 pub use footer::*;
 pub use navigation::*;
 pub use optimized_image::*;
 pub use theme_provider::*;
 pub use theme_toggle::*;
+pub use media_carousel::*;

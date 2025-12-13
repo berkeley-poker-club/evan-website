@@ -45,7 +45,7 @@ fn SponsorsSection() -> impl IntoView {
                                 description: ""
                             },
                         ]
-                        tier_class="border-purple-400 bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-900 dark:to-purple-800"
+                        tier_class="border-white/30 bg-gradient-to-br from-slate-600/80 via-slate-500/80 to-slate-700/80 dark:from-slate-800/70 dark:to-slate-900/70"
                     />
 
                     <SponsorTier
@@ -58,7 +58,7 @@ fn SponsorsSection() -> impl IntoView {
                                 description: ""
                             },
                         ]
-                        tier_class="border-yellow-400 bg-gradient-to-r from-yellow-50 to-yellow-100 dark:from-yellow-900 dark:to-yellow-800"
+                        tier_class="border-amber-300/60 bg-gradient-to-br from-amber-400/70 via-amber-300/70 to-amber-500/70 dark:from-amber-700/60 dark:to-amber-800/60"
                     />
 
                     <SponsorTier
@@ -76,16 +76,26 @@ fn SponsorsSection() -> impl IntoView {
                                 description: ""
                             },
                         ]
-                        tier_class="border-gray-400 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-650"
+                        tier_class="border-white/20 bg-gradient-to-br from-gray-400/70 via-gray-300/70 to-gray-500/70 dark:from-gray-700/60 dark:to-gray-800/60"
                     />
 
                     <SponsorTier
-                        title="Equipment Sponsors"
+                        title="Equipment Sponsors & Partnerships"
                         description=""
                         sponsors=vec![
                             SponsorInfo {
                                 name: "Slowplay",
                                 logo: "public/images/sponsors/slowplay.png",
+                                description: ""
+                            },
+                            SponsorInfo {
+                                name: "GTOW",
+                                logo: "public/images/sponsors/gtow.png",
+                                description: ""
+                            },
+                            SponsorInfo {
+                                name: "BBO",
+                                logo: "public/images/sponsors/BBO.png",
                                 description: ""
                             },
                         ]
@@ -111,22 +121,43 @@ fn SponsorTier(
     tier_class: &'static str,
 ) -> impl IntoView {
     view! {
-        <div class=format!("border-2 rounded-lg p-8 dark:border-opacity-50 {}", tier_class)>
-            <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-3">{title}</h2>
-                <p class="text-lg text-gray-700 dark:text-gray-300">{description}</p>
-            </div>
+        <div class="relative rounded-xl shadow-lg shadow-black/20 overflow-hidden">
 
-            <div class="flex flex-wrap justify-center gap-8">
-                {sponsors.into_iter().map(|sponsor| {
-                    view! {
-                        <SponsorCard
-                            name=sponsor.name
-                            logo=sponsor.logo
-                            _description=sponsor.description
-                        />
+            <div class="absolute inset-0 backdrop-blur-sm bg-white/5 dark:bg-black/30 pointer-events-none"></div>
+
+            <div class=(move || format!(
+                "relative border rounded-xl p-8 ring-1 ring-white/10 {}",
+                tier_class
+            ))>
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-3">
+                        {title}
+                    </h2>
+
+                    {if !description.is_empty() {
+                        view! {
+                            <p class="text-lg text-gray-700 dark:text-gray-300">
+                                {description}
+                            </p>
+                        }.into_any()
+                    } else {
+                        view! { <></> }.into_any()
+                    }}
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-8">
+                    {sponsors
+                        .into_iter()
+                        .map(|sponsor| view! {
+                            <SponsorCard
+                                name=sponsor.name
+                                logo=sponsor.logo
+                                _description=sponsor.description
+                            />
+                        })
+                        .collect::<Vec<_>>()
                     }
-                }).collect::<Vec<_>>()}
+                </div>
             </div>
         </div>
     }

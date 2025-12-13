@@ -37,79 +37,122 @@ fn BoardSection() -> impl IntoView {
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"> 
                     <MemberCard
                         name="Maysa Barandish"
-                        role="President"
+                        role="President, Head of DeCal"
                         image="public/images/officers/maysa.png"
-                        bio=""//"Dallas native studying econ + ds at Berkeley. My favorite hand is the changed diaper (dirty diaper but suited), a reliable wealth redistributor that has never once redistributed toward me. When I’m not playing poker, I’m usually engaging in some other form of gambling. Outside of that, I enjoy backgammon and hikes with my dog."
+                        bio=|| view! {
+                            <>
+                                "Dallas native studying Econ + DS. Favorite hand is the changed diaper (dirty diaper but suited), a very reliable wealth distributor.\n\n"
+                                "When I'm not playing poker, I’m usually gambling in some other form. Outside of that, I enjoy backgammon and hikes with my dog. \n\n"
+                                "Not from Chicago. Not studying EECS. "
+                                <em>"Someone"</em> 
+                                " has to defend the bottom of the range."
+                            </>
+                        }.into_any()
                         linkedin="https://www.linkedin.com/in/maysa-barandish-5ba59084/"
                     />
                     <MemberCard
-                        name="Pranshu Rao"
-                        role="Head of Special Projects"
-                        image="public/images/officers/pranshu.png"
-                        bio=""// "Hey, I'm Pranshu, another Chicago native who happens to also study EECS. My VPIP is close to 70% and when I'm not punting my money away I enjoy watching soccer, hiking, and going on late night drives."
-                        linkedin="https://www.linkedin.com/in/pranshurao/"
-                    />
-                    <MemberCard
-                        name="Jones Dickerson"
-                        role="Head of Tournaments"
-                        image="public/images/decal-staff/jones.png"
-                        bio=""
-                        linkedin=""
-                    />
-                    <MemberCard
-                        name="David Chen"
-                        role="Head of Sponsorships"
-                        image="public/images/officers/dc.jpg"
-                        bio=""
-                        linkedin="https://www.linkedin.com/in/david-chen-b639a4274"
+                        name="Evan Yeager"
+                        role="Head of External"
+                        image="public/images/officers/yevan.png"
+                        bio=|| view! {
+                            <>
+                                "I’m Evan, a Chicago native majoring in Poker who happens to study EECS as well. \n\n"
+                                "My playstyle is loose and aggressive with excessive hand commentary. When I'm not playing poker I enjoy weightlifting, travel, forecasting, and predictive modeling."
+                            </>
+                        }.into_any()
+                        linkedin="https://www.linkedin.com/in/evanyeager/"
                     />
                     <MemberCard
                         name="Evan Luo"
                         role="Head of Finance"
                         image="public/images/officers/levan.png"
-                        bio=""
+                        bio=|| view! {
+                            <>
+                                "I’m "
+                                <em>"(also)"</em>
+                                " Evan, a sophomore "
+                                <em>"(also)"</em>
+                                " studying EECS. I was "
+                                <em>"(also)"</em>
+                                " born in Chicago, but raised in San Diego.\n\n"
+                                "My favorite hand is KJo. When not playing poker (most of the time) I can be found dilly dallying at the RSF, various sushi restaurants, or at a boba shop."
+                            </>
+                        }.into_any()
                         linkedin="https://www.linkedin.com/in/theevanluo/"
                     />
                     <MemberCard
+                        name="Pranshu Rao"
+                        role="Head of Special Projects"
+                        image="public/images/officers/pranshu.png"
+                        bio=|| view! {
+                            <>
+                                "Hey, I'm Pranshu, yet "
+                                <em>"another"</em>
+                                " Chicago native who "
+                                <em>"also"</em>
+                                " happens to study EECS.\n\n"
+                                "My VPIP is close to 70%"
+                                " and when I'm not punting my money away I enjoy soccer, hiking, and late night drives.\n\n"
+                                <em>"Unfortunately, not an Evan"</em>
+                                ", but still in the range."
+                            </>
+                        }.into_any()
+                        linkedin="https://www.linkedin.com/in/pranshurao/"
+                    />
+                    <MemberCard
+                        name="David Chen"
+                        role="Head of Sponsorships"
+                        image="public/images/officers/dc.jpg"
+                        bio=|| view! { <></> }.into_any()
+                        linkedin="https://www.linkedin.com/in/david-chen-b639a4274"
+                    />
+                    <MemberCard
+                        name="Jones Dickerson"
+                        role="Head of Tournaments"
+                        image="public/images/officers/jones.png"
+                        bio=|| view! { <></> }.into_any()
+                        linkedin=""
+                    />
+                    <MemberCard
                         name="Juan Belza-Garcia"
-                        role="External"
+                        role="Head of Internal"
                         image="public/images/officers/juan.png"
-                        bio=""
+                        bio=|| view! { <></> }.into_any()
                         linkedin="https://www.linkedin.com/in/juan-belza"
                     />
                     <MemberCard
-                        name="Jennifer Ren"
-                        role="External"
-                        image="public/images/officers/jen.png"
-                        bio=""
+                        name="Nicolas Bruzzeze"
+                        role="Head of Game Nights"
+                        image="public/images/officers/nic.png"
+                        bio=|| view! { <></> }.into_any()
                         linkedin=""
                     />
                     <MemberCard
                         name="Jonathan James"
-                        role="Internal"
+                        role="Head of Design"
                         image="public/images/officers/jj.png"
-                        bio=""
+                        bio=|| view! { <></> }.into_any()
                         linkedin="https://www.linkedin.com/in/jonathan-c-james/"
                     />
                     <MemberCard
-                        name="Nicolas Bruzzeze"
-                        role="IPA Team"
-                        image="public/images/officers/nic.png"
-                        bio=""
+                        name="Jennifer Ren"
+                        role="Head of Media"
+                        image="public/images/officers/jen.png"
+                        bio=|| view! { <></> }.into_any()
                         linkedin=""
                     />
                     <MemberCard
                         name="Sriram Srivatsan"
                         role="Special Projects Team"
                         image="public/images/officers/sriram.png"
-                        bio=""
-                        linkedin=""
+                        bio=|| view! { <></> }.into_any()
+                        linkedin="https://www.linkedin.com/in/sriram-eecs/"
                     />
                     <MemberCard
                         name="Chris Dodla"
                         role="DeCal Staff"
                         image="public/images/officers/chris.png"
-                        bio=""
+                        bio=|| view! { <></> }.into_any()
                         linkedin=""
                     />
                 </div>
@@ -128,7 +171,6 @@ fn AlumniSection() -> impl IntoView {
                 </h2>
 
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
-                    <AlumniCard name="Evan Yeager" image="public/images/officers/yevan.png" />
                     <AlumniCard name="Grace Tang" image="public/images/officers/grace.png" />
                     <AlumniCard name="Johan Ko" image="public/images/officers/johan.png" />
                     <AlumniCard name="Rick Zhao" image="public/images/alumni/rick.png" />
@@ -162,7 +204,7 @@ fn MemberCard(
     name: &'static str,
     role: &'static str,
     image: &'static str,
-    bio: &'static str,
+    bio: impl Fn() -> AnyView + 'static,
     linkedin: &'static str,
 ) -> impl IntoView {
     view! {
@@ -195,11 +237,9 @@ fn MemberCard(
                     }}
                 </h3>
                 <p class="text-blue-600 dark:text-blue-400 font-semibold mb-3">{role}</p>
-                {if !bio.is_empty() {
-                    view! { <p class="text-gray-600 dark:text-gray-300 text-sm">{bio}</p> }.into_any()
-                } else {
-                    view! { <div></div> }.into_any()
-                }}
+                <div class="text-gray-600 dark:text-gray-300 text-sm whitespace-pre-line">
+                    {bio()}
+                </div>
             </div>
         </div>
     }

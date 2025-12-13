@@ -1,13 +1,130 @@
 use leptos::prelude::*;
 
+const STANFORD_IMAGES: &[&str] = &[
+    "public/images/stanfxcal25/DSCF1288.jpg",
+    "public/images/stanfxcal25/DSCF0839.jpg",
+    "public/images/stanfxcal25/DSCF0932.jpg",
+    "public/images/stanfxcal25/DSCF0964.jpg",
+    "public/images/stanfxcal25/DSCF0929.jpg",
+    "public/images/stanfxcal25/DSCF0865.jpg",
+    "public/images/stanfxcal25/DSCF0551.jpg",
+    "public/images/stanfxcal25/DSCF0698.jpg",
+    "public/images/stanfxcal25/DSCF0978.jpg",
+    "public/images/stanfxcal25/DSCF1412.jpg",
+    "public/images/stanfxcal25/DSCF1493.jpg",
+    "public/images/stanfxcal25/DSCF1495.jpg",
+    "public/images/stanfxcal25/DSCF1504.jpg",
+    "public/images/stanfxcal25/DSCF1505.jpg",
+    "public/images/stanfxcal25/DSCF1550.jpg",
+    "public/images/stanfxcal25/DSCF1180.jpg",
+    "public/images/stanfxcal25/DSCF1152.jpg",
+    "public/images/stanfxcal25/DSCF1139.jpg",
+    "public/images/stanfxcal25/DSCF1091.jpg",
+    "public/images/stanfxcal25/DSCF1070.jpg",
+    "public/images/stanfxcal25/DSCF1011.jpg",
+    "public/images/stanfxcal25/DSCF0944.jpg",
+    "public/images/stanfxcal25/DSCF0769.jpg",
+    "public/images/stanfxcal25/DSCF0640.jpg",
+    "public/images/stanfxcal25/DSCF0435.jpg",
+    "public/images/stanfxcal25/DSCF1257.jpg",
+    "public/images/stanfxcal25/DSCF1092.jpg",
+    "public/images/stanfxcal25/DSCF1018.jpg",
+    "public/images/stanfxcal25/DSCF0939.jpg",
+    "public/images/stanfxcal25/DSCF0852.jpg",
+    "public/images/stanfxcal25/DSCF0844.jpg",
+];
+
+const FALL_TOURNEY_IMAGES: &[&str] = &[
+    "public/images/falltourney/DSCF4016.jpg",
+    "public/images/falltourney/DSCF2022.jpg",
+    "public/images/falltourney/DSCF3008.jpg",
+    "public/images/falltourney/DSCF2937.jpg",
+    "public/images/falltourney/DSCF2122.jpg",
+    "public/images/falltourney/DSCF2364.jpg",
+    "public/images/falltourney/DSCF2312.jpg",
+    "public/images/falltourney/DSCF2753.jpg",
+    "public/images/falltourney/DSCF2756.jpg",
+    "public/images/falltourney/DSCF2593.jpg",
+    "public/images/falltourney/DSCF2226.jpg",
+    "public/images/falltourney/DSCF4009.jpg",
+    "public/images/falltourney/DSCF2199.jpg",
+    "public/images/falltourney/DSCF2188.jpg",
+    "public/images/falltourney/DSCF2116.jpg",
+    "public/images/falltourney/DSCF2047.jpg",
+    "public/images/falltourney/DSCF2018.jpg",
+    "public/images/falltourney/DSCF2011.jpg",
+    "public/images/falltourney/DSCF2005.jpg",
+    "public/images/falltourney/DSCF2619.jpg",
+    "public/images/falltourney/DSCF2605.jpg",
+    "public/images/falltourney/DSCF2519.jpg",
+    "public/images/falltourney/DSCF2367.jpg",
+    "public/images/falltourney/DSCF2185.jpg",
+    "public/images/falltourney/DSCF2156.jpg",
+    "public/images/falltourney/DSCF2146.jpg",
+    "public/images/falltourney/DSCF2133.jpg",
+    "public/images/falltourney/DSCF2097.jpg",
+    "public/images/falltourney/DSCF2007.jpg",
+    "public/images/falltourney/DSCF2451.jpg",
+];
+
 #[component]
 pub fn TournamentsPage() -> impl IntoView {
     view! {
         <div class="min-h-screen">
             <HeroBanner />
+            <MediaCarousel
+                title="2025 Stanford x Berkeley Highlights"
+                images=STANFORD_IMAGES.to_vec()
+            />
+
+            <MediaCarousel
+                title="Fall 2025 Tournament Highlights"
+                images=FALL_TOURNEY_IMAGES.to_vec()
+            />
+
             <UpcomingTournamentSection />
             <TournamentHistorySection />
         </div>
+    }
+}
+
+#[component]
+fn MediaCarousel(
+    title: &'static str,
+    images: Vec<&'static str>,
+) -> impl IntoView {
+    view! {
+        <section class="py-16 bg-white dark:bg-gray-900">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+                    {title}
+                </h2>
+
+                <div
+                    class="
+                        flex gap-6 overflow-x-auto scroll-smooth
+                        snap-x snap-mandatory pb-4
+                    "
+                >
+                    {images.into_iter().map(|src| view! {
+                        <div
+                            class="
+                                snap-center shrink-0
+                                w-[85%] md:w-[70%] lg:w-[60%]
+                                rounded-2xl overflow-hidden
+                                shadow-xl
+                            "
+                        >
+                            <img
+                                src=src
+                                class="w-full h-[420px] object-cover"
+                                loading="lazy"
+                            />
+                        </div>
+                    }).collect::<Vec<_>>()}
+                </div>
+            </div>
+        </section>
     }
 }
 
@@ -29,6 +146,8 @@ fn HeroBanner() -> impl IntoView {
         </section>
     }
 }
+
+
 
 #[component]
 fn UpcomingTournamentSection() -> impl IntoView {
