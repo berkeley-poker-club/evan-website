@@ -1,15 +1,15 @@
 {
   "name": "poker-at-berkeley",
   "version": "1.0.0",
-  "description": "Modern poker club website built with Tauri + Leptos",
+  "description": "Website for Berkeley's Premier Poker Organization",
   "scripts": {
     "css": "tailwindcss -i input.css -o styles.css",
     "css:watch": "tailwindcss -i input.css -o styles.css --watch",
     "css:build": "tailwindcss -i input.css -o styles.css --minify",
-    "dev": "npm run css && trunk serve --open",
+    "dev": "cargo tauri dev",
     "build": "npm run css:build && trunk build --release && cp public/404.html dist/404.html && cp .htaccess dist/.htaccess && cp public/robots.txt dist/robots.txt && cp public/sitemap.xml dist/sitemap.xml",
+    "bench": "npm run build && ./scripts/benchmark.sh",
     "deploy": "./deploy-ocf.sh",
-    "deploy:all": "git push origin main && ./deploy-ocf.sh",
     "tauri": "tauri",
     "tauri:dev": "tauri dev",
     "tauri:build": "tauri build"
@@ -17,7 +17,9 @@
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.10",
-    "tailwindcss": "^3.4.0",
-    "autoprefixer": "^10.4.16"
+    "autoprefixer": "^10.4.16",
+    "lighthouse": "^12.0.0",
+    "serve": "^14.2.0",
+    "tailwindcss": "^3.4.0"
   }
 }
