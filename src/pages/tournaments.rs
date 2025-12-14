@@ -106,7 +106,7 @@ fn MediaCarousel(
                         snap-x snap-mandatory pb-4
                     "
                 >
-                    {images.into_iter().map(|src| view! {
+                    {images.into_iter().enumerate().map(|(i, src)| view! {
                         <div
                             class="
                                 snap-center shrink-0
@@ -117,6 +117,7 @@ fn MediaCarousel(
                         >
                             <img
                                 src=src
+                                alt=format!("{} photo {}", title, i + 1)
                                 class="w-full h-[420px] object-cover"
                                 loading="lazy"
                             />

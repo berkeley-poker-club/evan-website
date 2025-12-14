@@ -33,8 +33,17 @@ jobs:
       - name: Install trunk
         run: cargo install trunk
 
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install npm dependencies
+        run: npm ci
+
       - name: Build site
-        run: trunk build --release
+        run: npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

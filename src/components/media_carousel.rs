@@ -14,10 +14,11 @@ pub fn MediaCarousel(
                 </h2>
 
                 <div class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4">
-                    {images.into_iter().map(|src| view! {
+                    {images.into_iter().enumerate().map(|(i, src)| view! {
                         <div class="snap-center shrink-0 w-[85%] md:w-[70%] lg:w-[60%] rounded-2xl overflow-hidden shadow-xl">
                             <img
                                 src=src
+                                alt=format!("Event photo {}", i + 1)
                                 class="w-full h-[420px] object-cover"
                                 loading="lazy"
                             />
