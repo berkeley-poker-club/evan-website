@@ -255,7 +255,7 @@ fn TournamentHistorySection() -> impl IntoView {
                         date="October 9-11, 2025"
                         qualifier_date="October 9, 2025"
                         prize_pool="$5,000"
-                        sponsors="Citadel"
+                        sponsors="Jump Trading, Slowplay, Jane Street, Citadel, HRT"
                         notion_link="https://pokeratberkeley.notion.site/2025-Poker-at-Berkeley-Fall-Tournament-2909b562b20148c48d49465a8d331d33"
                     />
                     <TournamentHistoryCard
