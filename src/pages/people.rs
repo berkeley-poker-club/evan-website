@@ -51,16 +51,15 @@ fn BoardSection() -> impl IntoView {
                         linkedin="https://www.linkedin.com/in/maysa-barandish-5ba59084/"
                     />
                     <MemberCard
-                        name="Evan Yeager"
-                        role="Head of External"
-                        image="public/images/officers/yevan.png"
+                        name="David Chen"
+                        role="Head of Sponsorships"
+                        image="public/images/officers/dc.jpg"
                         bio=|| view! {
                             <>
-                                "I’m Evan, a Chicago native majoring in Poker who happens to study EECS as well. \n\n"
-                                "My playstyle is loose and aggressive with excessive hand commentary. When I'm not playing poker I enjoy weightlifting, travel, forecasting, and predictive modeling."
+                                "I’m David, a 3rd year “studying” Business + Stats. Besides poker, I enjoy golfing, fantasizing about Peter Thiel, watching Soccer/Tennis, increasing shareholder value, and reading (I’m illiterate)."
                             </>
                         }.into_any()
-                        linkedin="https://www.linkedin.com/in/evanyeager/"
+                        linkedin="https://www.linkedin.com/in/david-chen-b639a4274"
                     />
                     <MemberCard
                         name="Evan Luo"
@@ -68,12 +67,8 @@ fn BoardSection() -> impl IntoView {
                         image="public/images/officers/levan.png"
                         bio=|| view! {
                             <>
-                                "I’m "
-                                <em>"(also)"</em>
-                                " Evan, a sophomore "
-                                <em>"(also)"</em>
-                                " studying EECS. I was "
-                                <em>"(also)"</em>
+                                "I’m Evan, a sophomore"
+                                " studying EECS. I was"
                                 " born in Chicago, but raised in San Diego.\n\n"
                                 "My favorite hand is KJo. When not playing poker (most of the time) I can be found dilly dallying at the RSF, various sushi restaurants, or at a boba shop."
                             </>
@@ -82,29 +77,20 @@ fn BoardSection() -> impl IntoView {
                     />
                     <MemberCard
                         name="Pranshu Rao"
-                        role="Head of Special Projects"
+                        role="Head of External"
                         image="public/images/officers/pranshu.png"
                         bio=|| view! {
                             <>
-                                "Hey, I'm Pranshu, yet "
+                                "Hey, I'm Pranshu, "
                                 <em>"another"</em>
                                 " Chicago native who "
                                 <em>"also"</em>
                                 " happens to study EECS.\n\n"
                                 "My VPIP is close to 70%"
                                 " and when I'm not punting my money away I enjoy soccer, hiking, and late night drives.\n\n"
-                                <em>"Unfortunately, not an Evan"</em>
-                                ", but still in the range."
                             </>
                         }.into_any()
                         linkedin="https://www.linkedin.com/in/pranshurao/"
-                    />
-                    <MemberCard
-                        name="David Chen"
-                        role="Head of Sponsorships"
-                        image="public/images/officers/dc.jpg"
-                        bio=|| view! { <></> }.into_any()
-                        linkedin="https://www.linkedin.com/in/david-chen-b639a4274"
                     />
                     <MemberCard
                         name="Jones Dickerson"
@@ -172,11 +158,9 @@ fn AlumniSection() -> impl IntoView {
 
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
                     <AlumniCard name="Grace Tang" image="public/images/officers/grace.png" />
+                    <AlumniCard name="Evan Yeager" image="public/images/officers/yevan.png" />
                     <AlumniCard name="Johan Ko" image="public/images/officers/johan.png" />
-                    <AlumniCard name="Rick Zhao" image="public/images/alumni/rick.png" />
                     <AlumniCard name="Welford Chen" image="public/images/alumni/welford.png" />
-                    <AlumniCard name="Darsh Patel" image="public/images/alumni/darsh.png" />
-                    <AlumniCard name="Brian Tong" image="public/images/alumni/brian.png" />
                     <AlumniCard name="Ariel Qian" image="public/images/alumni/ariel.jpeg" />
                     <AlumniCard name="Samarth Goel" image="public/images/alumni/samarth.jpeg" />
                     <AlumniCard name="Reagan Lee" image="public/images/alumni/reagan.jpeg" />
