@@ -62,8 +62,8 @@ echo "Core Web Vitals:"
 [ "$LCP" -le "$MAX_LCP" ] && echo -e "  LCP: ${GREEN}$LCP_DISPLAY${NC}" || { echo -e "  LCP: ${RED}$LCP_DISPLAY${NC} (max: ${MAX_LCP}ms)"; FAILED=1; }
 [ "$FCP" -le "$MAX_FCP" ] && echo -e "  FCP: ${GREEN}$FCP_DISPLAY${NC}" || { echo -e "  FCP: ${RED}$FCP_DISPLAY${NC} (max: ${MAX_FCP}ms)"; FAILED=1; }
 
-CLS_INT=$(echo "$CLS * 1000" | bc | cut -d'.' -f1)
-MAX_CLS_INT=$(echo "$MAX_CLS * 1000" | bc | cut -d'.' -f1)
+CLS_INT=$(jq '.audits["cumulative-layout-shift"].numericValue // 0 | . * 1000 | floor' "$RESULTS_DIR/report.json")
+MAX_CLS_INT=$(jq -n --argjson max "$MAX_CLS" '$max * 1000 | floor')
 [ "$CLS_INT" -le "$MAX_CLS_INT" ] && echo -e "  CLS: ${GREEN}$CLS_DISPLAY${NC}" || { echo -e "  CLS: ${RED}$CLS_DISPLAY${NC} (max: $MAX_CLS)"; FAILED=1; }
 [ "$TBT" -le "$MAX_TBT" ] && echo -e "  TBT: ${GREEN}$TBT_DISPLAY${NC}" || { echo -e "  TBT: ${RED}$TBT_DISPLAY${NC} (max: ${MAX_TBT}ms)"; FAILED=1; }
 
