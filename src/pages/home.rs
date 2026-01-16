@@ -2,10 +2,6 @@ use leptos::prelude::*;
 use crate::components::MediaCarousel;
 
 
-const JOIN_FORM: &str =
-    "https://docs.google.com/forms/d/1G1wLFNxLb-dXbT75VViyZuVlFoghDj5zliyPZHtbHp8/edit";
-const OFFICER_FORM: &str =
-    "https://docs.google.com/forms/d/1blZ5sOtsFsjfakVdsHZ2YtnjJBr1J2_Hn3XmIXL6Vlc/edit";
 const DECAL: &str = "/decal";
 const STANFORD_JOIN_FORM: &str =
     "https://forms.gle/QB9ETHXtZyvwEsdp9";
@@ -58,9 +54,9 @@ fn HeroSection() -> impl IntoView {
                     "UC Berkeley's Premier Poker Organization"
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href=JOIN_FORM class="bg-slate-400 hover:bg-slate-500 text-white font-semibold py-2 px-4 rounded-lg transition-colors">"Become a Member"</a>
-                    <a href=OFFICER_FORM class="bg-[#B2A08E] hover:bg-[#A49382] text-white font-semibold py-2 px-4 rounded-lg transition-colors">"Become an Officer"</a>
-                    <a href=DECAL class="bg-[#A87454] hover:bg-[#9A6A4C] font-semibold py-2 px-4 rounded-lg transition-colors">"Learn About DeCal"</a>
+                    <a href="/join#member" data-noscroll="true" class="bg-slate-400 hover:bg-slate-500 text-white font-semibold py-2 px-4 rounded-lg transition-colors">"Become a Member"</a>
+                    <a href="/join#officer" data-noscroll="true" class="bg-[#B2A08E] hover:bg-[#A49382] text-white font-semibold py-2 px-4 rounded-lg transition-colors">"Become an Officer"</a>
+                    <a href=DECAL class="bg-[#A87454] hover:bg-[#9A6A4C] font-semibold py-2 px-4 rounded-lg transition-colors">"DeCal"</a>
                     <a href=STANFORD_JOIN_FORM class="bg-[#8E3E3B] hover:bg-[#7F3835] text-white font-semibold py-2 px-4 rounded-lg transition-colors"> "Stanford Students"</a>
 
                 </div>
@@ -179,7 +175,7 @@ fn UpcomingEventsSection() -> impl IntoView {
                     <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
                         "Spring 2026"
                     </h3>
-                    <div class="space-y-">
+                    <div class="space-y-6">
                         <EventCard
                             title="3rd Annual Berkeley x Stanford Tournament"
                             date="Late April"

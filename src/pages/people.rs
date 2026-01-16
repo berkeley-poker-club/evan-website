@@ -19,7 +19,7 @@ fn HeroBanner() -> impl IntoView {
                  style="background-image: url('public/images/board_fall25_tourney.jpg'); background-size: cover; background-position: center;">
             <div class="max-w-4xl mx-auto text-center px-6">
                 <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">
-                    "Who We Are"
+                    "Officers"
                 </h1>
                 <p class="text-xl text-white/90">
                     "Meet the dedicated team behind Poker at Berkeley"

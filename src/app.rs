@@ -26,6 +26,7 @@ pub fn App() -> impl IntoView {
                             </div>
                         }>
                             <Route path=path!("") view=HomePage/>
+                            <Route path=path!("join") view=JoinUsPage/>
                             <Route path=path!("sponsors") view=SponsorsPage/>
                             <Route path=path!("people") view=PeoplePage/>
                             <Route path=path!("tournaments") view=TournamentsPage/>
