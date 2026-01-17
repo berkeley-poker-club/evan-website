@@ -81,11 +81,11 @@ fn MemberSection() -> impl IntoView {
                             </li>
                             <li class="flex items-start space-x-3">
                                 <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                                <span>"A free, custom player card."</span>
+                                <span>"A free, customizable player card."</span>
                             </li>
                             <li class="flex items-start space-x-3">
                                 <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                                <span>"A place in the Poker @ Berkeley resume book provided to sponsor, and networking opportunities with our sponsors."</span>
+                                <span>"A place in the Poker @ Berkeley resume book used by our sponsors, and networking opportunities with our sponsors."</span>
                             </li>
                             <li class="flex items-start space-x-3">
                                 <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
