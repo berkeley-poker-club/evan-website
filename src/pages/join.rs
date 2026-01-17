@@ -73,7 +73,7 @@ fn MemberSection() -> impl IntoView {
                         </h2>
                         <ul class="space-y-3 text-gray-700 dark:text-gray-300">
                             <li class="flex items-start space-x-3">
-                                <span>"For a small registration fee you have access to:"</span>
+                                <span>"For a $10 registration fee you have access to:"</span>
                             </li>
                             <li class="flex items-start space-x-3">
                                 <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
