@@ -1,16 +1,22 @@
 use leptos::prelude::*;
 
+const DECAL_APPLICATION_FORM: &str = "https://forms.gle/sqdQQGVrg2H4G7xs8";
+const DECAL_SYLLABUS: &str =
+    "https://docs.google.com/document/d/1j2qeTiDadAEusrmj_eKZ_TBn-Y7Vs2GrTfd-CVPuqCc/edit?usp=sharing";
+const DECAL_TA_FORM: &str = "https://forms.gle/mrEEQzFVdACjWYFP9";
+
 #[component]
 pub fn DecalPage() -> impl IntoView {
     view! {
         <div class="min-h-screen">
             <HeroBanner />
+            <ApplySection title="Apply Here:" />
             <CourseOverviewSection />
             <CourseStructureSection />
             <CourseScheduleSection />
             <InstructorsSection />
             <GradingSection />
-            <ApplicationSection />
+            <ApplySection title="Ready to Apply?" />
         </div>
     }
 }
@@ -21,18 +27,21 @@ fn HeroBanner() -> impl IntoView {
         <section id="banner" class="py-32"
             style="background-image: url('public/images/decal_banner.png'); background-size: cover; background-position: center;">
             <div class="max-w-4xl mx-auto text-center px-6">
-                <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">
-                    "Poker DeCal"
-                </h1>
-                <h2 class="text-2xl md:text-3xl text-blue-200 dark:text-blue-300 mb-6">
-                    "Stat 198: Poker Theory & Fundamentals | Fall 2025"
-                </h2>
-                <p class="text-xl text-white/90 mb-4">
-                    "Lecture: Wed & Fri 4-6pm, Birge 50"
-                </p>
-                <p class="text-lg text-blue-300 dark:text-blue-400">
-                    "2 Units | Faculty Sponsor: Everett Wetchler"
-                </p>
+                <div class="inline-block bg-black/60 backdrop-blur-sm rounded-2xl px-8 py-6 shadow-xl">
+                    <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">
+                        "Poker DeCal"
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl text-blue-200 dark:text-blue-300 mb-6">
+                        "Stat 198: Poker Theory & Fundamentals | Spring 2026"
+                    </h2>
+                    <p class="text-xl text-white/90 mb-4">
+                        "Applications Due: February 2nd, 2026"
+                    </p>
+                    <p class="text-lg text-white/90 dark:text-white/90">
+                        "2 Units | Faculty Sponsor: Everett Wetchler"
+                    </p>
+                </div>
+                
             </div>
         </section>
     }
@@ -54,7 +63,7 @@ fn CourseDescriptionSection() -> impl IntoView {
                         "Students will examine each stage of a hand and explore the mathematics, heuristics, and structured reasoning that strong players use, with some attention to psychological factors such as live reads and behavioral patterns. Beyond poker, these concepts develop analytical skills relevant to statistics, game theory, economics, finance, and investing."
                     </p>
                     <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                        "The DeCal was originally started in 2003 by UC Berkeley undergraduate David Daneshgar, who went on to win a WSOP bracelet in 2008."
+                        "The DeCal was originally started in TBD by UC Berkeley undergraduate David Daneshgar, who went on to win a WSOP bracelet in TBD."
                     </p>
                 </div>
             </div>
@@ -77,7 +86,7 @@ fn CourseOverviewSection() -> impl IntoView {
                         <div class="space-y-4 bg-white dark:bg-gray-700 rounded-lg p-6 shadow-md">
                             <CourseDetail label="Course Number" value="STAT 198" />
                             <CourseDetail label="Units" value="2 Units" />
-                            <CourseDetail label="Meeting Time" value="Wed & Fri 4-6pm" />
+                            <CourseDetail label="Meeting Time" value="TBD" />
                             <CourseDetail label="Location" value="Birge 50" />
                             <CourseDetail label="Prerequisites" value="None (Stat 20/21/88 recommended)" />
                             <CourseDetail label="Faculty Sponsor" value="Everett Wetchler" />
@@ -171,82 +180,82 @@ fn CourseScheduleSection() -> impl IntoView {
                         <tbody class="divide-y divide-gray-200 dark:divide-gray-600">
                             <ScheduleRow
                                 week="1"
-                                topics=vec!["Wed 9/10 - Infosession", "Thu 9/11 - Applications Due"]
+                                topics=vec!["TBD - Infosession", "2/2 - Applications Due"]
                                 reading="N/A"
                                 assignment="N/A"
                             />
                             <ScheduleRow
                                 week="2"
-                                topics=vec!["Wed 9/17 - Course Structure: Rules of Play, Expected Value, and Variance", "Fri 9/19 - Introduction to Game Theory Optimal (GTO) Play and Hand Ranges"]
+                                topics=vec!["TBD - Course Structure: Rules of Play, Expected Value, and Variance", "TBD - Introduction to Game Theory Optimal (GTO) Play and Hand Ranges"]
                                 reading="Play Optimal Poker (Brokos), Ch. 1–2"
                                 assignment="Homework 1: Rules of Poker"
                                 slides=vec![("Lecture 1", "public/lecture_slides/Lecture1_F25_Stat198.pdf")]
                             />
                             <ScheduleRow
                                 week="3"
-                                topics=vec!["Wed 9/24 - Preflop Fundamentals: Open Raising, Big Blind Defense, and Constructing Ranges", "Fri 9/26 - Preflop Strategy II: Combinatorics and Relative vs. Absolute Hand Strength"]
+                                topics=vec!["TBD - Preflop Fundamentals: Open Raising, Big Blind Defense, and Constructing Ranges", "TBD - Preflop Strategy II: Combinatorics and Relative vs. Absolute Hand Strength"]
                                 reading="Play Optimal Poker (Brokos), Ch. 3–4"
                                 assignment="Homework 2: Open-Raising"
                                 slides=vec![("Lecture 2", "public/lecture_slides/Lecture2_F25_Stat198.pdf")]
                             />
                             <ScheduleRow
                                 week="4"
-                                topics=vec!["Wed 10/1 - Advanced Preflop: Pot Odds, Equity Realization, Combo/Draw Math, Isolation Plays", "Fri 10/3 - Advanced Preflop II: 3-Betting, 4-Betting, Flatting, Squeezing, and Exploitative Adjustments"]
+                                topics=vec!["TBD - Advanced Preflop: Pot Odds, Equity Realization, Combo/Draw Math, Isolation Plays", "TBD - Advanced Preflop II: 3-Betting, 4-Betting, Flatting, Squeezing, and Exploitative Adjustments"]
                                 reading="Play Optimal Poker (Brokos), Ch. 5–6"
                                 assignment="Homework 3: Advanced Preflop"
                                 slides=vec![("Lecture 3", "public/lecture_slides/Lecture3_F25_Stat198.pdf")]
                             />
                             <ScheduleRow
                                 week="5"
-                                topics=vec!["Wed 10/8 - Flop Play I: Made Hands vs. Draws, Board Texture, and Calculating Equity", "Fri 10/10 - Flop Play II: Continuation Betting (IP vs. OOP), Range Advantage, and Sizing Strategies"]
+                                topics=vec!["TBD - Flop Play I: Made Hands vs. Draws, Board Texture, and Calculating Equity", "TBD - Flop Play II: Continuation Betting (IP vs. OOP), Range Advantage, and Sizing Strategies"]
                                 reading="Play Optimal Poker (Brokos), Ch. 7–8"
                                 assignment="Homework 4: Pot Odds & Draw Calculations"
                             />
                             <ScheduleRow
                                 week="6"
-                                topics=vec!["Wed 10/15 - Betting the Flop: Continuation Bets, Bet Sizing, Pot Control, and Raising Dynamics", "Fri 10/17 - Flop Defense: Non-Aggressor Plays, Hero vs. Opener Scenarios"]
+                                topics=vec!["TBD - Betting the Flop: Continuation Bets, Bet Sizing, Pot Control, and Raising Dynamics", "TBD - Flop Defense: Non-Aggressor Plays, Hero vs. Opener Scenarios"]
                                 reading="Play Optimal Poker 2 (Brokos), Ch. 1–3"
                                 assignment="Homework 5: C-Betting & Sizing"
                             />
                             <ScheduleRow
                                 week="7"
-                                topics=vec!["Wed 10/22 - Turn Play I: Delayed Continuation Bets, Probing the Turn, and Range Elasticity", "Fri 10/24 - Turn Play II: Thin vs. Thick Value Betting, Range Adjustments, and Advanced Elasticity Concepts"]
+                                topics=vec!["TBD - Turn Play I: Delayed Continuation Bets, Probing the Turn, and Range Elasticity", "TBD - Turn Play II: Thin vs. Thick Value Betting, Range Adjustments, and Advanced Elasticity Concepts"]
                                 reading="Play Optimal Poker 2 (Brokos), Ch. 4–5"
                                 assignment="Homework 6: The Turn"
                             />
                             <ScheduleRow
                                 week="8"
-                                topics=vec!["Wed 10/29 - River Play I: Minimum Defense Frequency, Bluffing the River, and Bet Sizing Frameworks", "Fri 10/31 - River Play II: Multi-Street Bluffing and Constructing Bluffing Frequencies"]
+                                topics=vec!["TBD - River Play I: Minimum Defense Frequency, Bluffing the River, and Bet Sizing Frameworks", "TBD - River Play II: Multi-Street Bluffing and Constructing Bluffing Frequencies"]
                                 reading="Play Optimal Poker 2 (Brokos), Ch. 6–8"
                                 assignment="Homework 7: The River"
                             />
                             <ScheduleRow
                                 week="9"
-                                topics=vec!["Wed 11/5 - Hand Analysis I: Street-by-Street Decision Tracking and Adjusting Ranges", "Fri 11/7 - Hand Analysis II: Deep Stack Play, Revisiting Flop/Turn Defense, and River Decision Making"]
+                                topics=vec!["TBD - Hand Analysis I: Street-by-Street Decision Tracking and Adjusting Ranges", "TBD - Hand Analysis II: Deep Stack Play, Revisiting Flop/Turn Defense, and River Decision Making"]
                                 reading="Play Optimal Poker 2 (Brokos), Ch. 9–11"
                                 assignment="Homework 8: Hand Analysis"
                             />
                             <ScheduleRow
                                 week="10"
-                                topics=vec!["Wed 11/12 - Rake Effects, Session Dynamics, and Special Betting Lines (Donk Bets, Unusual Lines)", "Fri 11/14 - Common Turn/River Lines: Double Check-Raising, x-x Flop Dynamics, and River Give-Ups"]
+                                topics=vec!["TBD - Rake Effects, Session Dynamics, and Special Betting Lines (Donk Bets, Unusual Lines)", "TBD - Common Turn/River Lines: Double Check-Raising, x-x Flop Dynamics, and River Give-Ups"]
                                 reading="Modern Poker Theory (Acevedo), Ch. 14"
                                 assignment="Homework 9: Common Lines"
                             />
                             <ScheduleRow
                                 week="11"
-                                topics=vec!["Wed 11/19 - MTT Strategy", "Fri 11/21 - MTT Strategy"]
+                                topics=vec!["TBD - MTT Strategy", "TBD - MTT Strategy"]
                                 reading="Modern Poker Theory (Acevedo), Ch. 6–9"
                                 assignment="Homework 10: Exploits"
                             />
                             <ScheduleRow
                                 week="12"
-                                topics=vec!["Thanksgiving Break: 11/26 - 11/28"]
+                                topics=vec!["TBD"]
                                 reading="Reading Poker Tells (Elwood), Ch. 1–2"
                                 assignment="Final Project: Checkpoint"
                             />
                             <ScheduleRow
                                 week="13"
-                                topics=vec!["Wed 12/3 - Modern Applications: Solvers, Exploitative Adjustments, Live Reads, Tells, and Node-Locking", "Fri 12/5 - Final Lecture: Course Wrap-Up, Reflection, and Poker Beyond the Table (Community & Culture)"]
+                                topics=vec!["TBD - Modern Applications: Solvers, Exploitative Adjustments, Live Reads, Tells, and Node-Locking", "TBD - Final Lecture: Course Wrap-Up, Reflection, and Poker Beyond the Table (Community & Culture)"]
                                 reading="Reading Poker Tells (Elwood), Ch. 3"
                                 assignment="Final Project Due: Hand History Analysis"
                             />
@@ -346,18 +355,41 @@ fn InstructorsSection() -> impl IntoView {
                     "Instructors"
                 </h2>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     <InstructorCard
-                        name="Maysa Barandish"
+                        name="Maysa Eleka Barandish"
                         role="Head of DeCal"
                         email="maysabarandish@berkeley.edu"
                         image="public/images/officers/maysa.png"
+                        linkedin="https://www.linkedin.com/in/maysa-barandish-5ba59084/"
                     />
                     <InstructorCard
-                        name="Jones Dickerson"
+                        name="Jones Arthur Dickerson"
                         role="Instructor"
                         email="jones.dickerson@berkeley.edu"
                         image="public/images/decal-staff/jones.png"
+                        linkedin="https://www.linkedin.com/in/jones-dickerson/"
+                    />
+                    <InstructorCard
+                        name="David Y. Chen"
+                        role="Instructor"
+                        email="ipo@berkeley.edu"
+                        image="public/images/officers/dc.jpg"
+                        linkedin="https://www.linkedin.com/in/david-chen-b639a4274"
+                    />
+                    <InstructorCard
+                        name="Dawson Ryan Kern"
+                        role="Instructor"
+                        email="kerndr@berkeley.edu"
+                        image="public/images/alumni/welford.png"
+                        linkedin="https://www.linkedin.com/in/dawson-kern-454b3b256/"
+                    />
+                    <InstructorCard
+                        name="Mete Ehliz"
+                        role="Instructor"
+                        email="meteehliz@berkeley.edu"
+                        image="public/images/alumni/welford.png"
+                        linkedin="https://www.linkedin.com/in/meteehliz/"
                     />
                 </div>
                 <p class="text-center text-gray-600 dark:text-gray-400 mt-8">
@@ -374,6 +406,7 @@ fn InstructorCard(
     role: &'static str,
     email: &'static str,
     image: &'static str,
+    linkedin: &'static str,
 ) -> impl IntoView {
     view! {
         <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden">
@@ -381,11 +414,34 @@ fn InstructorCard(
                 <img src=image alt=name class="w-full h-64 object-cover" loading="lazy" />
             </div>
             <div class="p-6 text-center">
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{name}</h3>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                    {if linkedin.is_empty() {
+                        view! { <span>{name}</span> }.into_any()
+                    } else {
+                        view! {
+                            <a
+                                href=linkedin
+                                target="_blank"
+                                class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                            >
+                                {name}
+                            </a>
+                        }.into_any()
+                    }}
+                </h3>
                 <p class="text-blue-600 dark:text-blue-400 font-semibold mb-3">{role}</p>
-                <a href=format!("mailto:{}", email) class="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                    {email}
-                </a>
+                {if email.is_empty() {
+                    view! { <span></span> }.into_any()
+                } else {
+                    view! {
+                        <a
+                            href=format!("mailto:{}", email)
+                            class="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                        >
+                            {email}
+                        </a>
+                    }.into_any()
+                }}
             </div>
         </div>
     }
@@ -461,17 +517,34 @@ fn GradingItem(
 }
 
 #[component]
-fn ApplicationSection() -> impl IntoView {
+fn ApplySection(title: &'static str) -> impl IntoView {
     view! {
-        <section class="py-20 bg-blue-900">
-            <div class="max-w-4xl mx-auto text-center px-6">
-                <h2 class="text-4xl font-bold text-white mb-6">
-                    "Ready to Apply?"
-                </h2>
-                <div class="flex justify-center">
-                    <button disabled aria-label="Applications are currently closed" class="bg-gray-300 text-gray-600 font-semibold py-3 px-8 rounded-lg cursor-not-allowed">
-                        "Applications Closed"
-                    </button>
+        <section class="py-16 bg-blue-900">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 text-center md:text-left">
+                    <h2 class="text-4xl font-bold text-white">
+                        {title}
+                    </h2>
+                    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center md:justify-end">
+                        <a
+                            href=DECAL_APPLICATION_FORM
+                            class="bg-white text-blue-900 font-semibold py-3 px-6 rounded-lg shadow-md ring-2 ring-white/60 hover:bg-blue-50 hover:shadow-lg transition-all"
+                        >
+                            "Apply"
+                        </a>
+                        <a
+                            href=DECAL_SYLLABUS
+                            class="bg-blue-800 text-white font-semibold py-3 px-6 rounded-lg shadow-md border border-white/30 hover:bg-blue-700 hover:shadow-lg transition-all"
+                        >
+                            "Syllabus"
+                        </a>
+                        <a
+                            href=DECAL_TA_FORM
+                            class="bg-blue-800 text-white font-semibold py-3 px-6 rounded-lg shadow-md border border-white/30 hover:bg-blue-700 hover:shadow-lg transition-all"
+                        >
+                            "Apply to be a TA"
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>

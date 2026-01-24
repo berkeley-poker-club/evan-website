@@ -209,7 +209,7 @@ fn OfficerFaqSection() -> impl IntoView {
                         <div class="space-y-6">
                             <div class="bg-blue-50/70 dark:bg-slate-800 rounded-lg p-6 shadow-sm border border-blue-100/60 dark:border-slate-700">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                                    "Tabling - Jan 20th to 23rd"
+                                    "Tabling - Jan 20th to 30th"
                                 </h3>
                                 <p class="text-gray-700 dark:text-gray-300">
                                     "Find us on Sproul!"

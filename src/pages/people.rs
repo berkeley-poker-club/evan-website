@@ -77,7 +77,7 @@ fn BoardSection() -> impl IntoView {
                     />
                     <MemberCard
                         name="Pranshu Rao"
-                        role="Head of External"
+                        role="Head of Internal"
                         image="public/images/officers/pranshu.png"
                         bio=|| view! {
                             <>
@@ -97,49 +97,42 @@ fn BoardSection() -> impl IntoView {
                         role="Head of Tournaments"
                         image="public/images/officers/jones.png"
                         bio=|| view! { <></> }.into_any()
-                        linkedin=""
-                    />
-                    <MemberCard
-                        name="Juan Belza-Garcia"
-                        role="Head of Internal"
-                        image="public/images/officers/juan.png"
-                        bio=|| view! { <></> }.into_any()
-                        linkedin="https://www.linkedin.com/in/juan-belza"
+                        linkedin="https://www.linkedin.com/in/jones-dickerson/"
                     />
                     <MemberCard
                         name="Nicolas Bruzzeze"
                         role="Head of Game Nights"
                         image="public/images/officers/nic.png"
                         bio=|| view! { <></> }.into_any()
-                        linkedin=""
+                        linkedin="https://www.linkedin.com/in/nicolas-bruzzese-064532293/"
+                    />
+                    <MemberCard
+                        name="Juan Belza-Garcia"
+                        role="Board Member"
+                        image="public/images/officers/juan.png"
+                        bio=|| view! { <></> }.into_any()
+                        linkedin="https://www.linkedin.com/in/juan-belza"
                     />
                     <MemberCard
                         name="Jonathan James"
-                        role="Head of Design"
+                        role="Board Member"
                         image="public/images/officers/jj.png"
                         bio=|| view! { <></> }.into_any()
                         linkedin="https://www.linkedin.com/in/jonathan-c-james/"
                     />
                     <MemberCard
                         name="Jennifer Ren"
-                        role="Head of Media"
+                        role="Board Member"
                         image="public/images/officers/jen.png"
                         bio=|| view! { <></> }.into_any()
-                        linkedin=""
+                        linkedin="https://www.linkedin.com/in/jennifer-ren/"
                     />
                     <MemberCard
                         name="Sriram Srivatsan"
-                        role="Special Projects Team"
+                        role="Board Member"
                         image="public/images/officers/sriram.png"
                         bio=|| view! { <></> }.into_any()
                         linkedin="https://www.linkedin.com/in/sriram-eecs/"
-                    />
-                    <MemberCard
-                        name="Chris Dodla"
-                        role="DeCal Staff"
-                        image="public/images/officers/chris.png"
-                        bio=|| view! { <></> }.into_any()
-                        linkedin=""
                     />
                 </div>
             </div>
@@ -157,18 +150,18 @@ fn AlumniSection() -> impl IntoView {
                 </h2>
 
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
-                    <AlumniCard name="Grace Tang" image="public/images/officers/grace.png" />
-                    <AlumniCard name="Evan Yeager" image="public/images/officers/yevan.png" />
-                    <AlumniCard name="Johan Ko" image="public/images/officers/johan.png" />
-                    <AlumniCard name="Welford Chen" image="public/images/alumni/welford.png" />
-                    <AlumniCard name="Ariel Qian" image="public/images/alumni/ariel.jpeg" />
-                    <AlumniCard name="Samarth Goel" image="public/images/alumni/samarth.jpeg" />
-                    <AlumniCard name="Reagan Lee" image="public/images/alumni/reagan.jpeg" />
-                    <AlumniCard name="William Lin" image="public/images/alumni/william.jpeg" />
-                    <AlumniCard name="Gavin Yu" image="public/images/alumni/gavin.jpeg" />
-                    <AlumniCard name="Prakash Srivastava" image="public/images/alumni/prakash.jpeg" />
-                    <AlumniCard name="Aidan Reilly" image="public/images/alumni/aidan.jpeg" />
-                    <AlumniCard name="Kevin An" image="public/images/alumni/kevin.jpeg" />
+                    <AlumniCard name="Grace Tang" image="public/images/officers/grace.png" linkedin="https://www.linkedin.com/in/grace-j-tang/" />
+                    <AlumniCard name="Evan Yeager" image="public/images/officers/yevan.png" linkedin="https://www.linkedin.com/in/evanyeager/" />
+                    <AlumniCard name="Johan Ko" image="public/images/officers/johan.png" linkedin="https://www.linkedin.com/in/kojohan/" />
+                    <AlumniCard name="Welford Chen" image="public/images/alumni/welford.png" linkedin="https://www.linkedin.com/in/welford-chen-803084301/" />
+                    <AlumniCard name="Ariel Qian" image="public/images/alumni/ariel.jpeg" linkedin="https://www.linkedin.com/in/arielqian/" />
+                    <AlumniCard name="Samarth Goel" image="public/images/alumni/samarth.jpeg" linkedin="https://www.linkedin.com/in/samarthgoel1/" />
+                    <AlumniCard name="Reagan Lee" image="public/images/alumni/reagan.jpeg" linkedin="https://www.linkedin.com/in/reaganjlee/" />
+                    <AlumniCard name="William Lin" image="public/images/alumni/william.jpeg" linkedin="https://www.linkedin.com/in/lin-w/" />
+                    <AlumniCard name="Gavin Yu" image="public/images/alumni/gavin.jpeg" linkedin="https://www.linkedin.com/in/gavin-yu/" />
+                    <AlumniCard name="Prakash Srivastava" image="public/images/alumni/prakash.jpeg" linkedin="https://www.linkedin.com/in/apsrivastava141/" />
+                    <AlumniCard name="Aidan Reilly" image="public/images/alumni/aidan.jpeg" linkedin="https://www.linkedin.com/in/aidannreilly/" />
+                    <AlumniCard name="Kevin An" image="public/images/alumni/kevin.jpeg" linkedin="https://www.linkedin.com/in/kevin-an-b083681a9/" />
                 </div>
 
                 <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-8">
@@ -230,11 +223,29 @@ fn MemberCard(
 }
 
 #[component]
-fn AlumniCard(name: &'static str, image: &'static str) -> impl IntoView {
+fn AlumniCard(
+    name: &'static str,
+    image: &'static str,
+    linkedin: &'static str,
+) -> impl IntoView {
     view! {
         <div class="text-center">
             <img src=image alt=name class="w-20 h-20 rounded-full mx-auto mb-2 object-cover shadow-lg" loading="lazy" />
-            <p class="text-sm text-gray-700 dark:text-gray-300 font-medium">{name}</p>
+            {if linkedin.is_empty() {
+                view! {
+                    <p class="text-sm text-gray-700 dark:text-gray-300 font-medium">{name}</p>
+                }.into_any()
+            } else {
+                view! {
+                    <a
+                        href=linkedin
+                        target="_blank"
+                        class="text-sm text-gray-700 dark:text-gray-300 font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    >
+                        {name}
+                    </a>
+                }.into_any()
+            }}
         </div>
     }
 }
