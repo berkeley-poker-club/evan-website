@@ -66,11 +66,11 @@ fn MemberSection() -> impl IntoView {
     view! {
         <section id="member" class="scroll-mt-24 py-20 bg-white dark:bg-gray-800">
             <div class="max-w-6xl mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-12 text-center">
+                    "Become a Member"
+                </h2>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
-                            "Become a Member"
-                        </h2>
                         <ul class="space-y-3 text-gray-700 dark:text-gray-300">
                             <li class="flex items-start space-x-3">
                                 <span>"For a $15 registration fee you have access to:"</span>
@@ -142,7 +142,7 @@ fn OfficerSection() -> impl IntoView {
                         <ul class="space-y-3 text-gray-700 dark:text-gray-300">
                             <li class="flex items-start space-x-3">
                                 <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                                <span>"Poker @ Berkeley is a purely member-driven club. Officers are a tight-knit group committed to building the poker community in Berkeley and beyond. Despite varied academic interests, our members share a passion for poker that translates into lifelong friendships."</span>
+                                <span>"Poker @ Berkeley is a purely officer-driven club. Officers are a tight-knit group committed to building the poker community in Berkeley and beyond. Despite varied academic interests, our members share a passion for poker that translates into lifelong friendships."</span>
                             </li>
                             <li class="flex items-start space-x-3">
                                 <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
