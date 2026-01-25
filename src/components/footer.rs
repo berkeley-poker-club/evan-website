@@ -8,7 +8,7 @@ pub fn Footer() -> impl IntoView {
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                     <div>
                         <div class="flex items-center space-x-2 mb-6">
-                            <img src="public/images/blue.png" alt="Poker at Berkeley Logo" class="h-8 w-8" />
+                            <img src="public/images/banner.png" alt="Poker at Berkeley Banner" class="h-8 w-auto" />
                             <span class="text-xl font-bold">"Poker at Berkeley"</span>
                         </div>
                         <div class="flex space-x-4">

@@ -73,7 +73,7 @@ fn MemberSection() -> impl IntoView {
                         </h2>
                         <ul class="space-y-3 text-gray-700 dark:text-gray-300">
                             <li class="flex items-start space-x-3">
-                                <span>"For a $10 registration fee you have access to:"</span>
+                                <span>"For a $15 registration fee you have access to:"</span>
                             </li>
                             <li class="flex items-start space-x-3">
                                 <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
@@ -217,12 +217,17 @@ fn OfficerFaqSection() -> impl IntoView {
                             </div>
                             <div class="bg-blue-50/70 dark:bg-slate-800 rounded-lg p-6 shadow-sm border border-blue-100/60 dark:border-slate-700">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                                    "Application Due - TBD"
+                                    "Infosession - February 2nd"
                                 </h3>
                             </div>
                             <div class="bg-blue-50/70 dark:bg-slate-800 rounded-lg p-6 shadow-sm border border-blue-100/60 dark:border-slate-700">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                                    "Interviews - TBD"
+                                    "Application Due - February 4th, 11:59 PM"
+                                </h3>
+                            </div>
+                            <div class="bg-blue-50/70 dark:bg-slate-800 rounded-lg p-6 shadow-sm border border-blue-100/60 dark:border-slate-700">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                                    "Interviews - February 6th - 8th"
                                 </h3>
                             </div>
                         </div>

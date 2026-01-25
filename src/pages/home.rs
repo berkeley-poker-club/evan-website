@@ -44,25 +44,47 @@ pub fn HomePage() -> impl IntoView {
 fn HeroSection() -> impl IntoView {
     view! {
         <section id="banner" class="relative min-h-screen flex items-center justify-center"
-                 style="background-image: url('public/images/banner.jpeg'); background-size: cover; background-position: center;">
-            <div class="absolute inset-0 bg-black/30"></div>
-            <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-6">
-                <h1 class="text-5xl md:text-7xl font-bold mb-6">
-                    "Poker at Berkeley"
-                </h1>
-                <p class="text-xl md:text-2xl mb-8">
-                    "UC Berkeley's Premier Poker Organization"
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="/join#member" data-noscroll="true" class="bg-slate-400 hover:bg-slate-500 text-white font-semibold py-2 px-4 rounded-lg transition-colors">"Become a Member"</a>
-                    <a href="/join#officer" data-noscroll="true" class="bg-[#B2A08E] hover:bg-[#A49382] text-white font-semibold py-2 px-4 rounded-lg transition-colors">"Become an Officer"</a>
-                    <a href=DECAL class="bg-[#A87454] hover:bg-[#9A6A4C] font-semibold py-2 px-4 rounded-lg transition-colors">"DeCal"</a>
-                    <a href=STANFORD_JOIN_FORM class="bg-[#8E3E3B] hover:bg-[#7F3835] text-white font-semibold py-2 px-4 rounded-lg transition-colors"> "Stanford Students"</a>
-
+                 style="background-image: url('public/images/stanfxcal25/DSCF0844.jpg'); background-size: cover; background-position: center;">
+            <div class="absolute inset-0" style="background-color: rgba(0, 0, 0, 0.78);"></div>
+            <div class="relative z-10 text-center text-white max-w-6xl mx-auto px-6">
+                <div class="w-full max-w-6xl mx-auto bg-black/60 backdrop-blur-sm rounded-2xl px-16 py-16 md:px-20 md:py-16 lg:px-24 lg:py-20 shadow-xl">
+                    <div class="max-w-3xl mx-auto px-6">
+                        <h1 class="mb-6">
+                            <img
+                                src="public/images/banner-logo.png"
+                                alt="poker at berkeley"
+                                class="mx-auto w-full max-w-[420px] sm:max-w-[460px] md:max-w-[520px]"
+                            />
+                        </h1>
+                        <p class="text-xl md:text-2xl mb-8">
+                            "UC Berkeley's Premier Poker Organization"
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+                            <a
+                                href="https://discord.gg/SbS9UbZW2a"
+                                class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-colors"
+                            >
+                                "Join Our Discord"
+                            </a>
+                            <a href="/join#member" data-noscroll="true" class="inline-flex items-center justify-center bg-slate-400 hover:bg-slate-500 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-colors">"Become a Member"</a>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="/join#officer" data-noscroll="true" class="bg-[#B2A08E] hover:bg-[#A49382] text-white font-semibold py-2 px-4 rounded-lg transition-colors">"Become an Officer"</a>
+                            <a href=DECAL class="bg-[#A87454] hover:bg-[#9A6A4C] font-semibold py-2 px-4 rounded-lg transition-colors">"DeCal"</a>
+                            <a href=STANFORD_JOIN_FORM class="bg-[#8E3E3B] hover:bg-[#7F3835] text-white font-semibold py-2 px-4 rounded-lg transition-colors"> "Stanford Students"</a>
+                        </div>
+                        <p class="mt-7 inline-block rounded-full bg-white/15 px-5 py-2 text-lg md:text-xl font-semibold text-white shadow-sm backdrop-blur">
+                            "Find us at tabling! Jan. 20th - 30th"
+                        </p>
+                    </div>
                 </div>
-                <p class="mt-7 inline-block rounded-full bg-white/15 px-5 py-2 text-lg md:text-xl font-semibold text-white shadow-sm backdrop-blur">
-                    "Find us at tabling! Jan. 20th - 30th"
-                </p>
+            </div>
+            <div class="absolute bottom-20 left-0 w-full flex justify-center z-50">
+                <div class="animate-bounce" style="animation-duration: 2.6s;">
+                    <svg class="w-10 h-10 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </div>
             </div>
         </section>
     }
