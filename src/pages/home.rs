@@ -62,7 +62,8 @@ fn HeroSection() -> impl IntoView {
                         <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6">
                             <a
                                 href="https://discord.gg/SbS9UbZW2a"
-                                class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-colors"
+                            class="inline-flex items-center justify-center text-white font-semibold py-3 px-8 rounded-lg text-lg transition-colors"
+                            style="background-color: #536682;"
                             >
                                 "Join Our Discord"
                             </a>
