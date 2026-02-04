@@ -100,7 +100,7 @@ fn BoardSection() -> impl IntoView {
                         linkedin="https://www.linkedin.com/in/jones-dickerson/"
                     />
                     <MemberCard
-                        name="Nicolas Bruzzeze"
+                        name="Nicolas Bruzzese"
                         role="Head of Game Nights"
                         image="public/images/officers/nic.png"
                         bio=|| view! { <></> }.into_any()

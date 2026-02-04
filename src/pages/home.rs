@@ -74,9 +74,6 @@ fn HeroSection() -> impl IntoView {
                             <a href=DECAL class="bg-[#A87454] hover:bg-[#9A6A4C] font-semibold py-2 px-4 rounded-lg transition-colors">"DeCal"</a>
                             <a href=STANFORD_JOIN_FORM class="bg-[#8E3E3B] hover:bg-[#7F3835] text-white font-semibold py-2 px-4 rounded-lg transition-colors"> "Stanford Students"</a>
                         </div>
-                        <p class="mt-7 inline-block rounded-full bg-white/15 px-5 py-2 text-lg md:text-xl font-semibold text-white shadow-sm backdrop-blur">
-                            "Find us at tabling! Jan. 20th - 30th"
-                        </p>
                     </div>
                 </div>
             </div>
