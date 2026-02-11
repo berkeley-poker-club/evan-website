@@ -1,9 +1,7 @@
 use leptos::prelude::*;
 
-const DECAL_APPLICATION_FORM: &str = "https://forms.gle/sqdQQGVrg2H4G7xs8";
 const DECAL_SYLLABUS: &str =
     "https://docs.google.com/document/d/1j2qeTiDadAEusrmj_eKZ_TBn-Y7Vs2GrTfd-CVPuqCc/edit?usp=sharing";
-const DECAL_TA_FORM: &str = "https://forms.gle/mrEEQzFVdACjWYFP9";
 
 #[component]
 pub fn DecalPage() -> impl IntoView {
@@ -526,23 +524,17 @@ fn ApplySection(title: &'static str) -> impl IntoView {
                         {title}
                     </h2>
                     <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center md:justify-end">
-                        <a
-                            href=DECAL_APPLICATION_FORM
-                            class="bg-white text-blue-900 font-semibold py-3 px-6 rounded-lg shadow-md ring-2 ring-white/60 hover:bg-blue-50 hover:shadow-lg transition-all"
+                        <span
+                            class="bg-white/70 text-blue-900/70 font-semibold py-3 px-6 rounded-lg shadow-md ring-2 ring-white/40 cursor-not-allowed"
+                            aria-disabled="true"
                         >
                             "Apply"
-                        </a>
+                        </span>
                         <a
                             href=DECAL_SYLLABUS
                             class="bg-blue-800 text-white font-semibold py-3 px-6 rounded-lg shadow-md border border-white/30 hover:bg-blue-700 hover:shadow-lg transition-all"
                         >
                             "Syllabus"
-                        </a>
-                        <a
-                            href=DECAL_TA_FORM
-                            class="bg-blue-800 text-white font-semibold py-3 px-6 rounded-lg shadow-md border border-white/30 hover:bg-blue-700 hover:shadow-lg transition-all"
-                        >
-                            "Apply to be a TA"
                         </a>
                     </div>
                 </div>

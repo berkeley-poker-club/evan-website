@@ -4,8 +4,6 @@ use web_sys::{ScrollBehavior, ScrollIntoViewOptions};
 
 const JOIN_FORM: &str =
     "https://docs.google.com/forms/d/1G1wLFNxLb-dXbT75VViyZuVlFoghDj5zliyPZHtbHp8/edit";
-const OFFICER_FORM: &str =
-    "https://docs.google.com/forms/d/1blZ5sOtsFsjfakVdsHZ2YtnjJBr1J2_Hn3XmIXL6Vlc/edit";
 
 #[component]
 pub fn JoinUsPage() -> impl IntoView {
@@ -127,12 +125,12 @@ fn OfficerSection() -> impl IntoView {
                             class="w-full h-80 object-cover rounded-lg shadow-lg"
                             loading="lazy"
                         />
-                        <a
-                            href=OFFICER_FORM
-                            class="min-w-[220px] inline-flex items-center justify-center text-center bg-[#B2A08E] hover:bg-[#A49382] text-white font-semibold py-3 px-8 rounded-lg transition-colors"
+                        <span
+                            class="min-w-[220px] inline-flex items-center justify-center text-center bg-[#B2A08E]/70 text-white font-semibold py-3 px-8 rounded-lg cursor-not-allowed"
+                            aria-disabled="true"
                         >
-                            "Become an Officer"
-                        </a>
+                            "Applications Closed"
+                        </span>
                     </div>
 
                     <div>

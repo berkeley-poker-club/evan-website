@@ -17,7 +17,7 @@ pub fn Navigation() -> impl IntoView {
                         </A>
                     </div>
 
-                    <div class="hidden md:flex items-center space-x-8">
+                    <div class="hidden lg:flex items-center space-x-8">
                         <A href="/" attr:class="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">"Home"</A>
                         <A href="/join" attr:class="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">"Join Us"</A>
                         <A href="/people" attr:class="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">"Officers"</A>
@@ -28,7 +28,7 @@ pub fn Navigation() -> impl IntoView {
                         <ThemeToggle />
                     </div>
 
-                    <div class="md:hidden flex items-center space-x-2">
+                    <div class="lg:hidden flex items-center space-x-2">
                         <ThemeToggle />
                         <button
                             class="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
@@ -41,7 +41,7 @@ pub fn Navigation() -> impl IntoView {
                     </div>
                 </div>
 
-                <div class=move || if is_open.get() { "md:hidden" } else { "hidden" }>
+                <div class=move || if is_open.get() { "lg:hidden" } else { "hidden" }>
                     <div class="px-2 pt-2 pb-3 space-y-1 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
                         <A href="/" attr:class="block px-3 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">"Home"</A>
                         <A href="/join" attr:class="block px-3 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">"Join Us"</A>

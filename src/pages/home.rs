@@ -70,7 +70,6 @@ fn HeroSection() -> impl IntoView {
                         <a href="https://docs.google.com/forms/d/1G1wLFNxLb-dXbT75VViyZuVlFoghDj5zliyPZHtbHp8/edit" target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-slate-400 hover:bg-slate-500 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-colors">"Become a Member"</a>
                         </div>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="https://docs.google.com/forms/d/1blZ5sOtsFsjfakVdsHZ2YtnjJBr1J2_Hn3XmIXL6Vlc/edit" target="_blank" rel="noopener" class="bg-[#B2A08E] hover:bg-[#A49382] text-white font-semibold py-2 px-4 rounded-lg transition-colors">"Become an Officer"</a>
                             <a href=DECAL class="bg-[#A87454] hover:bg-[#9A6A4C] font-semibold py-2 px-4 rounded-lg transition-colors">"DeCal"</a>
                             <a href=STANFORD_JOIN_FORM class="bg-[#8E3E3B] hover:bg-[#7F3835] text-white font-semibold py-2 px-4 rounded-lg transition-colors"> "Stanford Students"</a>
                         </div>

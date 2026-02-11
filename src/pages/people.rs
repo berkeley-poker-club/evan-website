@@ -134,6 +134,41 @@ fn BoardSection() -> impl IntoView {
                         bio=|| view! { <></> }.into_any()
                         linkedin="https://www.linkedin.com/in/sriram-eecs/"
                     />
+                    <MemberCard
+                        name="Szymon Jackowski"
+                        role="Board Member"
+                        image="public/images/officers/szymon.png"
+                        bio=|| view! { <></> }.into_any()
+                        linkedin="https://www.linkedin.com/in/szymonjackowski"
+                    />
+                    <MemberCard
+                        name="Tanya Zhang"
+                        role="Board Member"
+                        image="public/images/officers/tanya.jpg"
+                        bio=|| view! { <></> }.into_any()
+                        linkedin="https://www.linkedin.com/in/tanyashenzhang/"
+                    />
+                    <MemberCard
+                        name="Vincent Chen"
+                        role="Board Member"
+                        image="public/images/officers/vincent.jpg"
+                        bio=|| view! { <></> }.into_any()
+                        linkedin="https://www.linkedin.com/in/vincentchen8/"
+                    />
+                    <MemberCard
+                        name="Joe Zhou"
+                        role="Board Member"
+                        image="public/images/officers/joe.jpg"
+                        bio=|| view! { <></> }.into_any()
+                        linkedin="https://www.linkedin.com/in/joe-zhou-a6159b230/"
+                    />
+                    <MemberCard
+                        name="Timur Usmonov"
+                        role="Board Member"
+                        image="public/images/officers/timur.jpg"
+                        bio=|| view! { <></> }.into_any()
+                        linkedin="https://www.linkedin.com/in/timur-usmonov/"
+                    />
                 </div>
             </div>
         </section>
