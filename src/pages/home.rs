@@ -45,9 +45,9 @@ fn HeroSection() -> impl IntoView {
     view! {
         <section id="banner" class="relative min-h-screen flex items-center justify-center"
                  style="background-image: url('public/images/stanfxcal25/DSCF0844.jpg'); background-size: cover; background-position: center;">
-            <div class="absolute inset-0" style="background-color: rgba(0, 0, 0, 0.78);"></div>
+            <div class="absolute inset-0" style="background-color: rgba(0, 0, 0, 0.30);"></div>
             <div class="relative z-10 text-center text-white max-w-6xl mx-auto px-6">
-                <div class="w-full max-w-6xl mx-auto bg-black/60 backdrop-blur-sm rounded-2xl px-16 py-16 md:px-20 md:py-16 lg:px-24 lg:py-20 shadow-xl">
+                <div class="w-full max-w-6xl mx-auto bg-black/10 backdrop-blur-sm rounded-2xl px-16 py-16 md:px-20 md:py-16 lg:px-24 lg:py-20 shadow-xl">
                     <div class="max-w-3xl mx-auto px-6">
                         <h1 class="mb-6">
                             <img
@@ -223,6 +223,17 @@ fn UpcomingEventsSection() -> impl IntoView {
                                 "50 people",
                                 "1 day in-person",
                                 "Guest speakers from Jump Trading"
+                            ]
+                            highlight=false
+                        />
+                        <EventCard
+                            title="QRT Tournament"
+                            date="Feb 26, 2026"
+                            details=vec![
+                                "100 people",
+                                "1 day in-person",
+                                "$2500 prize pool",
+                                "Guest speakers from QRT"
                             ]
                             highlight=false
                         />

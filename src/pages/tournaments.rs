@@ -191,6 +191,17 @@ fn UpcomingTournamentSection() -> impl IntoView {
                         ]
                         highlight=false
                     />
+                    <UpcomingTournamentCard
+                        title="QRT Tournament"
+                        date="Feb 26, 2026"
+                        details=vec![
+                            "100 people",
+                            "1 day in-person",
+                            "$2500 prize pool",
+                            "Guest speakers from QRT",
+                        ]
+                        highlight=false
+                    />
                 </div>
             </div>
         </section>

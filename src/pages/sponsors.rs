@@ -45,7 +45,7 @@ fn SponsorsSection() -> impl IntoView {
                                 description: ""
                             },
                         ]
-                        tier_class="border-white/30 bg-gradient-to-br from-slate-600/80 via-slate-500/80 to-slate-700/80 dark:from-slate-800/70 dark:to-slate-900/70"
+                        tier_class="border-sky-200/70 bg-gradient-to-br from-sky-300/75 via-blue-400/75 to-blue-500/75 dark:from-sky-400/65 dark:via-blue-500/65 dark:to-indigo-600/65"
                     />
 
                     <SponsorTier
@@ -57,8 +57,13 @@ fn SponsorsSection() -> impl IntoView {
                                 logo: "public/images/sponsors/js.png",
                                 description: ""
                             },
+                            SponsorInfo {
+                                name: "QRT",
+                                logo: "public/images/sponsors/qrt.jpg",
+                                description: ""
+                            },
                         ]
-                        tier_class="border-amber-300/60 bg-gradient-to-br from-amber-400/70 via-amber-300/70 to-amber-500/70 dark:from-amber-700/60 dark:to-amber-800/60"
+                        tier_class="border-amber-300/60 bg-gradient-to-br from-amber-400/70 via-amber-500/70 to-amber-600/70 dark:from-amber-500/60 dark:via-amber-600/60 dark:to-amber-700/60"
                     />
 
                     <SponsorTier
@@ -76,7 +81,7 @@ fn SponsorsSection() -> impl IntoView {
                                 description: ""
                             },
                         ]
-                        tier_class="border-white/20 bg-gradient-to-br from-gray-400/70 via-gray-300/70 to-gray-500/70 dark:from-gray-700/60 dark:to-gray-800/60"
+                        tier_class="border-white/20 bg-gradient-to-br from-gray-300/70 via-gray-400/70 to-gray-500/70 dark:from-gray-400/60 dark:via-gray-500/60 dark:to-gray-600/60"
                     />
 
                     <SponsorTier
@@ -99,7 +104,7 @@ fn SponsorsSection() -> impl IntoView {
                                 description: ""
                             },
                         ]
-                        tier_class="border-amber-600 bg-gradient-to-r from-amber-50 to-amber-100 dark:from-amber-900 dark:to-amber-800"
+                        tier_class="border-emerald-300/60 bg-gradient-to-br from-emerald-400/70 via-emerald-500/70 to-emerald-600/70 dark:from-emerald-500/60 dark:via-emerald-600/60 dark:to-emerald-700/60"
                     />
                 </div>
             </div>

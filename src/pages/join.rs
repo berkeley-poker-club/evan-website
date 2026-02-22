@@ -4,6 +4,10 @@ use web_sys::{ScrollBehavior, ScrollIntoViewOptions};
 
 const JOIN_FORM: &str =
     "https://docs.google.com/forms/d/1G1wLFNxLb-dXbT75VViyZuVlFoghDj5zliyPZHtbHp8/edit";
+const STANFORD_JOIN_FORM: &str =
+    "https://forms.gle/QB9ETHXtZyvwEsdp9";
+const OFFICER_INTEREST_FORM: &str =
+    "https://docs.google.com/forms/d/e/1FAIpQLScehYwpXAbH_RNLrVDZ_vATDO9LTYikVJ62TjtfXOsZg784fw/viewform";
 
 #[component]
 pub fn JoinUsPage() -> impl IntoView {
@@ -71,7 +75,7 @@ fn MemberSection() -> impl IntoView {
                     <div>
                         <ul class="space-y-3 text-gray-700 dark:text-gray-300">
                             <li class="flex items-start space-x-3">
-                                <span>"For a $15 registration fee you have access to:"</span>
+                                <span>"For a small registration fee you have access to:"</span>
                             </li>
                             <li class="flex items-start space-x-3">
                                 <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
@@ -99,12 +103,20 @@ fn MemberSection() -> impl IntoView {
                             class="w-full h-80 object-cover rounded-lg shadow-lg"
                             loading="lazy"
                         />
-                        <a
-                            href=JOIN_FORM
-                            class="min-w-[220px] inline-flex items-center justify-center text-center bg-slate-400 hover:bg-slate-500 text-white font-semibold py-3 px-8 rounded-lg transition-colors"
-                        >
-                            "Become a Member"
-                        </a>
+                        <div class="w-full flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                            <a
+                                href=JOIN_FORM
+                                class="min-w-[220px] inline-flex items-center justify-center text-center bg-slate-400 hover:bg-slate-500 text-white font-semibold py-3 px-8 rounded-lg transition-colors"
+                            >
+                                "Berkeley Students"
+                            </a>
+                            <a
+                                href=STANFORD_JOIN_FORM
+                                class="min-w-[220px] inline-flex items-center justify-center text-center bg-[#8E3E3B] hover:bg-[#7F3835] text-white font-semibold py-3 px-8 rounded-lg transition-colors"
+                            >
+                                "Stanford Students"
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -125,12 +137,12 @@ fn OfficerSection() -> impl IntoView {
                             class="w-full h-80 object-cover rounded-lg shadow-lg"
                             loading="lazy"
                         />
-                        <span
-                            class="min-w-[220px] inline-flex items-center justify-center text-center bg-[#B2A08E]/70 text-white font-semibold py-3 px-8 rounded-lg cursor-not-allowed"
-                            aria-disabled="true"
+                        <a
+                            href=OFFICER_INTEREST_FORM
+                            class="min-w-[220px] inline-flex items-center justify-center text-center bg-[#B2A08E]/70 hover:bg-[#9A6A4C] text-white font-semibold py-3 px-8 rounded-lg transition-colors"
                         >
-                            "Applications Closed"
-                        </span>
+                            "Interest Form"
+                        </a>
                     </div>
 
                     <div>

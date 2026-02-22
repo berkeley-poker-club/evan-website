@@ -42,10 +42,7 @@ fn BoardSection() -> impl IntoView {
                         bio=|| view! {
                             <>
                                 "Dallas native studying Econ + DS. Favorite hand is the changed diaper (dirty diaper but suited), a very reliable wealth distributor.\n\n"
-                                "When I'm not playing poker, I’m usually gambling in some other form. Outside of that, I enjoy backgammon and hikes with my dog. \n\n"
-                                "Not from Chicago. Not studying EECS. "
-                                <em>"Someone"</em> 
-                                " has to defend the bottom of the range."
+                                "When I'm not playing poker, I’m usually gambling in some other form. Outside of that, I enjoy backgammon and hikes with my dog."
                             </>
                         }.into_any()
                         linkedin="https://www.linkedin.com/in/maysa-barandish-5ba59084/"
@@ -70,7 +67,7 @@ fn BoardSection() -> impl IntoView {
                                 "I’m Evan, a sophomore"
                                 " studying EECS. I was"
                                 " born in Chicago, but raised in San Diego.\n\n"
-                                "My favorite hand is KJo. When not playing poker (most of the time) I can be found dilly dallying at the RSF, various sushi restaurants, or at a boba shop."
+                                "When not playing poker I can be found dilly dallying at Benchmark Climbing, various sushi restaurants, or at a boba shop."
                             </>
                         }.into_any()
                         linkedin="https://www.linkedin.com/in/theevanluo/"
@@ -81,8 +78,7 @@ fn BoardSection() -> impl IntoView {
                         image="public/images/officers/pranshu.png"
                         bio=|| view! {
                             <>
-                                "Hey, I'm Pranshu, "
-                                <em>"another"</em>
+                                "Hey, I'm Pranshu, a"
                                 " Chicago native who "
                                 <em>"also"</em>
                                 " happens to study EECS.\n\n"
