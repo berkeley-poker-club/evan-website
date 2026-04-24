@@ -36,7 +36,7 @@ fn HeroBanner() -> impl IntoView {
                         "Applications Due: February 2nd, 2026"
                     </p>
                     <p class="text-lg text-white/90 dark:text-white/90">
-                        "2 Units | Schedules TBA"
+                        "2 Units | WF 5-7, TTh 6-8"
                     </p>
                 </div>
                 
