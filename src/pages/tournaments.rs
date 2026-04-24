@@ -191,17 +191,6 @@ fn UpcomingTournamentSection() -> impl IntoView {
                         ]
                         highlight=false
                     />
-                    <UpcomingTournamentCard
-                        title="QRT Tournament"
-                        date="Feb 26, 2026"
-                        details=vec![
-                            "100 people",
-                            "1 day in-person",
-                            "$2500 prize pool",
-                            "Guest speakers from QRT",
-                        ]
-                        highlight=false
-                    />
                 </div>
             </div>
         </section>
@@ -261,6 +250,14 @@ fn TournamentHistorySection() -> impl IntoView {
                 </h2>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <TournamentHistoryCard
+                        title="QRT Tournament"
+                        date="February 26, 2026"
+                        qualifier_date="N/A"
+                        prize_pool="$2,500"
+                        sponsors="QRT"
+                        notion_link="https://pokeratberkeley.notion.site/qrt-tournament-2026?v=31d7865cff64806a8965000c37c54a78"
+                    />
                     <TournamentHistoryCard
                         title="2025 Fall Tournament"
                         date="October 9-11, 2025"

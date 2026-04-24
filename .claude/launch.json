@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "tauri-dev",
+      "runtimeExecutable": "cargo",
+      "runtimeArgs": ["tauri", "dev"],
+      "port": 1420
+    },
+    {
+      "name": "tailwind-watch",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["tailwindcss", "-i", "input.css", "-o", "styles.css", "--watch"],
+      "port": 0
+    }
+  ]
+}

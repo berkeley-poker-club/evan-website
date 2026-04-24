@@ -42,6 +42,7 @@ fn SponsorsSection() -> impl IntoView {
                             SponsorInfo {
                                 name: "Jump Trading",
                                 logo: "public/images/sponsors/jump.png",
+                                url: "https://www.jumptrading.com/",
                                 description: ""
                             },
                         ]
@@ -55,11 +56,13 @@ fn SponsorsSection() -> impl IntoView {
                             SponsorInfo {
                                 name: "Jane Street",
                                 logo: "public/images/sponsors/js.png",
+                                url: "https://www.janestreet.com/",
                                 description: ""
                             },
                             SponsorInfo {
                                 name: "QRT",
                                 logo: "public/images/sponsors/qrt.jpg",
+                                url: "https://www.qube-rt.com/",
                                 description: ""
                             },
                         ]
@@ -73,15 +76,37 @@ fn SponsorsSection() -> impl IntoView {
                             SponsorInfo {
                                 name: "Citadel",
                                 logo: "public/images/sponsors/citadel.png",
+                                url: "https://www.citadel.com/",
                                 description: ""
                             },
                             SponsorInfo {
                                 name: "HRT",
                                 logo: "public/images/sponsors/hrt.png",
+                                url: "https://www.hudsonrivertrading.com/",
                                 description: ""
                             },
                         ]
                         tier_class="border-white/20 bg-gradient-to-br from-gray-300/70 via-gray-400/70 to-gray-500/70 dark:from-gray-400/60 dark:via-gray-500/60 dark:to-gray-600/60"
+                    />
+
+                    <SponsorTier
+                        title="Bronze Sponsors"
+                        description=""
+                        sponsors=vec![
+                            SponsorInfo {
+                                name: "Duper",
+                                logo: "public/images/sponsors/duper.png",
+                                url: "https://www.duper.gg/",
+                                description: ""
+                            },
+                            SponsorInfo {
+                                name: "PokerGFX",
+                                logo: "public/images/sponsors/pokergfx.png",
+                                url: "https://www.pokergfx.io/",
+                                description: ""
+                            },
+                        ]
+                        tier_class="border-orange-300/60 bg-gradient-to-br from-orange-400/70 via-orange-500/70 to-orange-600/70"
                     />
 
                     <SponsorTier
@@ -91,16 +116,19 @@ fn SponsorsSection() -> impl IntoView {
                             SponsorInfo {
                                 name: "Slowplay",
                                 logo: "public/images/sponsors/slowplay.png",
+                                url: "https://www.slowplay.store/",
                                 description: ""
                             },
                             SponsorInfo {
                                 name: "GTOW",
                                 logo: "public/images/sponsors/gtow.png",
+                                url: "https://gtowizard.com/",
                                 description: ""
                             },
                             SponsorInfo {
                                 name: "BBO",
                                 logo: "public/images/sponsors/BBO.png",
+                                url: "https://www.bbopokertables.com/",
                                 description: ""
                             },
                         ]
@@ -115,6 +143,7 @@ fn SponsorsSection() -> impl IntoView {
 struct SponsorInfo {
     name: &'static str,
     logo: &'static str,
+    url: &'static str,
     description: &'static str,
 }
 
@@ -157,6 +186,7 @@ fn SponsorTier(
                             <SponsorCard
                                 name=sponsor.name
                                 logo=sponsor.logo
+                                url=sponsor.url
                                 _description=sponsor.description
                             />
                         })
@@ -172,20 +202,29 @@ fn SponsorTier(
 fn SponsorCard(
     name: &'static str,
     logo: &'static str,
+    url: &'static str,
     _description: &'static str,
 ) -> impl IntoView {
     view! {
-        // Fixed box size (same for all tiers) + centered
-        <div class="flex items-center justify-center w-44 h-24 md:w-52 md:h-28">
-            <img
-                src=logo
-                alt=name
-                class="max-w-full max-h-full object-contain bg-transparent"
-                loading="lazy"
-                decoding="async"
-                style="filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));"
-            />
-        </div>
+        <a
+            href=url
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label=(format!("Visit {}", name))
+            class="group rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+        >
+            // Fixed box size (same for all tiers) + centered
+            <div class="flex items-center justify-center w-44 h-24 md:w-52 md:h-28">
+                <img
+                    src=logo
+                    alt=name
+                    class="max-w-full max-h-full object-contain bg-transparent transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                    style="filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));"
+                />
+            </div>
+        </a>
     }
 }
 
