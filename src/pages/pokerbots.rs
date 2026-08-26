@@ -15,7 +15,6 @@ pub fn PokerBotsPage() -> impl IntoView {
                 style="background-image: repeating-linear-gradient(115deg, transparent 0 7px, rgb(103, 232, 249) 7px 8px, transparent 8px 14px);"
                 aria-hidden="true"
             ></div>
-
             <div class="relative mx-auto flex min-h-[calc(100vh-4rem)] max-w-6xl flex-col">
                 <a href="/" class="fixed left-6 top-8 z-20 text-sm font-semibold text-cyan-100 underline-offset-4 hover:text-amber-200 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-100">
                     "< Poker at Berkeley"
@@ -35,8 +34,8 @@ pub fn PokerBotsPage() -> impl IntoView {
                 </main>
 
                 <section class="mx-auto w-full max-w-3xl border-y border-cyan-200/20 py-16 sm:py-24">
-                    <p class="mb-5 text-sm uppercase tracking-[0.22em] text-amber-200">"PokerBots // the challenge"</p>
-                    <div class="space-y-6 text-left text-lg leading-relaxed text-cyan-50/85 sm:text-xl">
+                    <p class="mb-6 text-2xl font-bold uppercase tracking-[0.16em] text-amber-200 sm:text-3xl">"PokerBots // the challenge"</p>
+                    <div class="space-y-6 text-left text-xl leading-relaxed text-cyan-50/85 sm:text-2xl">
                         <p>
                             "Teams have a month to program a completely autonomous poker bot, then put it up against bots built by other teams."
                         </p>
@@ -47,7 +46,7 @@ pub fn PokerBotsPage() -> impl IntoView {
                 </section>
 
                 <section class="mx-auto w-full max-w-3xl py-16 sm:py-24" aria-labelledby="pokerbots-faq">
-                    <h2 id="pokerbots-faq" class="mb-10 text-2xl font-semibold uppercase tracking-[0.16em] text-cyan-50 sm:text-3xl">
+                    <h2 id="pokerbots-faq" class="mb-10 text-2xl font-bold uppercase tracking-[0.16em] text-cyan-50 sm:text-3xl">
                         "FAQ"
                     </h2>
                     <dl class="border-t border-cyan-200/30">

@@ -27,6 +27,8 @@
 @layer components {
     .font-terminal {
         font-family: "Courier New", Courier, monospace;
+        font-size: 1.125rem;
+        font-weight: 500;
     }
 
     .poker-card {
