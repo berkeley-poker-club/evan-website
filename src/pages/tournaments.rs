@@ -264,7 +264,7 @@ fn TournamentHistorySection() -> impl IntoView {
                         qualifier_date="April 19, 2026"
                         prize_pool="$10,000"
                         sponsors="Jump Trading, Jane Street, Citadel, HRT, QRT"
-                        notion_link=""
+                        notion_link="https://pokeratberkeley.notion.site/berkeley-stanford-2026?v=3447865cff64814f9bbe000cdd22c079"
                     />
                     <TournamentHistoryCard
                         title="QRT Tournament"
