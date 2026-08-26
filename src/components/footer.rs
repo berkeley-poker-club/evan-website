@@ -38,8 +38,8 @@ pub fn Footer() -> impl IntoView {
                     <div>
                         <h3 class="text-lg font-semibold mb-6 text-blue-400">"Quick Links"</h3>
                         <nav class="space-y-3">
-                            <FooterLink href="https://pokeratberkeley.notion.site/2025-Poker-at-Berkeley-Fall-Tournament-2909b562b20148c48d49465a8d331d33" text="Fall Tournament Wiki" />
-                            <FooterLink href="https://pokeratberkeley.notion.site/2025-berkeley-stanford-poker-tournament" text="2025 Berkeley - Stanford Tournament Wiki" />
+                            <FooterLink href="https://pokeratberkeley.notion.site/berkeley-stanford-2026?v=3447865cff64814f9bbe000cdd22c079" text="2026 Berkeley–Stanford Tournament Wiki" />
+                            <FooterLink href="/pokerbots" text="PokerBots" />
                             </nav>
                     </div>
 
@@ -48,7 +48,7 @@ pub fn Footer() -> impl IntoView {
                 <div class="border-t border-gray-700 dark:border-gray-800 pt-8">
                     <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                         <div class="text-sm text-gray-400 dark:text-gray-500">
-                            "© 2025 Poker at Berkeley. All rights reserved."
+                            "© 2026 Poker at Berkeley. All rights reserved."
                         </div>
                         <div class="text-sm text-gray-400 dark:text-gray-500">
                             "Hosted by the "
