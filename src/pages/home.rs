@@ -78,7 +78,7 @@ fn HeroSection() -> impl IntoView {
                     </div>
                 </div>
             </div>
-            <div class="absolute bottom-20 left-0 w-full flex justify-center z-50">
+            <div class="absolute bottom-20 left-0 z-10 flex w-full justify-center">
                 <div class="animate-bounce" style="animation-duration: 2.6s;">
                     <svg class="w-10 h-10 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>

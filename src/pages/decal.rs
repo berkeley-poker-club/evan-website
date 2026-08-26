@@ -30,10 +30,10 @@ fn HeroBanner() -> impl IntoView {
                         "Poker DeCal"
                     </h1>
                     <h2 class="text-2xl md:text-3xl text-blue-200 dark:text-blue-300 mb-6">
-                        "Stat 198: Poker Theory & Fundamentals | Spring 2026"
+                        "Stat 198: Poker Theory & Fundamentals | Fall 2026"
                     </h2>
                     <p class="text-xl text-white/90 mb-4">
-                        "Applications Due: February 2nd, 2026"
+                        "Applications Due: TBD"
                     </p>
                     <p class="text-lg text-white/90 dark:text-white/90">
                         "2 Units | WF 5-7, TTh 6-8"
@@ -178,7 +178,7 @@ fn CourseScheduleSection() -> impl IntoView {
                         <tbody class="divide-y divide-gray-200 dark:divide-gray-600">
                             <ScheduleRow
                                 week="1"
-                                topics=vec!["TBD - Infosession", "2/2 - Applications Due"]
+                                topics=vec!["TBD - Infosession", "TBD - Applications Due"]
                                 reading="N/A"
                                 assignment="N/A"
                             />

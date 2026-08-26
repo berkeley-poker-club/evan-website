@@ -51,7 +51,14 @@ fn BoardSection() -> impl IntoView {
                         name="Jones Dickerson"
                         role="Head of Tournaments, Head of DeCal"
                         image="public/images/officers/jones.png"
-                        bio=|| view! { <></> }.into_any()
+                        bio=|| view! {
+                            <>
+                                "4th year studying Pure Math\n\n"
+                                "Many many hours at all stakes\n\n"
+                                "4th semester teaching Poker DeCal!\n\n"
+                                "Outside of poker, I enjoy playing tennis, cello, learning something random, and traveling"
+                            </>
+                        }.into_any()
                         linkedin="https://www.linkedin.com/in/jones-dickerson/"
                     />
                     <MemberCard
