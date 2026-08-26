@@ -3,6 +3,7 @@ use crate::pages::*;
 use leptos::prelude::*;
 use leptos_router::{
     components::{Route, Router, Routes},
+    hooks::use_location,
     path,
 };
 
@@ -11,8 +12,20 @@ pub fn App() -> impl IntoView {
     view! {
         <ThemeProvider>
             <Router>
-                <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
-                    <Navigation />
+                <AppShell />
+            </Router>
+        </ThemeProvider>
+    }
+}
+
+#[component]
+fn AppShell() -> impl IntoView {
+    let location = use_location();
+    let is_pokerbots = move || location.pathname.get().starts_with("/pokerbots");
+
+    view! {
+        <div class=move || if is_pokerbots() { "bg-[#02070d]" } else { "min-h-screen bg-gray-50 dark:bg-gray-900" }>
+            {move || (!is_pokerbots()).then(|| view! { <Navigation /> })}
                     <main>
                         <Routes fallback=|| view! {
                             <div class="min-h-screen flex items-center justify-center">
@@ -32,11 +45,10 @@ pub fn App() -> impl IntoView {
                             <Route path=path!("tournaments") view=TournamentsPage/>
                             <Route path=path!("decal") view=DecalPage/>
                             <Route path=path!("resources") view=ResourcesPage/>
+                            <Route path=path!("pokerbots") view=PokerBotsPage/>
                         </Routes>
                     </main>
-                    <Footer />
-                </div>
-            </Router>
-        </ThemeProvider>
+            {move || (!is_pokerbots()).then(|| view! { <Footer /> })}
+        </div>
     }
 }

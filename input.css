@@ -25,6 +25,10 @@
 }
 
 @layer components {
+    .font-terminal {
+        font-family: "Courier New", Courier, monospace;
+    }
+
     .poker-card {
         @apply relative w-16 bg-white rounded-lg shadow-lg border border-gray-200 transform transition-all duration-300;
     }
@@ -101,4 +105,5 @@
     .container-custom {
         @apply max-w-7xl mx-auto;
     }
+
 }
