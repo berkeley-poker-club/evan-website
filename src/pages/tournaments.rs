@@ -261,9 +261,9 @@ fn TournamentHistorySection() -> impl IntoView {
                     <TournamentHistoryCard
                         title="3rd Annual Berkeley x Stanford Tournament"
                         date="Spring 2026"
-                        qualifier_date="N/A"
-                        prize_pool="N/A"
-                        sponsors="N/A"
+                        qualifier_date="April 19, 2026"
+                        prize_pool="$10,000"
+                        sponsors="Jump Trading, Jane Street, Citadel, HRT, QRT"
                         notion_link=""
                     />
                     <TournamentHistoryCard
