@@ -3,8 +3,10 @@ use crate::components::MediaCarousel;
 
 
 const DECAL: &str = "/decal";
+const JOIN_FORM: &str =
+    "https://docs.google.com/forms/d/e/1FAIpQLSdxzvFVWmAr78rsoMCtL-yaQafVlElf3plTJhg7cEHNfUlq8Q/viewform?usp=dialog";
 const STANFORD_JOIN_FORM: &str =
-    "https://forms.gle/QB9ETHXtZyvwEsdp9";
+    "https://docs.google.com/forms/d/e/1FAIpQLSeMmF5-hdHQg8l-6DVjcQh7mwDMGapFE2DAfSMGnCTX9MgnAg/viewform?usp=dialog";
 
 
 #[component]
@@ -67,7 +69,7 @@ fn HeroSection() -> impl IntoView {
                             >
                                 "Join Our Discord"
                             </a>
-                        <a href="https://docs.google.com/forms/d/1G1wLFNxLb-dXbT75VViyZuVlFoghDj5zliyPZHtbHp8/edit" target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-slate-400 hover:bg-slate-500 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-colors">"Become a Member"</a>
+                        <a href=JOIN_FORM target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-slate-400 hover:bg-slate-500 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-colors">"Become a Member"</a>
                         </div>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
                             <a href=DECAL class="bg-[#A87454] hover:bg-[#9A6A4C] font-semibold py-2 px-4 rounded-lg transition-colors">"DeCal"</a>
@@ -195,12 +197,12 @@ fn UpcomingEventsSection() -> impl IntoView {
 
                 <div class="max-w-2xl mx-auto">
                     <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-                        "Spring 2026"
+                        "2026–2027"
                     </h3>
                     <div class="space-y-6">
                         <EventCard
-                            title="3rd Annual Berkeley x Stanford Tournament"
-                            date="Late April"
+                            title="4th Berkeley x Stanford Tournament"
+                            date="Fall 2026"
                             details=vec![
                                 "150 participants: 75 from Berkeley, 75 from Stanford",
                                 "Online qualifier, 2 full days of in-person play",
@@ -210,6 +212,14 @@ fn UpcomingEventsSection() -> impl IntoView {
                         />
                         <EventCard
                             title="Berkeley Poker Bots Competition"
+                            date="January–March"
+                            details=vec![
+                                "More details coming soon"
+                            ]
+                            highlight=false
+                        />
+                        <EventCard
+                            title="5th Berkeley x Stanford Tournament"
                             date="TBD"
                             details=vec![
                                 "More details coming soon"

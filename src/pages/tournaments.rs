@@ -159,13 +159,13 @@ fn UpcomingTournamentSection() -> impl IntoView {
                     "Upcoming Tournaments"
                 </h2>
                 <h3 class="text-2xl font-semibold text-center text-blue-600 dark:text-blue-400 mb-12">
-                    "Spring 2026"
+                    "2026–2027"
                 </h3>
 
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
                     <UpcomingTournamentCard
-                        title="3rd Annual Berkeley x Stanford Tournament"
-                        date="Late April"
+                        title="4th Berkeley x Stanford Tournament"
+                        date="Fall 2026"
                         details=vec![
                             "150 participants: 75 from Berkeley, 75 from Stanford",
                             "Online qualifier, 2 full days of in-person play",
@@ -175,6 +175,14 @@ fn UpcomingTournamentSection() -> impl IntoView {
                     />
                     <UpcomingTournamentCard
                         title="Berkeley Poker Bots Competition"
+                        date="January–March"
+                        details=vec![
+                            "More details coming soon",
+                        ]
+                        highlight=false
+                    />
+                    <UpcomingTournamentCard
+                        title="5th Berkeley x Stanford Tournament"
                         date="TBD"
                         details=vec![
                             "More details coming soon",
@@ -250,6 +258,14 @@ fn TournamentHistorySection() -> impl IntoView {
                 </h2>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <TournamentHistoryCard
+                        title="3rd Annual Berkeley x Stanford Tournament"
+                        date="Spring 2026"
+                        qualifier_date="N/A"
+                        prize_pool="N/A"
+                        sponsors="N/A"
+                        notion_link=""
+                    />
                     <TournamentHistoryCard
                         title="QRT Tournament"
                         date="February 26, 2026"

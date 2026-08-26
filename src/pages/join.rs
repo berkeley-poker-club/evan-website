@@ -3,9 +3,9 @@ use leptos_router::hooks::use_location;
 use web_sys::{ScrollBehavior, ScrollIntoViewOptions};
 
 const JOIN_FORM: &str =
-    "https://docs.google.com/forms/d/1G1wLFNxLb-dXbT75VViyZuVlFoghDj5zliyPZHtbHp8/edit";
+    "https://docs.google.com/forms/d/e/1FAIpQLSdxzvFVWmAr78rsoMCtL-yaQafVlElf3plTJhg7cEHNfUlq8Q/viewform?usp=dialog";
 const STANFORD_JOIN_FORM: &str =
-    "https://forms.gle/QB9ETHXtZyvwEsdp9";
+    "https://docs.google.com/forms/d/e/1FAIpQLSeMmF5-hdHQg8l-6DVjcQh7mwDMGapFE2DAfSMGnCTX9MgnAg/viewform?usp=dialog";
 const OFFICER_INTEREST_FORM: &str =
     "https://docs.google.com/forms/d/e/1FAIpQLScehYwpXAbH_RNLrVDZ_vATDO9LTYikVJ62TjtfXOsZg784fw/viewform";
 
@@ -219,7 +219,7 @@ fn OfficerFaqSection() -> impl IntoView {
                         <div class="space-y-6">
                             <div class="bg-blue-50/70 dark:bg-slate-800 rounded-lg p-6 shadow-sm border border-blue-100/60 dark:border-slate-700">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                                    "Tabling - Jan 20th to 30th"
+                                    "Tabling - August 26th to September 4th"
                                 </h3>
                                 <p class="text-gray-700 dark:text-gray-300">
                                     "Find us on Sproul!"
@@ -227,17 +227,17 @@ fn OfficerFaqSection() -> impl IntoView {
                             </div>
                             <div class="bg-blue-50/70 dark:bg-slate-800 rounded-lg p-6 shadow-sm border border-blue-100/60 dark:border-slate-700">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                                    "Infosession - February 2nd"
+                                    "Infosession - September 9th"
                                 </h3>
                             </div>
                             <div class="bg-blue-50/70 dark:bg-slate-800 rounded-lg p-6 shadow-sm border border-blue-100/60 dark:border-slate-700">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                                    "Application Due - February 4th, 11:59 PM"
+                                    "Application Due - September 11th"
                                 </h3>
                             </div>
                             <div class="bg-blue-50/70 dark:bg-slate-800 rounded-lg p-6 shadow-sm border border-blue-100/60 dark:border-slate-700">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                                    "Interviews - February 6th - 8th"
+                                    "Interviews - September 14th to 16th"
                                 </h3>
                             </div>
                         </div>
