@@ -132,7 +132,7 @@ fn OfficerSection() -> impl IntoView {
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div class="flex flex-col items-center gap-4 text-center">
                         <img
-                            src="public/images/officergroup/DSCF4009.jpg"
+                            src="public/images/board-sp26.jpg"
                             alt="Poker at Berkeley officer team"
                             class="w-full h-80 object-cover rounded-lg shadow-lg"
                             loading="lazy"
