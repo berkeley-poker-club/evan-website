@@ -50,7 +50,7 @@ fn BoardSection() -> impl IntoView {
                     <MemberCard
                         name="Jones Dickerson"
                         role="Head of Tournaments, Head of DeCal"
-                        image="public/images/officers/jones.png"
+                        image="public/images/newheadshots/jones.jpg"
                         bio=|| view! {
                             <>
                                 "4th year studying Pure Math\n\n"
@@ -64,7 +64,7 @@ fn BoardSection() -> impl IntoView {
                     <MemberCard
                         name="Evan Luo"
                         role="Head of Finance"
-                        image="public/images/officers/levan.png"
+                        image="public/images/newheadshots/evan.jpg"
                         bio=|| view! {
                             <>
                                 "I’m Evan, a sophomore"
@@ -78,7 +78,7 @@ fn BoardSection() -> impl IntoView {
                     <MemberCard
                         name="Pranshu Rao"
                         role="Head of Internal"
-                        image="public/images/officers/pranshu.png"
+                        image="public/images/newheadshots/pranshu.jpg"
                         bio=|| view! {
                             <>
                                 "Hey, I'm Pranshu, a"
@@ -94,14 +94,14 @@ fn BoardSection() -> impl IntoView {
                     <MemberCard
                         name="Nicolas Bruzzese"
                         role="Head of Game Nights"
-                        image="public/images/officers/nic.png"
+                        image="public/images/newheadshots/nicolas.jpg"
                         bio=|| view! { <></> }.into_any()
                         linkedin="https://www.linkedin.com/in/nicolas-bruzzese-064532293/"
                     />
                     <MemberCard
                         name="David Chen"
                         role="Senior Advisor"
-                        image="public/images/officers/dc.jpg"
+                        image="public/images/newheadshots/david.jpg"
                         bio=|| view! {
                             <>
                                 "I’m David, a 3rd year “studying” Business + Stats. Besides poker, I enjoy golfing, fantasizing about Peter Thiel, watching Soccer/Tennis, increasing shareholder value, and reading (I’m illiterate)."
@@ -119,42 +119,42 @@ fn BoardSection() -> impl IntoView {
                     <MemberCard
                         name="Jennifer Ren"
                         role="Board Member"
-                        image="public/images/officers/jen.png"
+                        image="public/images/newheadshots/jen.jpg"
                         bio=|| view! { <></> }.into_any()
                         linkedin="https://www.linkedin.com/in/jennifer-ren/"
                     />
                     <MemberCard
                         name="Szymon Jackowski"
                         role="Board Member"
-                        image="public/images/officers/szymon.png"
+                        image="public/images/newheadshots/szymon.jpg"
                         bio=|| view! { <></> }.into_any()
                         linkedin="https://www.linkedin.com/in/szymonjackowski"
                     />
                     <MemberCard
                         name="Tanya Zhang"
                         role="Board Member"
-                        image="public/images/officers/tanya.jpg"
+                        image="public/images/newheadshots/tanya.jpg"
                         bio=|| view! { <></> }.into_any()
                         linkedin="https://www.linkedin.com/in/tanyashenzhang/"
                     />
                     <MemberCard
                         name="Vincent Chen"
                         role="Board Member"
-                        image="public/images/officers/vincent.jpg"
+                        image="public/images/newheadshots/vincent.jpg"
                         bio=|| view! { <></> }.into_any()
                         linkedin="https://www.linkedin.com/in/vincentchen8/"
                     />
                     <MemberCard
                         name="Joe Zhou"
                         role="Board Member"
-                        image="public/images/officers/joe.jpg"
+                        image="public/images/newheadshots/joe.jpg"
                         bio=|| view! { <></> }.into_any()
                         linkedin="https://www.linkedin.com/in/joe-zhou-a6159b230/"
                     />
                     <MemberCard
                         name="Timur Usmonov"
                         role="Board Member"
-                        image="public/images/officers/timur.jpg"
+                        image="public/images/newheadshots/timur.jpg"
                         bio=|| view! { <></> }.into_any()
                         linkedin="https://www.linkedin.com/in/timur-usmonov/"
                     />
@@ -174,7 +174,7 @@ fn AlumniSection() -> impl IntoView {
                 </h2>
 
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
-                    <AlumniCard name="Grace Tang" image="public/images/officers/grace.png" linkedin="https://www.linkedin.com/in/grace-j-tang/" />
+                    <AlumniCard name="Grace Tang" image="public/images/newheadshots/grace.jpg" linkedin="https://www.linkedin.com/in/grace-j-tang/" />
                     <AlumniCard name="Evan Yeager" image="public/images/officers/yevan.png" linkedin="https://www.linkedin.com/in/evanyeager/" />
                     <AlumniCard name="Johan Ko" image="public/images/officers/johan.png" linkedin="https://www.linkedin.com/in/kojohan/" />
                     <AlumniCard name="Welford Chen" image="public/images/alumni/welford.png" linkedin="https://www.linkedin.com/in/welford-chen-803084301/" />
