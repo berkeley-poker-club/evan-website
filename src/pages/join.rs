@@ -195,6 +195,18 @@ fn OfficerFaqSection() -> impl IntoView {
                             </div>
                             <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 shadow-sm">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                                    "Can officers participate in tournaments?"
+                                </h3>
+                                <p class="text-gray-700 dark:text-gray-300 mb-2">
+                                    "No, but:"
+                                </p>
+                                <ol class="list-decimal list-inside space-y-1 text-gray-700 dark:text-gray-300">
+                                    <li>"Officers who have graduated may participate in tournaments after they have graduated, forever."</li>
+                                    <li>"Officers get a lot of cool merch, food, etc., the EV of which is possibly higher than the EV of your prize pool winnings in tournaments."</li>
+                                </ol>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 shadow-sm">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                                     "I applied last semester but wasn't selected. Can I reapply?"
                                 </h3>
                                 <p class="text-gray-700 dark:text-gray-300">
