@@ -6,8 +6,8 @@ const JOIN_FORM: &str =
     "https://docs.google.com/forms/d/e/1FAIpQLSdxzvFVWmAr78rsoMCtL-yaQafVlElf3plTJhg7cEHNfUlq8Q/viewform?usp=dialog";
 const STANFORD_JOIN_FORM: &str =
     "https://docs.google.com/forms/d/e/1FAIpQLSeMmF5-hdHQg8l-6DVjcQh7mwDMGapFE2DAfSMGnCTX9MgnAg/viewform?usp=dialog";
-const OFFICER_INTEREST_FORM: &str =
-    "https://docs.google.com/forms/d/e/1FAIpQLScehYwpXAbH_RNLrVDZ_vATDO9LTYikVJ62TjtfXOsZg784fw/viewform";
+const OFFICER_APPLICATION_FORM: &str = "https://forms.gle/2cWGidGdtvHewArk6";
+const DECAL_TA_APPLICATION_FORM: &str = "https://forms.gle/ZJyBk9brK8iRuAtR6";
 
 #[component]
 pub fn JoinUsPage() -> impl IntoView {
@@ -137,12 +137,20 @@ fn OfficerSection() -> impl IntoView {
                             class="w-full h-80 object-cover rounded-lg shadow-lg"
                             loading="lazy"
                         />
-                        <a
-                            href=OFFICER_INTEREST_FORM
-                            class="min-w-[220px] inline-flex items-center justify-center text-center bg-[#B2A08E]/70 hover:bg-[#9A6A4C] text-white font-semibold py-3 px-8 rounded-lg transition-colors"
-                        >
-                            "Interest Form"
-                        </a>
+                        <div class="w-full flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                            <a
+                                href=OFFICER_APPLICATION_FORM
+                                class="min-w-[220px] inline-flex items-center justify-center text-center bg-[#B2A08E]/70 hover:bg-[#9A6A4C] text-white font-semibold py-3 px-8 rounded-lg transition-colors"
+                            >
+                                "Officer Application"
+                            </a>
+                            <a
+                                href=DECAL_TA_APPLICATION_FORM
+                                class="min-w-[220px] inline-flex items-center justify-center text-center bg-slate-600 hover:bg-slate-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors"
+                            >
+                                "DeCal TA Application"
+                            </a>
+                        </div>
                     </div>
 
                     <div>

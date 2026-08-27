@@ -2,6 +2,7 @@ use leptos::prelude::*;
 
 const DECAL_SYLLABUS: &str =
     "https://docs.google.com/document/d/1j2qeTiDadAEusrmj_eKZ_TBn-Y7Vs2GrTfd-CVPuqCc/edit?usp=sharing";
+const DECAL_TA_APPLICATION_FORM: &str = "https://forms.gle/ZJyBk9brK8iRuAtR6";
 
 #[component]
 pub fn DecalPage() -> impl IntoView {
@@ -530,6 +531,12 @@ fn ApplySection(title: &'static str) -> impl IntoView {
                         >
                             "Apply"
                         </span>
+                        <a
+                            href=DECAL_TA_APPLICATION_FORM
+                            class="bg-[#B2A08E] text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-[#9A6A4C] hover:shadow-lg transition-all"
+                        >
+                            "TA Application"
+                        </a>
                         <a
                             href=DECAL_SYLLABUS
                             class="bg-blue-800 text-white font-semibold py-3 px-6 rounded-lg shadow-md border border-white/30 hover:bg-blue-700 hover:shadow-lg transition-all"
