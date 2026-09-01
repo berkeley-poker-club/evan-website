@@ -77,7 +77,7 @@ fn BoardSection() -> impl IntoView {
                     />
                     <MemberCard
                         name="Pranshu Rao"
-                        role="Head of Internal"
+                        role="Head of Sponsorships"
                         image="public/images/newheadshots/pranshu.jpg"
                         bio=|| view! {
                             <>
