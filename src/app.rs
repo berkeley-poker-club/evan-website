@@ -11,7 +11,6 @@ use leptos_router::{
 pub fn App() -> impl IntoView {
     view! {
         <ThemeProvider>
-            <CustomCursor />
             <Router>
                 <AppShell />
             </Router>

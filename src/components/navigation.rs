@@ -12,7 +12,7 @@ pub fn Navigation() -> impl IntoView {
                 <div class="flex items-center justify-between h-16">
                     <div class="flex items-center space-x-4">
                         <A href="/" attr:class="flex items-center space-x-2 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                            <img src="public/images/banner.png" alt="Poker at Berkeley Logo" class="h-8 w-auto" />
+                            <img src="/public/images/banner.png" alt="Poker at Berkeley Logo" class="h-8 w-auto" />
                             <span class="font-bold text-xl">"Poker at Berkeley"</span>
                         </A>
                     </div>

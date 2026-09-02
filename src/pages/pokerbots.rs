@@ -22,7 +22,7 @@ pub fn PokerBotsPage() -> impl IntoView {
                 <main class="flex min-h-[calc(100vh-4rem)] items-center justify-center text-center">
                     <div>
                         <img
-                            src="public/images/banner-logo.webp"
+                            src="/public/images/banner-logo.webp"
                             alt="Poker at Berkeley"
                             class="mx-auto mb-10 w-full max-w-[280px] drop-shadow-[0_0_20px_rgba(251,191,36,0.35)] sm:max-w-[380px]"
                         />

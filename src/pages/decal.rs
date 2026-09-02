@@ -16,7 +16,6 @@ pub fn DecalPage() -> impl IntoView {
                     100% { opacity: 0; visibility: hidden; }
                 }"
             </style>
-            <div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #000; z-index: 9999; pointer-events: none; animation: pageLoadOverlayFade 1s ease-out forwards;"></div>
             <HeroBanner />
             <DecalApplyBar />
             <HistorySection />
@@ -33,8 +32,9 @@ pub fn DecalPage() -> impl IntoView {
 #[component]
 fn HeroBanner() -> impl IntoView {
     view! {
-        <section id="banner" class="relative flex items-end justify-center pb-16" style="height: 70vh; background-image: url('public/images/sp26board/decal.webp'); background-size: cover; background-position: center;">
+        <section id="banner" class="relative flex items-end justify-center pb-16" style="height: 70vh; background-image: url('/public/images/sp26board/decal.webp'); background-size: cover; background-position: center;">
             <div class="absolute inset-0" style="background-color: rgba(0, 0, 0, 0.2);"></div>
+            <div class="absolute inset-0" style="z-index: 5; background-color: #000; pointer-events: none; animation: pageLoadOverlayFade 1s ease-out forwards;"></div>
             <div class="relative z-10 max-w-4xl mx-auto text-center px-6">
                 <h1 class="text-6xl md:text-7xl font-bold mb-2" style="color: #E0BC72; text-shadow: 0 2px 12px rgba(0,0,0,0.7);">
                     "Poker DeCal"
@@ -84,7 +84,7 @@ fn HistorySection() -> impl IntoView {
                     </div>
                     <div class="lg:w-1/2">
                         <img
-                            src="public/images/daviddaneshgar.webp"
+                            src="/public/images/daviddaneshgar.webp"
                             alt="David Daneshgar"
                             class="w-full h-auto object-contain object-top rounded-lg shadow-lg"
                             loading="lazy"
@@ -391,49 +391,49 @@ fn InstructorsSection() -> impl IntoView {
                         name="Maysa Eleka Barandish"
                         role="Head of DeCal"
                         email="maysabarandish@berkeley.edu"
-                        image="public/images/officers/maysa.webp"
+                        image="/public/images/officers/maysa.webp"
                     />
                     <InstructorCard
                         name="Jones Arthur Dickerson"
                         role="Instructor"
                         email="jones.dickerson@berkeley.edu"
-                        image="public/images/officers/jones.webp"
+                        image="/public/images/officers/jones.webp"
                     />
                     <InstructorCard
                         name="David Y. Chen"
                         role="Instructor"
                         email="ipo@berkeley.edu"
-                        image="public/images/officers/david.webp"
+                        image="/public/images/officers/david.webp"
                     />
                     <InstructorCard
                         name="Dawson Ryan Kern"
                         role="Instructor"
                         email="kerndr@berkeley.edu"
-                        image="public/images/decal-staff/dawson.webp"
+                        image="/public/images/decal-staff/dawson.webp"
                     />
                     <InstructorCard
                         name="Mete Ehliz"
                         role="Instructor"
                         email="meteehliz@berkeley.edu"
-                        image="public/images/decal-staff/mete.webp"
+                        image="/public/images/decal-staff/mete.webp"
                     />
                     <InstructorCard
                         name="Fanou Zhang"
                         role="TA"
                         email="fanou_zhang@berkeley.edu"
-                        image="public/images/decal-staff/fanou.webp"
+                        image="/public/images/decal-staff/fanou.webp"
                     />
                     <InstructorCard
                         name="Aidan Spain"
                         role="TA"
                         email="aidans13@berkeley.edu"
-                        image="public/images/decal-staff/aidan.webp"
+                        image="/public/images/decal-staff/aidan.webp"
                     />
                     <InstructorCard
                         name="Matthew Naidu"
                         role="TA"
                         email="matthewnaidu@berkeley.edu"
-                        image="public/images/decal-staff/matthew.webp"
+                        image="/public/images/decal-staff/matthew.webp"
                     />
                 </div>
                 <p class="text-center text-gray-600 dark:text-gray-400 mt-8">

@@ -71,9 +71,9 @@ fn HeroBanner() -> impl IntoView {
         <section id="banner" class="px-6 md:px-12">
             <div class="relative max-w-6xl mx-auto rounded-2xl shadow-xl overflow-hidden">
                 <img
-                    src="public/images/sp26board/Q62A0974.webp?v=3"
+                    src="/public/images/sp26board/Q62A0974.webp?v=3"
                     alt="Poker at Berkeley"
-                    style="width: 100%; height: auto; display: block;"
+                    class="w-full h-auto block"
                 />
                 <div class="absolute inset-0 flex items-center justify-center text-center px-6">
                     <div>
@@ -125,9 +125,9 @@ fn MemberSection() -> impl IntoView {
 
                     <div class="flex flex-col items-center gap-4 text-center">
                         <img
-                            src="public/images/stanfxcal25/DSCF0835.webp"
+                            src="/public/images/stanfxcal25/DSCF0835.webp"
                             alt="Poker at Berkeley member event"
-                            class="w-full h-80 object-cover rounded-lg shadow-lg"
+                            class="w-full aspect-[4/3] h-auto object-cover rounded-lg shadow-lg"
                             loading="lazy"
                         />
                         <div class="w-full flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
@@ -159,9 +159,9 @@ fn OfficerSection() -> impl IntoView {
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div class="flex flex-col items-center gap-4 text-center">
                         <img
-                            src="public/images/sp26board/finalseated-doe.webp"
+                            src="/public/images/sp26board/finalseated-doe.webp"
                             alt="Poker at Berkeley officer team"
-                            class="w-full h-80 object-cover rounded-lg shadow-lg"
+                            class="w-full aspect-[4/3] h-auto object-cover rounded-lg shadow-lg"
                             loading="lazy"
                         />
                         <div class="w-full flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
@@ -217,19 +217,17 @@ fn BoardCollageSection() -> impl IntoView {
     view! {
         <section class="py-20 bg-white dark:bg-gray-800">
             <div class="max-w-6xl mx-auto px-6">
-                <div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1.5rem;">
+                <div class="flex flex-col md:flex-row gap-6">
                     <img
-                        src="public/images/collage1.webp"
+                        src="/public/images/collage1.webp"
                         alt="Poker at Berkeley board collage"
-                        class="rounded-lg shadow-lg"
-                        style="width: 50%; height: auto;"
+                        class="w-full md:w-1/2 h-auto rounded-lg shadow-lg"
                         loading="lazy"
                     />
                     <img
-                        src="public/images/board-filmstrip.webp"
+                        src="/public/images/board-filmstrip.webp"
                         alt="Poker at Berkeley board filmstrip"
-                        class="rounded-lg shadow-lg"
-                        style="width: 50%; height: auto;"
+                        class="w-full md:w-1/2 h-auto rounded-lg shadow-lg"
                         loading="lazy"
                     />
                 </div>
@@ -298,7 +296,7 @@ fn OfficerFaqSection() -> impl IntoView {
 
                     <div>
                         <img
-                            src="public/images/collage2.webp"
+                            src="/public/images/collage2.webp"
                             alt="Poker at Berkeley officer collage"
                             class="w-full h-auto object-contain rounded-lg shadow-lg mb-8"
                             loading="lazy"
@@ -367,9 +365,8 @@ fn GameNightsSection() -> impl IntoView {
                 </div>
 
                 <div class="flex flex-col md:flex-row md:flex-wrap justify-center gap-3 mb-10">
-                    <FlipCard
+                    <InfoCard
                         title="Before You Come"
-                        back_image="public/images/pabcardface.webp"
                         bullets=vec![
                             "Player cards are required for entry this semester. No card, no entry.",
                             "If you ordered a card but haven't picked it up, it will be available at the check-in desk.",
@@ -380,9 +377,8 @@ fn GameNightsSection() -> impl IntoView {
                         ]
                     />
 
-                    <FlipCard
+                    <InfoCard
                         title="Check-In"
-                        back_image="public/images/pabcardface.webp"
                         bullets=vec![
                             "Game nights are only open to P@B Members & Stanford P@B Members. Your +1 does not count. Your cousin visiting from Fresno does not count.",
                             "When you arrive, you must check in at the door by giving us your player card.",
@@ -391,9 +387,8 @@ fn GameNightsSection() -> impl IntoView {
                         ]
                     />
 
-                    <FlipCard
+                    <InfoCard
                         title="Banking & Conduct"
-                        back_image="public/images/pabcardface.webp"
                         bullets=vec![
                             "We provide all the chips, mats, and cards. Please treat the setup with care — it takes real time and money to haul and maintain, and we do so for the love of the game.",
                             "Each table handles its own banking and dealing. P@B is not involved. The players at your table decide who banks and who deals — if something feels off, say something right away.",
@@ -403,9 +398,8 @@ fn GameNightsSection() -> impl IntoView {
                         ]
                     />
 
-                    <FlipCard
+                    <InfoCard
                         title="A Few Rules"
-                        back_image="public/images/pabcardface.webp"
                         bullets=vec![
                             "Don't gamble with money you cannot afford to lose.",
                             "Playing in any poker game is inherently risky. While we take scamming very seriously, it is near impossible for us to enforce hosts to pay out other than by blacklisting them.",
@@ -441,7 +435,7 @@ fn GameNightsSection() -> impl IntoView {
                         <div class="flex flex-col items-center gap-3">
                             <div class="rounded-full p-8 bg-[rgba(0,50,98,0.3)]">
                                 <img
-                                    src="public/images/berkeley-playercard.webp"
+                                    src="/public/images/berkeley-playercard.webp"
                                     alt="Berkeley Students player card"
                                     class="w-[200px] rounded-lg shadow-sm"
                                     loading="lazy"
@@ -452,7 +446,7 @@ fn GameNightsSection() -> impl IntoView {
                         <div class="flex flex-col items-center gap-3">
                             <div class="rounded-full p-8 bg-[rgba(140,21,21,0.25)]">
                                 <img
-                                    src="public/images/stanford-playercard.webp"
+                                    src="/public/images/stanford-playercard.webp"
                                     alt="Stanford Students player card"
                                     class="w-[200px] rounded-lg shadow-sm"
                                     loading="lazy"
@@ -472,39 +466,18 @@ fn GameNightsSection() -> impl IntoView {
 }
 
 #[component]
-fn FlipCard(
+fn InfoCard(
     title: &'static str,
-    back_image: &'static str,
     bullets: Vec<&'static str>,
 ) -> impl IntoView {
     view! {
-        <div class="group w-[380px] aspect-[375/493] [perspective:1000px]">
-            <div class="relative w-full h-full transition-transform duration-[600ms] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                // Front face: card back image at its natural proportions, title overlaid on top
-                <div class="absolute inset-0 [backface-visibility:hidden] [transform:translateZ(0)] rounded-lg shadow-sm overflow-hidden">
-                    <img
-                        src=back_image
-                        alt=title
-                        class="absolute inset-0 w-full h-full object-contain"
-                        loading="lazy"
-                    />
-                    <div class="absolute inset-0 flex items-center justify-center px-6">
-                        <h3 class="text-2xl font-bold text-[#0A2A52] text-center" style="text-shadow: 0 1px 4px rgba(255,255,255,0.5);">
-                            {title}
-                        </h3>
-                    </div>
-                </div>
-
-                // Back face: dark content side with title + bullets
-                <div class="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)_translateZ(0)] rounded-lg shadow-sm bg-gray-900 dark:bg-gray-800 p-6 overflow-y-auto">
-                    <h3 class="text-xl font-bold text-white mb-3">
-                        {title}
-                    </h3>
-                    <ul class="list-disc list-inside space-y-2 text-sm text-gray-300">
-                        {bullets.into_iter().map(|b| view! { <li>{b}</li> }).collect::<Vec<_>>()}
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <article class="w-full max-w-[380px] self-stretch rounded-lg bg-gray-900 dark:bg-gray-800 p-6 shadow-sm">
+            <h3 class="text-xl font-bold text-white mb-3">
+                {title}
+            </h3>
+            <ul class="list-disc list-outside ml-5 space-y-2 text-sm leading-relaxed text-gray-300">
+                {bullets.into_iter().map(|b| view! { <li>{b}</li> }).collect::<Vec<_>>()}
+            </ul>
+        </article>
     }
 }

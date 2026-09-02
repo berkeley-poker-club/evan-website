@@ -1,5 +1,4 @@
 pub mod about;
-pub mod custom_cursor;
 pub mod decal;
 pub mod features;
 pub mod footer;
@@ -13,7 +12,6 @@ pub mod theme_provider;
 pub mod theme_toggle;
 pub mod media_carousel;
 
-pub use custom_cursor::*;
 pub use footer::*;
 pub use navigation::*;
 pub use optimized_image::*;

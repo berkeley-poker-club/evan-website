@@ -1,9 +1,13 @@
 RewriteEngine On
 
-# redirect all requests to index.html
+# Let direct requests for client-side routes load the app. Disabling MultiViews
+# prevents Apache from trying to resolve a route as a similarly named file.
+Options -MultiViews
+
+# Keep real files and directories (images, WASM, CSS, PDFs) untouched.
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ index.html [L]
+RewriteRule ^ /index.html [END]
 
 AddType application/wasm .wasm
 
