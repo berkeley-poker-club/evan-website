@@ -3,13 +3,23 @@ use leptos::prelude::*;
 const DECAL_SYLLABUS: &str =
     "https://docs.google.com/document/d/1j2qeTiDadAEusrmj_eKZ_TBn-Y7Vs2GrTfd-CVPuqCc/edit?usp=sharing";
 const DECAL_TA_APPLICATION_FORM: &str = "https://forms.gle/ZJyBk9brK8iRuAtR6";
+const DECAL_APPLICATION_FORM: &str = "https://forms.gle/KeZfYyJtCgSvezSf7";
 
 #[component]
 pub fn DecalPage() -> impl IntoView {
     view! {
         <div class="min-h-screen">
+            <style>
+                "@keyframes pageLoadOverlayFade {
+                    0% { opacity: 1; }
+                    60% { opacity: 1; }
+                    100% { opacity: 0; visibility: hidden; }
+                }"
+            </style>
+            <div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #000; z-index: 9999; pointer-events: none; animation: pageLoadOverlayFade 1s ease-out forwards;"></div>
             <HeroBanner />
-            <ApplySection title="Apply Here:" />
+            <DecalApplyBar />
+            <HistorySection />
             <CourseOverviewSection />
             <CourseStructureSection />
             <CourseScheduleSection />
@@ -23,24 +33,15 @@ pub fn DecalPage() -> impl IntoView {
 #[component]
 fn HeroBanner() -> impl IntoView {
     view! {
-        <section id="banner" class="py-32"
-            style="background-image: url('public/images/decal_banner.png'); background-size: cover; background-position: center;">
-            <div class="max-w-4xl mx-auto text-center px-6">
-                <div class="inline-block bg-black/60 backdrop-blur-sm rounded-2xl px-8 py-6 shadow-xl">
-                    <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">
-                        "Poker DeCal"
-                    </h1>
-                    <h2 class="text-2xl md:text-3xl text-blue-200 dark:text-blue-300 mb-6">
-                        "Stat 198: Poker Theory & Fundamentals | Fall 2026"
-                    </h2>
-                    <p class="text-xl text-white/90 mb-4">
-                        "Applications Due: TBD"
-                    </p>
-                    <p class="text-lg text-white/90 dark:text-white/90">
-                        "2 Units | WF 5-7, TTh 6-8"
-                    </p>
-                </div>
-                
+        <section id="banner" class="relative flex items-end justify-center pb-16" style="height: 70vh; background-image: url('public/images/sp26board/decal.webp'); background-size: cover; background-position: center;">
+            <div class="absolute inset-0" style="background-color: rgba(0, 0, 0, 0.2);"></div>
+            <div class="relative z-10 max-w-4xl mx-auto text-center px-6">
+                <h1 class="text-6xl md:text-7xl font-bold mb-2" style="color: #E0BC72; text-shadow: 0 2px 12px rgba(0,0,0,0.7);">
+                    "Poker DeCal"
+                </h1>
+                <p class="text-xl md:text-2xl text-white font-semibold" style="text-shadow: 0 2px 12px rgba(0,0,0,0.7);">
+                    "Stat 198: Poker Theory & Fundamentals | Fall 2026"
+                </p>
             </div>
         </section>
     }
@@ -71,9 +72,39 @@ fn CourseDescriptionSection() -> impl IntoView {
 }
 
 #[component]
+fn HistorySection() -> impl IntoView {
+    view! {
+        <section class="pt-10 pb-10 bg-gray-100 dark:bg-gray-800">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="flex flex-col lg:flex-row gap-12 items-center">
+                    <div class="text-left lg:w-1/2">
+                        <p class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
+                            "Our history: The DeCal was originally started in 2003 by UC Berkeley undergraduate David Daneshgar, who went on to win a WSOP bracelet in 2008."
+                        </p>
+                    </div>
+                    <div class="lg:w-1/2">
+                        <img
+                            src="public/images/daviddaneshgar.webp"
+                            alt="David Daneshgar"
+                            class="w-full h-auto object-contain object-top rounded-lg shadow-lg"
+                            loading="lazy"
+                        />
+                        <p class="text-sm italic text-gray-400 mt-2">
+                            "After that, Daneshgar used cash he won in a poker tournament as seed funding for his first company, "
+                            <a href="https://bloomnation.com/" target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-300">"BloomNation"</a>
+                            ", which would go on to raise tens of millions."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}
+
+#[component]
 fn CourseOverviewSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-gray-50 dark:bg-gray-900">
+        <section class="pt-16 pb-20 bg-gray-50 dark:bg-gray-900">
             <div class="max-w-6xl mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
                     "Course Details"
@@ -169,7 +200,7 @@ fn CourseScheduleSection() -> impl IntoView {
                     <table class="w-full">
                         <thead class="bg-blue-600 text-white">
                             <tr>
-                                <th class="px-4 py-3 text-left font-semibold w-16">"Week"</th>
+                                <th class="px-4 py-3 text-center font-semibold w-16">"Week"</th>
                                 <th class="px-4 py-3 text-left font-semibold">"Topic/Lecture"</th>
                                 <th class="px-4 py-3 text-left font-semibold w-48">"Reading"</th>
                                 <th class="px-4 py-3 text-left font-semibold w-48">"Assignment"</th>
@@ -179,30 +210,31 @@ fn CourseScheduleSection() -> impl IntoView {
                         <tbody class="divide-y divide-gray-200 dark:divide-gray-600">
                             <ScheduleRow
                                 week="1"
-                                topics=vec!["TBD - Infosession", "TBD - Applications Due"]
+                                topics=vec!["About Us", "TBD - Infosession", "TBD - Applications Due"]
                                 reading="N/A"
                                 assignment="N/A"
+                                slides=vec![("About Us", "public/lecture_slides/AboutUs_SP26-Stat198.pdf")]
                             />
                             <ScheduleRow
                                 week="2"
                                 topics=vec!["TBD - Course Structure: Rules of Play, Expected Value, and Variance", "TBD - Introduction to Game Theory Optimal (GTO) Play and Hand Ranges"]
                                 reading="Play Optimal Poker (Brokos), Ch. 1–2"
                                 assignment="Homework 1: Rules of Poker"
-                                slides=vec![("Lecture 1", "public/lecture_slides/Lecture1_F25_Stat198.pdf")]
+                                slides=vec![("Lecture 1", "public/lecture_slides/Lecture1_SP26-Stat198.pdf")]
                             />
                             <ScheduleRow
                                 week="3"
                                 topics=vec!["TBD - Preflop Fundamentals: Open Raising, Big Blind Defense, and Constructing Ranges", "TBD - Preflop Strategy II: Combinatorics and Relative vs. Absolute Hand Strength"]
                                 reading="Play Optimal Poker (Brokos), Ch. 3–4"
                                 assignment="Homework 2: Open-Raising"
-                                slides=vec![("Lecture 2", "public/lecture_slides/Lecture2_F25_Stat198.pdf")]
+                                slides=vec![("Lecture 2", "public/lecture_slides/Lecture2_SP26-Stat198.pdf")]
                             />
                             <ScheduleRow
                                 week="4"
                                 topics=vec!["TBD - Advanced Preflop: Pot Odds, Equity Realization, Combo/Draw Math, Isolation Plays", "TBD - Advanced Preflop II: 3-Betting, 4-Betting, Flatting, Squeezing, and Exploitative Adjustments"]
                                 reading="Play Optimal Poker (Brokos), Ch. 5–6"
                                 assignment="Homework 3: Advanced Preflop"
-                                slides=vec![("Lecture 3", "public/lecture_slides/Lecture3_F25_Stat198.pdf")]
+                                slides=vec![("Lecture 3", "public/lecture_slides/Lecture3_SP26-Stat198.pdf")]
                             />
                             <ScheduleRow
                                 week="5"
@@ -276,7 +308,7 @@ fn ScheduleRow(
 ) -> impl IntoView {
     view! {
         <tr class="hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td class="px-4 py-4 font-semibold text-gray-900 dark:text-white">{week}</td>
+            <td class="px-4 py-4 text-center font-semibold text-gray-900 dark:text-white">{week}</td>
             <td class="px-4 py-4">
                 <ul class="space-y-2">
                     {topics.into_iter().map(|topic| {
@@ -351,44 +383,57 @@ fn InstructorsSection() -> impl IntoView {
         <section class="py-20 bg-gray-50 dark:bg-gray-900">
             <div class="max-w-6xl mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
-                    "Instructors"
+                    "Course Staff"
                 </h2>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-6xl mx-auto">
                     <InstructorCard
                         name="Maysa Eleka Barandish"
                         role="Head of DeCal"
                         email="maysabarandish@berkeley.edu"
-                        image="public/images/officers/maysa.png"
-                        linkedin="https://www.linkedin.com/in/maysa-barandish-5ba59084/"
+                        image="public/images/officers/maysa.webp"
                     />
                     <InstructorCard
                         name="Jones Arthur Dickerson"
                         role="Instructor"
                         email="jones.dickerson@berkeley.edu"
-                        image="public/images/decal-staff/jones.png"
-                        linkedin="https://www.linkedin.com/in/jones-dickerson/"
+                        image="public/images/officers/jones.webp"
                     />
                     <InstructorCard
                         name="David Y. Chen"
                         role="Instructor"
                         email="ipo@berkeley.edu"
-                        image="public/images/officers/dc.jpg"
-                        linkedin="https://www.linkedin.com/in/david-chen-b639a4274"
+                        image="public/images/officers/david.webp"
                     />
                     <InstructorCard
                         name="Dawson Ryan Kern"
                         role="Instructor"
                         email="kerndr@berkeley.edu"
-                        image="public/images/alumni/welford.png"
-                        linkedin="https://www.linkedin.com/in/dawson-kern-454b3b256/"
+                        image="public/images/decal-staff/dawson.webp"
                     />
                     <InstructorCard
                         name="Mete Ehliz"
                         role="Instructor"
                         email="meteehliz@berkeley.edu"
-                        image="public/images/alumni/welford.png"
-                        linkedin="https://www.linkedin.com/in/meteehliz/"
+                        image="public/images/decal-staff/mete.webp"
+                    />
+                    <InstructorCard
+                        name="Fanou Zhang"
+                        role="TA"
+                        email="fanou_zhang@berkeley.edu"
+                        image="public/images/decal-staff/fanou.webp"
+                    />
+                    <InstructorCard
+                        name="Aidan Spain"
+                        role="TA"
+                        email="aidans13@berkeley.edu"
+                        image="public/images/decal-staff/aidan.webp"
+                    />
+                    <InstructorCard
+                        name="Matthew Naidu"
+                        role="TA"
+                        email="matthewnaidu@berkeley.edu"
+                        image="public/images/decal-staff/matthew.webp"
                     />
                 </div>
                 <p class="text-center text-gray-600 dark:text-gray-400 mt-8">
@@ -405,42 +450,18 @@ fn InstructorCard(
     role: &'static str,
     email: &'static str,
     image: &'static str,
-    linkedin: &'static str,
 ) -> impl IntoView {
+    let obfuscated_email = email.replace('.', " [dot] ");
+
     view! {
-        <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden">
-            <div class="w-full h-64">
-                <img src=image alt=name class="w-full h-64 object-cover" loading="lazy" />
+        <div class="border border-gray-800 rounded-lg overflow-hidden shadow-lg" style="background-color: #1a2540;">
+            <div class="w-full h-72 md:h-80 lg:h-72 xl:h-80">
+                <img src=image alt=name class="w-full h-72 md:h-80 lg:h-72 xl:h-80 object-cover" loading="lazy" />
             </div>
-            <div class="p-6 text-center">
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                    {if linkedin.is_empty() {
-                        view! { <span>{name}</span> }.into_any()
-                    } else {
-                        view! {
-                            <a
-                                href=linkedin
-                                target="_blank"
-                                class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                            >
-                                {name}
-                            </a>
-                        }.into_any()
-                    }}
-                </h3>
-                <p class="text-blue-600 dark:text-blue-400 font-semibold mb-3">{role}</p>
-                {if email.is_empty() {
-                    view! { <span></span> }.into_any()
-                } else {
-                    view! {
-                        <a
-                            href=format!("mailto:{}", email)
-                            class="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                        >
-                            {email}
-                        </a>
-                    }.into_any()
-                }}
+            <div class="px-4 py-5 text-center">
+                <h3 class="text-base font-bold text-white mb-1">{name}</h3>
+                <p class="text-sm font-semibold mb-2" style="color: #F5C842;">{role}</p>
+                <p class="text-xs text-gray-400">{obfuscated_email}</p>
             </div>
         </div>
     }
@@ -518,33 +539,73 @@ fn GradingItem(
 #[component]
 fn ApplySection(title: &'static str) -> impl IntoView {
     view! {
-        <section class="py-16 bg-blue-900">
+        <section class="py-16 bg-slate-900">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 text-center md:text-left">
                     <h2 class="text-4xl font-bold text-white">
                         {title}
                     </h2>
                     <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center md:justify-end">
-                        <span
-                            class="bg-white/70 text-blue-900/70 font-semibold py-3 px-6 rounded-lg shadow-md ring-2 ring-white/40 cursor-not-allowed"
-                            aria-disabled="true"
+                        <a
+                            href=DECAL_APPLICATION_FORM
+                            target="_blank"
+                            rel="noopener"
+                            class="bg-white text-slate-900 font-semibold py-3 px-6 rounded-lg shadow-md ring-2 ring-white/40 hover:bg-slate-50 hover:shadow-lg transition-all"
                         >
                             "Apply"
-                        </span>
+                        </a>
                         <a
                             href=DECAL_TA_APPLICATION_FORM
-                            class="bg-[#B2A08E] text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-[#9A6A4C] hover:shadow-lg transition-all"
+                            class="bg-[#9A6A4C] text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-[#B2A08E] hover:shadow-lg transition-all"
                         >
                             "TA Application"
                         </a>
                         <a
                             href=DECAL_SYLLABUS
-                            class="bg-blue-800 text-white font-semibold py-3 px-6 rounded-lg shadow-md border border-white/30 hover:bg-blue-700 hover:shadow-lg transition-all"
+                            class="bg-slate-800 text-white font-semibold py-3 px-6 rounded-lg shadow-md border border-white/30 hover:bg-slate-700 hover:shadow-lg transition-all"
                         >
                             "Syllabus"
                         </a>
                     </div>
                 </div>
+            </div>
+        </section>
+    }
+}
+
+#[component]
+fn DecalApplyBar() -> impl IntoView {
+    view! {
+        <section class="pt-16 pb-6 bg-slate-900">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                    <a
+                        href=DECAL_APPLICATION_FORM
+                        target="_blank"
+                        rel="noopener"
+                        class="bg-white text-slate-900 font-semibold py-3 px-6 rounded-lg shadow-md ring-2 ring-white/40 hover:bg-slate-50 hover:shadow-lg transition-all"
+                    >
+                        "Apply"
+                    </a>
+                    <a
+                        href=DECAL_TA_APPLICATION_FORM
+                        class="bg-[#9A6A4C] text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-[#B2A08E] hover:shadow-lg transition-all"
+                    >
+                        "TA Application"
+                    </a>
+                    <a
+                        href=DECAL_SYLLABUS
+                        class="bg-slate-800 text-white font-semibold py-3 px-6 rounded-lg shadow-md border border-white/30 hover:bg-slate-700 hover:shadow-lg transition-all"
+                    >
+                        "Syllabus"
+                    </a>
+                </div>
+                <p class="text-sm text-white/80 mt-6">
+                    "Applications Due: TBD"
+                </p>
+                <p class="text-sm text-white/80">
+                    "2 Units | Section Times: TBD"
+                </p>
             </div>
         </section>
     }

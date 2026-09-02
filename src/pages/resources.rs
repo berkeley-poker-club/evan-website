@@ -13,8 +13,10 @@ pub fn ResourcesPage() -> impl IntoView {
 #[component]
 fn HeroBanner() -> impl IntoView {
     view! {
-        <section id="banner" class="py-32 bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-950 dark:to-gray-900">
-            <div class="max-w-4xl mx-auto text-center px-6">
+        <section id="banner" class="relative py-32"
+                 style="background-image: url('public/images/resources_banner.webp'); background-size: cover; background-position: center;">
+            <div class="absolute inset-0" style="background-color: rgba(0, 0, 0, 0.30);"></div>
+            <div class="relative z-10 max-w-4xl mx-auto text-center px-6">
                 <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">
                     "Resources"
                 </h1>
