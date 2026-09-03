@@ -88,7 +88,7 @@ fn BoardSection() -> impl IntoView {
                     <MemberCard
                         name="Pranshu Rao"
                         role="Head of Sponsorships"
-                        image="/public/images/officers/pranshunew.webp"
+                        image="/public/images/officers/pranshu.webp"
                         preview="Hey, I'm Pranshu, a Chicago native who also happens to study"
                         bio=|| view! {
                             <>
