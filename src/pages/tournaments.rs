@@ -297,34 +297,36 @@ fn MediaCarousel(
             "@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@500;600&display=swap');"
         </style>
         <section class="py-6">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="bg-zinc-900 border border-zinc-700 rounded-2xl p-6 md:p-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="bg-zinc-900 border border-zinc-700 rounded-2xl p-4 sm:p-6 md:p-8">
                     <h2
-                        class="text-3xl mb-6"
+                        class="text-2xl sm:text-3xl mb-2 sm:mb-6"
                         style="color: #F0EDE8; font-family: 'Figtree', sans-serif; font-weight: 600; letter-spacing: 0.05em;"
                     >
                         {title}
                     </h2>
+                    <p class="text-sm text-zinc-400 mb-4">"Drag or swipe to browse photos"</p>
 
                     <div
                         class="
-                            flex gap-6 overflow-x-auto scroll-smooth
-                            snap-x snap-mandatory pb-4
+                            flex gap-3 sm:gap-6 overflow-x-auto scroll-smooth
+                            snap-x snap-mandatory pb-3 sm:pb-4
                         "
+                        style="scrollbar-width: thin; -webkit-overflow-scrolling: touch;"
                     >
                         {images.into_iter().enumerate().map(|(i, src)| view! {
                             <div
                                 class="
-                                    snap-center shrink-0
-                                    w-[85%] md:w-[70%] lg:w-[60%]
-                                    rounded-2xl overflow-hidden
+                                    snap-start shrink-0
+                                    w-[calc(100vw-3rem)] sm:w-[85%] md:w-[70%] lg:w-[60%]
+                                    rounded-xl sm:rounded-2xl overflow-hidden
                                     shadow-xl
                                 "
                             >
                                 <img
                                     src=src
                                     alt=format!("{} photo {}", title, i + 1)
-                                    class="w-full h-[420px] object-cover"
+                                    class="w-full aspect-[4/3] h-auto object-cover"
                                     loading="lazy"
                                 />
                             </div>

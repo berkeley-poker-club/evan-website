@@ -54,7 +54,18 @@ fn BoardSection() -> impl IntoView {
                         name="Nicolas Bruzzese"
                         role="Head of Game Nights"
                         image="/public/images/officers/nicolas.webp"
-                        bio=|| view! { <></> }.into_any()
+                        preview="Nicolas is a senior studying Applied Mathematics and actuarial sciences, originally"
+                        bio=|| view! {
+                            <>
+                                "Nicolas is a senior studying Applied Mathematics and actuarial sciences, originally from Los Angeles.\n\n"
+                                "He is, per his own account, related to Albert Einstein. (not verified)\n\n"
+                                "Big fan of his girlfriend, long walks, cats, UFC, and strategic games, in that order.\n\n"
+                                "Also trades options independently, which is going well (also not verified.)\n\n"
+                                "Plays poker for the strategy, stays for the people. \n\n"
+                                "Nic final tabled the Stanford x Berkeley tournament in Spring 2025, and was showing up to help set up events before he was even an officer. He now serves on the executive board and oversees Game Nights.\n\n"
+                                "Used to be able to snap really loud (nerfed). Can wiggle his ears, has double jointed fingers, and can make his shoulder bone pop out, which he will demonstrate unprompted."
+                            </>
+                        }.into_any()
                         linkedin="https://www.linkedin.com/in/nicolas-bruzzese-064532293/"
                     />
                     <MemberCard
@@ -80,7 +91,8 @@ fn BoardSection() -> impl IntoView {
                         bio=|| view! {
                             <>
                                 "I’m Evan, a sophomore studying EECS. I was born in Chicago, but raised in San Diego.\n\n"
-                                "When not playing poker I can be found dilly dallying at Benchmark Climbing, various sushi restaurants, or at a boba shop."
+                                "When not playing poker I can be found dilly dallying at Benchmark Climbing, various sushi restaurants, or at a boba shop.\n\n"
+                                "Source of Milly's reel addiction."
                             </>
                         }.into_any()
                         linkedin="https://www.linkedin.com/in/theevanluo/"
@@ -314,7 +326,7 @@ fn AlumniCard(
 ) -> impl IntoView {
     view! {
         <div class="text-center">
-            <img src=image alt=name class="w-20 h-20 rounded-full mx-auto mb-2 object-cover shadow-lg" loading="lazy" />
+            <img src=image alt=name class="w-20 h-20 rounded-full mx-auto mb-2 object-cover object-top shadow-lg" loading="lazy" />
             {if linkedin.is_empty() {
                 view! {
                     <p class="text-sm text-gray-700 dark:text-gray-300 font-medium">{name}</p>

@@ -12,6 +12,7 @@ pub fn MediaCarousel(
                 <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
                     {title}
                 </h2>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">"Drag or swipe to browse photos"</p>
 
                 <div class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4">
                     {images.into_iter().enumerate().map(|(i, src)| view! {
@@ -29,4 +30,3 @@ pub fn MediaCarousel(
         </section>
     }
 }
-
