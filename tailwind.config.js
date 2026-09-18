@@ -58,9 +58,9 @@ module.exports = {
         }
       },
       fontFamily: {
-        'sans': ['Ubuntu', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
-        'display': ['Ubuntu', 'system-ui', 'sans-serif'],
-        'body': ['Ubuntu', 'system-ui', 'sans-serif'],
+        'sans': ['Outfit', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+        'display': ['Outfit', 'system-ui', 'sans-serif'],
+        'body': ['Outfit', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.8s ease-in-out',

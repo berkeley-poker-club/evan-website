@@ -39,13 +39,18 @@ fn AppShell() -> impl IntoView {
                             </div>
                         }>
                             <Route path=path!("") view=HomePage/>
-                            <Route path=path!("join") view=JoinUsPage/>
+                            <Route path=path!("become-member") view=BecomeMemberPage/>
+                            <Route path=path!("become-officer") view=BecomeOfficerPage/>
+                            <Route path=path!("ta-application") view=TaApplicationPage/>
                             <Route path=path!("sponsors") view=SponsorsPage/>
                             <Route path=path!("people") view=PeoplePage/>
                             <Route path=path!("tournaments") view=TournamentsPage/>
                             <Route path=path!("decal") view=DecalPage/>
                             <Route path=path!("resources") view=ResourcesPage/>
+                            <Route path=path!("merch") view=MerchPage/>
                             <Route path=path!("pokerbots") view=PokerBotsPage/>
+                            <Route path=path!("game-nights") view=GameNightsPage/>
+                            <Route path=path!("blog") view=BlogPage/>
                         </Routes>
                     </main>
             {move || (!is_pokerbots()).then(|| view! { <Footer /> })}

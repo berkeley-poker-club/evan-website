@@ -1,4 +1,19 @@
 use leptos::prelude::*;
+use leptos_router::hooks::use_location;
+use std::time::Duration;
+use web_sys::{ScrollBehavior, ScrollIntoViewOptions};
+
+fn scroll_to_hash(target_id: &str) {
+    if let Some(window) = web_sys::window() {
+        if let Some(document) = window.document() {
+            if let Some(element) = document.get_element_by_id(target_id) {
+                let mut options = ScrollIntoViewOptions::new();
+                options.behavior(ScrollBehavior::Auto);
+                element.scroll_into_view_with_scroll_into_view_options(&options);
+            }
+        }
+    }
+}
 
 const DECAL_SYLLABUS: &str =
     "https://docs.google.com/document/d/1j2qeTiDadAEusrmj_eKZ_TBn-Y7Vs2GrTfd-CVPuqCc/edit?usp=sharing";
@@ -7,6 +22,33 @@ const DECAL_APPLICATION_FORM: &str = "https://forms.gle/KeZfYyJtCgSvezSf7";
 
 #[component]
 pub fn DecalPage() -> impl IntoView {
+    let location = use_location();
+
+    Effect::new(move |_| {
+        let hash = location.hash.get();
+        let target_id = hash.trim_start_matches('#').to_string();
+        if target_id.is_empty() {
+            return;
+        }
+
+        let id_for_raf = target_id.clone();
+        request_animation_frame(move || {
+            scroll_to_hash(&id_for_raf);
+        });
+
+        let id_for_retry_1 = target_id.clone();
+        set_timeout(
+            move || scroll_to_hash(&id_for_retry_1),
+            Duration::from_millis(350),
+        );
+
+        let id_for_retry_2 = target_id.clone();
+        set_timeout(
+            move || scroll_to_hash(&id_for_retry_2),
+            Duration::from_millis(900),
+        );
+    });
+
     view! {
         <div class="min-h-screen">
             <style>
@@ -78,7 +120,7 @@ fn HistorySection() -> impl IntoView {
             <div class="max-w-6xl mx-auto px-6">
                 <div class="flex flex-col lg:flex-row gap-12 items-center">
                     <div class="text-left lg:w-1/2">
-                        <p class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
+                        <p class="text-3xl md:text-4xl font-bold tracking-wide leading-tight" style="color: #7A6A57;">
                             "Our history: The DeCal was originally started in 2003 by UC Berkeley undergraduate David Daneshgar, who went on to win a WSOP bracelet in 2008."
                         </p>
                     </div>
@@ -89,7 +131,7 @@ fn HistorySection() -> impl IntoView {
                             class="w-full h-auto object-contain object-top rounded-lg shadow-lg"
                             loading="lazy"
                         />
-                        <p class="text-sm italic text-gray-400 mt-2">
+                        <p class="text-base italic text-gray-400 mt-2">
                             "After that, Daneshgar used cash he won in a poker tournament as seed funding for his first company, "
                             <a href="https://bloomnation.com/" target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-300">"BloomNation"</a>
                             ", which would go on to raise tens of millions."
@@ -380,7 +422,7 @@ fn TopicItem(week: &'static str, topic: &'static str) -> impl IntoView {
 #[component]
 fn InstructorsSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-gray-50 dark:bg-gray-900">
+        <section id="course-staff" class="scroll-mt-6 py-20 bg-gray-50 dark:bg-gray-900">
             <div class="max-w-6xl mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
                     "Course Staff"
@@ -576,7 +618,12 @@ fn ApplySection(title: &'static str) -> impl IntoView {
 #[component]
 fn DecalApplyBar() -> impl IntoView {
     view! {
-        <section class="pt-16 pb-6 bg-slate-900">
+        <section class="pt-8 pb-6 bg-slate-900">
+            <div class="px-6 md:px-16 text-center mb-10">
+                <p class="text-base md:text-lg text-white/80 leading-relaxed">
+                    "The Poker DeCal is a 2-unit student-run course offered through UC Berkeley's Statistics Department every semester. The curriculum was developed entirely by Poker at Berkeley and is one of the largest and most established DeCals on campus."
+                </p>
+            </div>
             <div class="max-w-4xl mx-auto px-6 text-center">
                 <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
                     <a

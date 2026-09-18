@@ -25,6 +25,13 @@ fn HeroBanner() -> impl IntoView {
                     "Meet the dedicated team behind Poker at Berkeley"
                 </p>
             </div>
+            <div class="absolute bottom-20 left-0 z-10 flex w-full justify-center">
+                <div class="animate-bounce" style="animation-duration: 2.6s;">
+                    <svg class="w-10 h-10 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </div>
+            </div>
         </section>
     }
 }
@@ -32,7 +39,7 @@ fn HeroBanner() -> impl IntoView {
 #[component]
 fn BoardSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-white dark:bg-gray-800">
+        <section class="py-20 bg-gray-50 dark:bg-gray-900">
             <div class="max-w-[1600px] mx-auto px-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <MemberCard
@@ -241,11 +248,11 @@ fn MemberCard(
     let has_more = !preview.is_empty();
 
     view! {
-        <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+        <div class="border border-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" style="background-color: #1a2540;">
             {if image.is_empty() {
                 view! {
-                    <div class="w-full h-72 md:h-80 lg:h-72 xl:h-80 bg-gray-200 dark:bg-gray-600 flex items-center justify-center">
-                        <span class="text-gray-500 dark:text-gray-300 text-4xl font-bold">
+                    <div class="w-full h-72 md:h-80 lg:h-72 xl:h-80 bg-gray-700 flex items-center justify-center">
+                        <span class="text-gray-300 text-4xl font-bold">
                             {name.chars().next().unwrap_or('?').to_string()}
                         </span>
                     </div>
@@ -258,12 +265,12 @@ fn MemberCard(
                 }.into_any()
             }}
             <div class="p-6">
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">
+                <h3 class="text-xl font-bold text-white mb-1">
                     {if linkedin.is_empty() {
                         view! { <span>{name}</span> }.into_any()
                     } else {
                         view! {
-                            <a href=linkedin target="_blank" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <a href=linkedin target="_blank" class="hover:text-blue-400 transition-colors">
                                 {name}
                             </a>
                         }.into_any()
@@ -273,12 +280,12 @@ fn MemberCard(
                     view! {
                         <p class="font-semibold mb-3">
                             <span class="block" style="color: #D4A017;">"President"</span>
-                            <span class="block text-blue-600 dark:text-blue-400">"Head of DeCal"</span>
+                            <span class="block text-blue-400">"Head of DeCal"</span>
                         </p>
                     }.into_any()
                 } else {
                     view! {
-                        <p class="text-blue-600 dark:text-blue-400 font-semibold mb-3 whitespace-pre-line">{role}</p>
+                        <p class="text-blue-400 font-semibold mb-3 whitespace-pre-line">{role}</p>
                     }.into_any()
                 }}
                 {if has_more {
@@ -291,15 +298,15 @@ fn MemberCard(
                             .bio-details[open] .bio-collapse { display: inline; }
                             .bio-details[open] .bio-full { order: 1; }"
                         </style>
-                        <details class="bio-details text-gray-600 dark:text-gray-300 text-xs whitespace-pre-line">
+                        <details class="bio-details text-gray-300 text-xs whitespace-pre-line">
                             <summary class="cursor-pointer list-none">
                                 <span class="bio-preview">
                                     {preview} "… "
-                                    <span class="font-semibold text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">
+                                    <span class="font-semibold text-blue-400 hover:text-blue-300">
                                         "See more…"
                                     </span>
                                 </span>
-                                <span class="bio-collapse font-semibold text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">
+                                <span class="bio-collapse font-semibold text-blue-400 hover:text-blue-300">
                                     "Show less"
                                 </span>
                             </summary>
@@ -308,7 +315,7 @@ fn MemberCard(
                     }.into_any()
                 } else {
                     view! {
-                        <div class="text-gray-600 dark:text-gray-300 text-xs whitespace-pre-line">
+                        <div class="text-gray-300 text-xs whitespace-pre-line">
                             {bio()}
                         </div>
                     }.into_any()

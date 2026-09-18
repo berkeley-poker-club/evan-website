@@ -69,8 +69,8 @@ pub fn HomePage() -> impl IntoView {
 #[component]
 fn HeroSection() -> impl IntoView {
     view! {
-        <section id="banner" class="relative min-h-screen flex items-center justify-center"
-                 style="background-image: url('/public/images/homepage2.jpg'); background-size: cover; background-position: center 80%;">
+        <section id="banner" class="relative flex items-center justify-center"
+                 style="height: 60vh; background-image: url('/public/images/homepage3.webp'); background-size: cover; background-position: center 52%;">
             <style>
                 "@keyframes heroFadeInUp {
                     from { opacity: 0; transform: translateY(24px); }
@@ -79,7 +79,9 @@ fn HeroSection() -> impl IntoView {
             </style>
             <div class="absolute inset-0" style="background-color: rgba(0, 0, 0, 0.30);"></div>
             <div class="absolute inset-0" style="z-index: 5; background-color: #000; pointer-events: none; animation: pageLoadOverlayFade 1s ease-out forwards;"></div>
-            <div class="relative z-10 text-center text-white max-w-6xl mx-auto px-6 mb-32" style="transform: translateY(15%);">
+            <div class="absolute bottom-0 inset-x-0 h-32 z-10 pointer-events-none block dark:hidden" style="background: linear-gradient(to bottom, transparent 0%, #f5f5f4 65%, #f5f5f4 100%);"></div>
+            <div class="absolute bottom-0 inset-x-0 h-32 z-10 pointer-events-none hidden dark:block" style="background: linear-gradient(to bottom, transparent 0%, #1f2937 65%, #1f2937 100%);"></div>
+            <div class="relative z-10 text-center text-white max-w-6xl mx-auto px-6">
                 <div class="max-w-3xl mx-auto px-6">
                     <h1 class="mb-2" style="opacity: 0; animation: heroFadeInUp 0.8s ease-out 1s forwards;">
                         <img
@@ -93,13 +95,6 @@ fn HeroSection() -> impl IntoView {
                     </p>
                 </div>
             </div>
-            <div class="absolute bottom-20 left-0 z-10 flex w-full justify-center">
-                <div class="animate-bounce" style="animation-duration: 2.6s;">
-                    <svg class="w-10 h-10 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                    </svg>
-                </div>
-            </div>
         </section>
     }
 }
@@ -107,7 +102,7 @@ fn HeroSection() -> impl IntoView {
 #[component]
 fn AboutSection() -> impl IntoView {
     view! {
-        <section class="py-20 dark:bg-gray-800">
+        <section class="pt-2 pb-20 dark:bg-gray-800">
             <div class="max-w-4xl mx-auto px-6">
                 <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6">
                     <a
@@ -127,7 +122,7 @@ fn AboutSection() -> impl IntoView {
                     "About Poker at Berkeley"
                 </h2>
                 <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                    "We are UC Berkeley's premier poker organization, dedicated to fostering a community of strategic thinkers and skilled players. Our club provides opportunities for students to learn, compete, and network in a professional environment."
+                    "We are UC Berkeley's premier poker organization and the only club on campus that operates across both Berkeley and Stanford. We're dedicated to fostering a community of strategic thinkers and skilled players, with opportunities to learn, compete, and network in a professional environment."
                 </p>
                 <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                     "Through weekly game nights, our renowned DeCal course, and major tournaments, we help members develop critical thinking skills that extend far beyond the poker table."
@@ -195,7 +190,7 @@ fn WhatWeDoSection() -> impl IntoView {
                         title="Game Nights"
                         description="We host game nights every Friday, open to all P@B members. All stakes welcome — come play, meet the community, and run it up."
                         color="blue"
-                        link="/join#game-nights"
+                        link="/game-nights"
                     />
                 </div>
             </div>
