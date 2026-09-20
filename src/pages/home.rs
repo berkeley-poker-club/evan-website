@@ -124,11 +124,26 @@ fn AboutSection() -> impl IntoView {
                 <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
                     "We are UC Berkeley's premier poker organization and the only club on campus that operates across both Berkeley and Stanford. We're dedicated to fostering a community of strategic thinkers and skilled players, with opportunities to learn, compete, and network in a professional environment."
                 </p>
-                <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-10">
                     "Through weekly game nights, our renowned DeCal course, and major tournaments, we help members develop critical thinking skills that extend far beyond the poker table."
                 </p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <StatCard number="700+" label="Active members across Berkeley and Stanford" />
+                    <StatCard number="4,000+" label="Alumni network" />
+                    <StatCard number="2003" label="Established" />
+                </div>
             </div>
         </section>
+    }
+}
+
+#[component]
+fn StatCard(number: &'static str, label: &'static str) -> impl IntoView {
+    view! {
+        <div class="bg-white dark:bg-slate-800/90 ring-1 ring-black/5 dark:ring-white/10 rounded-lg shadow-lg p-6 text-center">
+            <div class="text-3xl font-bold text-gray-900 dark:text-white mb-1">{number}</div>
+            <div class="text-gray-600 dark:text-gray-300 text-sm">{label}</div>
+        </div>
     }
 }
 
