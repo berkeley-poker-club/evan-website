@@ -20,10 +20,7 @@ pub fn Navigation() -> impl IntoView {
                 <div class="flex items-center justify-between h-[4.5rem]">
                     <div class="flex items-center space-x-4">
                         <A href="/" attr:class="group flex items-center space-x-2 text-gray-900 dark:text-white hover:text-[#B08B5B] dark:hover:text-[#C9A876] transition-colors">
-                            <span class="relative h-8 w-auto inline-block">
-                                <img src="/public/images/banner.webp" alt="Poker at Berkeley Logo" class="h-8 w-auto block" />
-                                <img src="/public/images/inversebanner.webp" alt="" class="h-8 w-auto absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                            </span>
+                            <img src="/public/images/banner.webp" alt="Poker at Berkeley Logo" class="h-8 w-auto" />
                             <span class="font-bold text-xl">"Poker at Berkeley"</span>
                         </A>
                     </div>
