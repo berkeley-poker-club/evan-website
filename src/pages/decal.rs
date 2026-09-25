@@ -1,4 +1,5 @@
 use leptos::prelude::*;
+use leptos_meta::Title;
 use leptos_router::hooks::use_location;
 use std::time::Duration;
 use web_sys::{ScrollBehavior, ScrollIntoViewOptions};
@@ -50,6 +51,7 @@ pub fn DecalPage() -> impl IntoView {
     });
 
     view! {
+        <Title text="DeCal | Poker at Berkeley" />
         <div class="min-h-screen">
             <style>
                 "@keyframes pageLoadOverlayFade {

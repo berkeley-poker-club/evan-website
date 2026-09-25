@@ -1,6 +1,7 @@
 use crate::components::*;
 use crate::pages::*;
 use leptos::prelude::*;
+use leptos_meta::{provide_meta_context, Meta, Title};
 use leptos_router::{
     components::{Route, Router, Routes},
     hooks::use_location,
@@ -9,7 +10,11 @@ use leptos_router::{
 
 #[component]
 pub fn App() -> impl IntoView {
+    provide_meta_context();
+
     view! {
+        <Title text="Poker at Berkeley" />
+        <Meta name="description" content="UC Berkeley's Premier Poker Organization" />
         <ThemeProvider>
             <Router>
                 <AppShell />
@@ -50,6 +55,7 @@ fn AppShell() -> impl IntoView {
                             <Route path=path!("merch") view=MerchPage/>
                             <Route path=path!("pokerbots") view=PokerBotsPage/>
                             <Route path=path!("game-nights") view=GameNightsPage/>
+                            <Route path=path!("stream-game") view=StreamGamePage/>
                             <Route path=path!("blog") view=BlogPage/>
                         </Routes>
                     </main>

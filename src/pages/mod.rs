@@ -9,6 +9,7 @@ pub mod people;
 pub mod pokerbots;
 pub mod resources;
 pub mod sponsors;
+pub mod stream_game;
 pub mod ta_application;
 pub mod tournaments;
 
@@ -23,5 +24,6 @@ pub use people::*;
 pub use pokerbots::*;
 pub use resources::*;
 pub use sponsors::*;
+pub use stream_game::*;
 pub use ta_application::*;
 pub use tournaments::*;

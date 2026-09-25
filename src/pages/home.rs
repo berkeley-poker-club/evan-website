@@ -1,4 +1,5 @@
 use leptos::prelude::*;
+use leptos_meta::Title;
 use crate::components::MediaCarousel;
 
 
@@ -10,6 +11,7 @@ const STANFORD_JOIN_FORM: &str = "https://forms.gle/iX7oCxR32DdWNAn16";
 #[component]
 pub fn HomePage() -> impl IntoView {
     view! {
+        <Title text="Poker at Berkeley" />
         <div class="min-h-screen bg-stone-100 dark:bg-gray-900">
             <style>
                 "@keyframes pageLoadOverlayFade {
@@ -23,8 +25,11 @@ pub fn HomePage() -> impl IntoView {
 
             <MediaCarousel
                 images=vec![
+                    "/public/images/stanfxcal26/Q62A128-7.webp",
                     "/public/images/stanfxcal25/DSCF1288.webp",
+                    "/public/images/stanfxcal26/Q62A1257.webp",
                     "/public/images/falltourney/DSCF4016.webp",
+                    "/public/images/stanfxcal26/Q62A128-4.webp",
                     "/public/images/qrt-tourney/DSCF4250.webp",
                     "/public/images/falltourney/DSCF2022.webp",
                     "/public/images/stanfxcal26/Q62A1176.webp",
@@ -46,7 +51,6 @@ pub fn HomePage() -> impl IntoView {
                     "/public/images/falltourney/DSCF2753.webp",
                     "/public/images/qrt-tourney/DSCF4402.webp",
                     "/public/images/falltourney/DSCF2756.webp",
-                    "/public/images/stanfxcal26/Q62A1257.webp",
                     "/public/images/qrt-tourney/DSCF4404.webp",
                     "/public/images/stanfxcal25/DSCF0929.webp",
                     "/public/images/officergroup/DSCF4009.webp",
@@ -70,7 +74,7 @@ pub fn HomePage() -> impl IntoView {
 fn HeroSection() -> impl IntoView {
     view! {
         <section id="banner" class="relative flex items-center justify-center"
-                 style="height: 60vh; background-image: url('/public/images/homepage3.webp'); background-size: cover; background-position: center 52%;">
+                 style="height: 60vh; background-image: url('/public/images/stanfxcal26/Q62A1237.webp'); background-size: cover; background-position: center 90%;">
             <style>
                 "@keyframes heroFadeInUp {
                     from { opacity: 0; transform: translateY(24px); }
@@ -91,7 +95,7 @@ fn HeroSection() -> impl IntoView {
                         />
                     </h1>
                     <p class="text-xl md:text-2xl text-white text-center mb-8">
-                        "The largest collegiate poker club in the country."
+                        "The largest collegiate poker organization in the country."
                     </p>
                 </div>
             </div>
@@ -127,9 +131,8 @@ fn AboutSection() -> impl IntoView {
                 <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-10">
                     "Through weekly game nights, our renowned DeCal course, and major tournaments, we help members develop critical thinking skills that extend far beyond the poker table."
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <StatCard number="700+" label="Active members across Berkeley and Stanford" />
-                    <StatCard number="4,000+" label="Alumni network" />
                     <StatCard number="2003" label="Established" />
                 </div>
             </div>
@@ -206,6 +209,12 @@ fn WhatWeDoSection() -> impl IntoView {
                         description="We host game nights every Friday, open to all P@B members. All stakes welcome — come play, meet the community, and run it up."
                         color="blue"
                         link="/game-nights"
+                    />
+                    <WhatWeDoCard
+                        title="Stream Game"
+                        description="Through a custom RFID-enabled table from BBO Poker Tables and a production partnership with PokerGFX, we broadcast live poker to our audience — covering game nights, stream games, and our tournaments."
+                        color="blue"
+                        link="/stream-game"
                     />
                 </div>
             </div>

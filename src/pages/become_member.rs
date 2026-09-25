@@ -1,4 +1,5 @@
 use leptos::prelude::*;
+use leptos_meta::Title;
 
 const JOIN_FORM: &str = "https://docs.google.com/forms/d/e/1FAIpQLSdxzvFVWmAr78rsoMCtL-yaQafVlElf3plTJhg7cEHNfUlq8Q/viewform?embedded=true";
 const STANFORD_JOIN_FORM: &str = "https://docs.google.com/forms/d/e/1FAIpQLSeMmF5-hdHQg8l-6DVjcQh7mwDMGapFE2DAfSMGnCTX9MgnAg/viewform?embedded=true";
@@ -6,6 +7,7 @@ const STANFORD_JOIN_FORM: &str = "https://docs.google.com/forms/d/e/1FAIpQLSeMmF
 #[component]
 pub fn BecomeMemberPage() -> impl IntoView {
     view! {
+        <Title text="Become a Member | Poker at Berkeley" />
         <div class="min-h-screen">
             <HeroBanner />
             <MemberSection />

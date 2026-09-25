@@ -1,4 +1,5 @@
 use leptos::prelude::*;
+use leptos_meta::Title;
 
 const JOIN_FORM: &str = "https://forms.gle/yVsAAJ5PLBtrgWUx8";
 const STANFORD_JOIN_FORM: &str = "https://forms.gle/iX7oCxR32DdWNAn16";
@@ -6,6 +7,7 @@ const STANFORD_JOIN_FORM: &str = "https://forms.gle/iX7oCxR32DdWNAn16";
 #[component]
 pub fn GameNightsPage() -> impl IntoView {
     view! {
+        <Title text="Game Nights | Poker at Berkeley" />
         <div class="min-h-screen">
             <HeroBanner />
             <GameNightsSection />

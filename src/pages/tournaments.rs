@@ -1,4 +1,5 @@
 use leptos::prelude::*;
+use leptos_meta::Title;
 
 const STANFORD26_IMAGES: &[&str] = &[
     "/public/images/stanfxcal26/Q62A1237.webp",
@@ -251,6 +252,7 @@ const FALL_TOURNEY_IMAGES: &[&str] = &[
 #[component]
 pub fn TournamentsPage() -> impl IntoView {
     view! {
+        <Title text="Tournaments | Poker at Berkeley" />
         <div class="min-h-screen">
             <HeroBanner />
             <div style="background-color: #111010;">

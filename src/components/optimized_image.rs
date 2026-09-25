@@ -19,7 +19,7 @@ pub fn OptimizedImage(
     };
 
     view! {
-        <picture>
+        <picture style="display: block;">
             <source srcset=webp_src type="image/webp" />
             <img src=src alt=alt class=class loading=loading />
         </picture>

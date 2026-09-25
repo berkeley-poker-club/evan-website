@@ -1,4 +1,5 @@
 use leptos::prelude::*;
+use leptos_meta::Title;
 use leptos_router::components::A;
 
 const DECAL_TA_APPLICATION_FORM: &str = "https://forms.gle/ZJyBk9brK8iRuAtR6";
@@ -6,6 +7,7 @@ const DECAL_TA_APPLICATION_FORM: &str = "https://forms.gle/ZJyBk9brK8iRuAtR6";
 #[component]
 pub fn TaApplicationPage() -> impl IntoView {
     view! {
+        <Title text="Become a Stat 198 TA | Poker at Berkeley" />
         <div class="min-h-screen">
             <HeroBanner />
             <ContentSection />

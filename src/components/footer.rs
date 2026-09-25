@@ -5,13 +5,13 @@ pub fn Footer() -> impl IntoView {
     view! {
         <footer class="bg-gray-800 dark:bg-gray-950 text-white py-16">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-                    <div>
-                        <div class="flex items-center space-x-2 mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                    <div class="md:col-span-2">
+                        <div class="flex items-center space-x-2 mb-6 whitespace-nowrap">
                             <img src="/public/images/banner.webp" alt="Poker at Berkeley Banner" class="h-8 w-auto" />
                             <span class="text-xl font-bold">"Poker at Berkeley"</span>
                         </div>
-                        <div class="flex space-x-4">
+                        <div class="flex flex-wrap gap-x-6 gap-y-3">
                             <SocialLink
                                 icon_svg=r#"<svg fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>"#
                                 href="https://www.facebook.com/berkeleypokerclub"
@@ -32,6 +32,21 @@ pub fn Footer() -> impl IntoView {
                                 href="https://instagram.com/pokeratberkeley"
                                 label="Instagram"
                             />
+                            <SocialLink
+                                icon_svg=r#"<svg fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>"#
+                                href="https://x.com/ucBerkeleyPoker"
+                                label="X"
+                            />
+                            <SocialLink
+                                icon_svg=r#"<svg fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.12C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.386.521a2.994 2.994 0 0 0-2.112 2.12A31.31 31.31 0 0 0 0 12a31.31 31.31 0 0 0 .502 5.814 2.994 2.994 0 0 0 2.112 2.12c1.881.521 9.386.521 9.386.521s7.505 0 9.386-.521a2.994 2.994 0 0 0 2.112-2.12A31.31 31.31 0 0 0 24 12a31.31 31.31 0 0 0-.502-5.814zM9.75 15.568V8.432L15.818 12 9.75 15.568z"/></svg>"#
+                                href="https://youtube.com/@pokeratberkeley"
+                                label="YouTube"
+                            />
+                            <SocialLink
+                                icon_svg=r#"<svg fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0 1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/></svg>"#
+                                href="https://twitch.tv/pokeratberkeley"
+                                label="Twitch"
+                            />
                         </div>
                     </div>
 
@@ -46,6 +61,9 @@ pub fn Footer() -> impl IntoView {
                 </div>
 
                 <div class="border-t border-gray-700 dark:border-gray-800 pt-8">
+                    <p class="text-xs text-gray-500 dark:text-gray-600 text-center mb-4">
+                        "Poker is a game of skill. Knowing when to walk away is one of them. Play responsibly."
+                    </p>
                     <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                         <div class="text-sm text-gray-400 dark:text-gray-500">
                             "© 2026 Poker at Berkeley. All rights reserved."

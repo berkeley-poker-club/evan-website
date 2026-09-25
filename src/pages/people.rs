@@ -1,8 +1,10 @@
 use leptos::prelude::*;
+use leptos_meta::Title;
 
 #[component]
 pub fn PeoplePage() -> impl IntoView {
     view! {
+        <Title text="Officers | Poker at Berkeley" />
         <div class="min-h-screen">
             <HeroBanner />
             <BoardSection />
@@ -18,7 +20,7 @@ fn HeroBanner() -> impl IntoView {
                  style="background-image: url('/public/images/sp26board/standinghearst-pano.webp'); background-size: cover; background-position: center center;">
             <div class="absolute inset-0" style="background-color: rgba(0, 0, 0, 0.30);"></div>
             <div class="relative z-10 max-w-4xl mx-auto text-center px-6" style="transform: translateY(150%);">
-                <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">
+                <h1 class="text-5xl md:text-6xl font-bold text-white mb-4" style="font-family: 'Plus Jakarta Sans', sans-serif;">
                     "Officers"
                 </h1>
                 <p class="text-xl text-white/90">
@@ -59,15 +61,15 @@ fn BoardSection() -> impl IntoView {
                     />
                     <MemberCard
                         name="Nicolas Bruzzese"
-                        role="Head of Game Nights"
+                        role="Game Nights Director"
                         image="/public/images/officers/nicolas.webp"
                         preview="Nicolas is a senior studying Applied Mathematics and actuarial sciences, originally"
                         bio=|| view! {
                             <>
                                 "Nicolas is a senior studying Applied Mathematics and actuarial sciences, originally from Los Angeles.\n\n"
-                                "He is, per his own account, related to Albert Einstein. (not verified)\n\n"
-                                "Big fan of his girlfriend, long walks, cats, UFC, and strategic games, in that order.\n\n"
-                                "Also trades options independently, which is going well (also not verified.)\n\n"
+                                "He is, per his own account, related to Albert Einstein.\n\n"
+                                "Big fan of cats, long walks, UFC, and strategic games, in that order.\n\n"
+                                "Also trades options independently, which is going well (not verified).\n\n"
                                 "Plays poker for the strategy, stays for the people. \n\n"
                                 "Nic final tabled the Stanford x Berkeley tournament in Spring 2025, and was showing up to help set up events before he was even an officer. He now serves on the executive board and oversees Game Nights.\n\n"
                                 "Used to be able to snap really loud (nerfed). Can wiggle his ears, has double jointed fingers, and can make his shoulder bone pop out, which he will demonstrate unprompted."
@@ -77,28 +79,29 @@ fn BoardSection() -> impl IntoView {
                     />
                     <MemberCard
                         name="Jones Dickerson"
-                        role="Head of Tournaments"
+                        role="Tournaments Director"
                         image="/public/images/officers/jones.webp"
-                        preview="4th year studying Pure Math. Many many hours at all stakes."
+                        preview="Jones is a 4th year from Los Angeles studying Pure Math, which he applies entirely to poker."
                         bio=|| view! {
                             <>
-                                "4th year studying Pure Math\n\n"
-                                "Many many hours at all stakes\n\n"
-                                "4th semester teaching Poker DeCal!\n\n"
-                                "Outside of poker, I enjoy playing tennis, cello, learning something random, and traveling"
+                                "Jones is a 4th year from Los Angeles studying Pure Math, which he applies entirely to poker. \n\n"
+                                "He has taught Stat 198: Poker Theory for four semesters, as well as the intro to 5D Chess DeCal. He's played many hours at all stakes, and recently cashed in the Asian Poker Tour (APT). Serves as the Director of Tournaments for P@B. Favorite hand: AQdd.\n\n"
+                                "When not at the table, he can be found on the tennis court, playing the cello, or on a date with his girlfriend Jen, who is, by her own account, actively trying to increase his body mass. He is a willing participant. Said dates are occasionally attended by a dog named Milly, who does not pay for her meals.\n\n"
+                                "Loves meeting new people. Ask him anything about anything."
                             </>
                         }.into_any()
                         linkedin="https://www.linkedin.com/in/jones-dickerson/"
                     />
                     <MemberCard
                         name="Evan Luo"
-                        role="Head of Finance"
+                        role="Finance Director"
                         image="/public/images/newheadshots/evan2.webp"
-                        preview="I’m Evan, a sophomore studying EECS. I was born in Chicago,"
+                        preview="Evan is a junior studying EECS from San Diego."
                         bio=|| view! {
                             <>
-                                "I’m Evan, a sophomore studying EECS. I was born in Chicago, but raised in San Diego.\n\n"
-                                "When not playing poker I can be found dilly dallying at Benchmark Climbing, various sushi restaurants, or at a boba shop.\n\n"
+                                "Evan is a junior studying EECS from San Diego. \n\n"
+                                "Watched one WPT video and that was that. Favorite hand: KQh. \n\n"
+                                "When not playing poker he can be found dilly dallying at Benchmark Climbing, various sushi restaurants, or at a boba shop.\n\n"
                                 "Source of Milly's reel addiction."
                             </>
                         }.into_any()
@@ -108,13 +111,11 @@ fn BoardSection() -> impl IntoView {
                         name="Pranshu Rao"
                         role="Head of Sponsorships"
                         image="/public/images/officers/pranshu.webp"
-                        preview="Hey, I'm Pranshu, a Chicago native who also happens to study"
+                        preview="Pranshu is a Chicago native studying EECS at Berkeley, having spent 10 years in Germany."
                         bio=|| view! {
                             <>
-                                "Hey, I'm Pranshu, a Chicago native who "
-                                <em>"also"</em>
-                                " happens to study EECS.\n\n"
-                                "My VPIP is close to 70% and when I'm not punting my money away I enjoy soccer, hiking, and late night drives.\n\n"
+                                "Pranshu is a Chicago native studying EECS at Berkeley, having spent 10 years in Germany.\n\n"
+                                "His VPIP is close to 70%, and when he's not punting his money away he enjoys soccer, hiking, and late night drives.\n\n"
                             </>
                         }.into_any()
                         linkedin="https://www.linkedin.com/in/pranshurao/"
@@ -123,20 +124,14 @@ fn BoardSection() -> impl IntoView {
                         name="David Chen"
                         role="Senior Advisor"
                         image="/public/images/officers/david.webp"
-                        preview="I’m David, a 3rd year “studying” Business + Stats. Besides poker,"
+                        preview="David is a senior \"studying\" Business and Statistics at Cal."
                         bio=|| view! {
                             <>
-                                "I’m David, a 3rd year “studying” Business + Stats. Besides poker, I enjoy golfing, fantasizing about Peter Thiel, watching Soccer/Tennis, increasing shareholder value, and reading (I’m illiterate)."
+                                "David is a senior \"studying\" Business and Statistics at Cal.\n\n"
+                                "He's part of the Haas Global Management Program, a Poker DeCal Instructor, and has a golf handicap of 6.4. He describes himself as \"jack of all trades. master of all as well.\" \n\n"
                             </>
                         }.into_any()
                         linkedin="https://www.linkedin.com/in/david-chen-b639a4274"
-                    />
-                    <MemberCard
-                        name="Jennifer Ren"
-                        role="Head of Media"
-                        image="/public/images/officers/jen.webp"
-                        bio=|| view! { <></> }.into_any()
-                        linkedin="https://www.linkedin.com/in/jennifer-ren/"
                     />
                     <MemberCard
                         name="Milly Barandish"
@@ -154,6 +149,13 @@ fn BoardSection() -> impl IntoView {
                             </>
                         }.into_any()
                         linkedin="https://open.spotify.com/playlist/0MQXY5ehHGyycEMDBIGSPu?si=4e8c75a143fe4449"
+                    />
+                    <MemberCard
+                        name="Jennifer Ren"
+                        role="Head of Media"
+                        image="/public/images/officers/jen.webp"
+                        bio=|| view! { <></> }.into_any()
+                        linkedin="https://www.linkedin.com/in/jennifer-ren/"
                     />
                     <MemberCard
                         name="Szymon Jackowski"

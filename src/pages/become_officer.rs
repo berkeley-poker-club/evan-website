@@ -1,4 +1,5 @@
 use leptos::prelude::*;
+use leptos_meta::Title;
 
 const OFFICER_APPLICATION_FORM: &str = "https://forms.gle/2cWGidGdtvHewArk6";
 const DECAL_TA_APPLICATION_FORM: &str = "https://forms.gle/ZJyBk9brK8iRuAtR6";
@@ -6,10 +7,11 @@ const DECAL_TA_APPLICATION_FORM: &str = "https://forms.gle/ZJyBk9brK8iRuAtR6";
 #[component]
 pub fn BecomeOfficerPage() -> impl IntoView {
     view! {
+        <Title text="Become an Officer | Poker at Berkeley" />
         <div class="min-h-screen">
             <HeroBanner />
-            <OfficerSection />
             <BoardCollageSection />
+            <OfficerSection />
             <OfficerFaqSection />
         </div>
     }
@@ -189,7 +191,7 @@ fn OfficerFaqSection() -> impl IntoView {
                         />
 
                         <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
-                            "Recruitment Timeline"
+                            "Fall 2026 Officer Recruitment Timeline"
                         </h2>
                         <div class="space-y-4">
                         <div class="bg-blue-50/70 dark:bg-slate-800 rounded-lg p-6 shadow-sm border border-blue-100/60 dark:border-slate-700">

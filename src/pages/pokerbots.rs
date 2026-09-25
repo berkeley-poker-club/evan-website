@@ -1,8 +1,10 @@
 use leptos::prelude::*;
+use leptos_meta::Title;
 
 #[component]
 pub fn PokerBotsPage() -> impl IntoView {
     view! {
+        <Title text="PokerBots | Poker at Berkeley" />
         <section class="font-terminal relative min-h-screen overflow-hidden bg-[#02070d] px-6 py-8 text-cyan-100">
             <div
                 class="pointer-events-none absolute inset-0 opacity-30"

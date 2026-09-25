@@ -69,6 +69,7 @@ pub fn Navigation() -> impl IntoView {
                                 <div class="bg-white dark:bg-gray-800 shadow-md rounded-md border border-gray-100 dark:border-gray-700 py-2 min-w-[10rem]">
                                     <A href="/tournaments" attr:class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#B08B5B] dark:hover:text-[#C9A876] hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">"Tournaments"</A>
                                     <A href="/game-nights" attr:class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#B08B5B] dark:hover:text-[#C9A876] hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">"Game Nights"</A>
+                                    <A href="/stream-game" attr:class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#B08B5B] dark:hover:text-[#C9A876] hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">"Stream Game"</A>
                                     <A href="/pokerbots" attr:class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#B08B5B] dark:hover:text-[#C9A876] hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">"PokerBots"</A>
                                 </div>
                             </div>
@@ -159,6 +160,7 @@ pub fn Navigation() -> impl IntoView {
                         <div class=move || if mobile_group.get() == Some("events") { "pl-4 space-y-1" } else { "hidden" }>
                             <A href="/tournaments" on:click=move |_| close_mobile_menu() attr:class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#B08B5B] dark:hover:text-[#C9A876] transition-colors">"Tournaments"</A>
                             <A href="/game-nights" on:click=move |_| close_mobile_menu() attr:class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#B08B5B] dark:hover:text-[#C9A876] transition-colors">"Game Nights"</A>
+                            <A href="/stream-game" on:click=move |_| close_mobile_menu() attr:class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#B08B5B] dark:hover:text-[#C9A876] transition-colors">"Stream Game"</A>
                             <A href="/pokerbots" on:click=move |_| close_mobile_menu() attr:class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-[#B08B5B] dark:hover:text-[#C9A876] transition-colors">"PokerBots"</A>
                         </div>
 

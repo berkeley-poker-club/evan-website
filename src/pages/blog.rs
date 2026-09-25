@@ -1,8 +1,10 @@
 use leptos::prelude::*;
+use leptos_meta::Title;
 
 #[component]
 pub fn BlogPage() -> impl IntoView {
     view! {
+        <Title text="Blog | Poker at Berkeley" />
         <div class="min-h-screen bg-[#F7F2EA]">
             <HeroBanner />
             <ComingSoonSection />
