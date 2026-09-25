@@ -498,14 +498,14 @@ fn InstructorCard(
     let obfuscated_email = email.replace('.', " [dot] ");
 
     view! {
-        <div class="border border-gray-800 rounded-lg overflow-hidden shadow-lg" style="background-color: #1a2540;">
+        <div class="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg">
             <div class="w-full h-72 md:h-80 lg:h-72 xl:h-80">
                 <img src=image alt=name class="w-full h-72 md:h-80 lg:h-72 xl:h-80 object-cover" loading="lazy" />
             </div>
             <div class="px-4 py-5 text-center">
-                <h3 class="text-base font-bold text-white mb-1">{name}</h3>
+                <h3 class="text-base font-bold text-gray-900 dark:text-white mb-1">{name}</h3>
                 <p class="text-sm font-semibold mb-2" style="color: #F5C842;">{role}</p>
-                <p class="text-xs text-gray-400">{obfuscated_email}</p>
+                <p class="text-xs text-gray-600 dark:text-gray-400">{obfuscated_email}</p>
             </div>
         </div>
     }

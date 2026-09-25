@@ -255,7 +255,7 @@ pub fn TournamentsPage() -> impl IntoView {
         <Title text="Tournaments | Poker at Berkeley" />
         <div class="min-h-screen">
             <HeroBanner />
-            <div style="background-color: #111010;">
+            <div class="bg-gray-100 dark:bg-gray-900">
                 <MediaCarousel
                     title="Spring 2026 Stanford x Berkeley Highlights"
                     images=STANFORD26_IMAGES.to_vec()
@@ -294,14 +294,14 @@ fn MediaCarousel(
         </style>
         <section class="py-6">
             <div class="max-w-7xl mx-auto px-4 sm:px-6">
-                <div class="bg-zinc-900 border border-zinc-700 rounded-2xl p-4 sm:p-6 md:p-8">
+                <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-4 sm:p-6 md:p-8 shadow-sm">
                     <h2
-                        class="text-2xl sm:text-3xl mb-2 sm:mb-6"
-                        style="color: #F0EDE8; font-family: 'Figtree', sans-serif; font-weight: 600; letter-spacing: 0.05em;"
+                        class="text-2xl sm:text-3xl mb-2 sm:mb-6 text-gray-900 dark:text-white"
+                        style="font-family: 'Figtree', sans-serif; font-weight: 600; letter-spacing: 0.05em;"
                     >
                         {title}
                     </h2>
-                    <p class="text-sm text-zinc-400 mb-4">"Drag or swipe to browse photos"</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">"Drag or swipe to browse photos"</p>
 
                     <div
                         class="
@@ -418,7 +418,7 @@ fn UpcomingTournamentCard(
     highlight: bool,
 ) -> impl IntoView {
     let border_class = if highlight {
-        "border-l-4 border-l-blue-600"
+        "border-l-4 border-l-blue-600 dark:border-l-blue-400"
     } else {
         "border-l-4 border-l-gray-300 dark:border-l-gray-600"
     };

@@ -167,11 +167,11 @@ fn InfoCard(
     bullets: Vec<&'static str>,
 ) -> impl IntoView {
     view! {
-        <article class="w-full max-w-[380px] self-stretch rounded-lg bg-gray-900 dark:bg-gray-800 p-6 shadow-sm">
-            <h3 class="text-xl font-bold text-white mb-3">
+        <article class="w-full max-w-[380px] self-stretch rounded-lg bg-white dark:bg-gray-800 p-6 shadow-sm ring-1 ring-black/5 dark:ring-white/10">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
                 {title}
             </h3>
-            <ul class="list-disc list-outside ml-5 space-y-2 text-sm leading-relaxed text-gray-300">
+            <ul class="list-disc list-outside ml-5 space-y-2 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
                 {bullets.into_iter().map(|b| view! { <li>{b}</li> }).collect::<Vec<_>>()}
             </ul>
         </article>
