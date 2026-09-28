@@ -48,7 +48,7 @@ const STREAM_LINEUP_EP00: &[LineupEntry] = &[
     LineupEntry { name: "Ray Tan", alias: "Ray", result: "+7180" },
     LineupEntry { name: "Henry Lee", alias: "Henry", result: "+3880" },
     LineupEntry { name: "Vincent Chen", alias: "Vincent", result: "+950" },
-    LineupEntry { name: "ethanh@berkeley.edu", alias: "Ethan", result: "-4000" },
+    LineupEntry { name: "Ethan Hull", alias: "Ethan", result: "-4000" },
     LineupEntry { name: "Afraz Ahmed", alias: "Afraz", result: "+5220" },
     LineupEntry { name: "Frances Jing", alias: "Frances", result: "+11660" },
     LineupEntry { name: "Matthew Naidu", alias: "Martial", result: "-4000" },
