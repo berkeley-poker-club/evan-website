@@ -99,6 +99,24 @@ fn HeroSection() -> impl IntoView {
                     <p class="text-xl md:text-2xl text-white text-center mb-8">
                         "The largest collegiate poker organization in the country."
                     </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a
+                            href=BERKELEY_TOURNAMENT_SIGNUP
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center bg-[#003262] hover:bg-[#0A4D8C] text-[#FDB515] font-semibold py-3 px-6 rounded-lg transition-colors"
+                        >
+                            "Berkeley Tournament Signup"
+                        </a>
+                        <a
+                            href=STANFORD_TOURNAMENT_SIGNUP
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center bg-[#8C1515] hover:bg-[#A31E1E] text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+                        >
+                            "Stanford Tournament Signup"
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
