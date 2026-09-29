@@ -26,25 +26,76 @@ impl Platform {
     }
 }
 
+struct LineupEntry {
+    name: &'static str,
+    alias: &'static str,
+    result: &'static str,
+}
+
 struct Episode {
     number: &'static str,
     title: &'static str,
     platform: Platform,
     embed_src: &'static str,
+    lineup: &'static [LineupEntry],
+    game_info: &'static str,
 }
 
-const STREAM_EPISODES: &[Episode] = &[Episode {
-    number: "EP. 00",
-    title: "Episode 0 (Tester)",
-    platform: Platform::YouTube,
-    embed_src: "https://www.youtube.com/embed/3kktPT5cJnE",
-}];
+// `result` is left blank ("—") until final results for that specific episode
+// are known — fill in per episode as they come in.
+// 2k starting stack + 1 rebuy = 4000 total in play; 0 means busted out for -4000.
+const STREAM_LINEUP_EP00: &[LineupEntry] = &[
+    LineupEntry { name: "Ray Tan", alias: "Ray", result: "+7180" },
+    LineupEntry { name: "Henry Lee", alias: "Henry", result: "+3880" },
+    LineupEntry { name: "Vincent Chen", alias: "Vincent", result: "+950" },
+    LineupEntry { name: "Ethan Hull", alias: "Ethan", result: "-4000" },
+    LineupEntry { name: "Afraz Ahmed", alias: "Afraz", result: "+5220" },
+    LineupEntry { name: "Frances Jing", alias: "Frances", result: "+11660" },
+    LineupEntry { name: "Matthew Naidu", alias: "Martial", result: "-4000" },
+    LineupEntry { name: "Fanou Zhang", alias: "Fan", result: "+2000" },
+    LineupEntry { name: "Tobias Arntzen", alias: "Tobias", result: "+4910" },
+];
+
+// Freeroll cash game, 1/1 blinds, 100 buy-in + 1 rebuy (200 total in play).
+// Anyone not given a final amount busted out for -200.
+const STREAM_LINEUP_EP01: &[LineupEntry] = &[
+    LineupEntry { name: "Howard Chen", alias: "Spieler", result: "+356" },
+    LineupEntry { name: "Fanou Zhang", alias: "Fancy Fan", result: "+534" },
+    LineupEntry { name: "Vishesh Verma", alias: "Vvern", result: "+260" },
+    LineupEntry { name: "Bill Young", alias: "Bill", result: "-200" },
+    LineupEntry { name: "Rigo Torres", alias: "Rigo", result: "+90" },
+    LineupEntry { name: "Oscar Näslund Cuesta", alias: "Oscar", result: "-200" },
+    LineupEntry { name: "Azad Parikh", alias: "Azad", result: "-200" },
+    LineupEntry { name: "Ben Finch", alias: "Ben", result: "+175" },
+    LineupEntry { name: "Arhan Vontela", alias: "Von", result: "+385" },
+];
+
+const STREAM_EPISODES: &[Episode] = &[
+    Episode {
+        number: "EP. 00",
+        title: "Episode 0 (Tester)",
+        platform: Platform::YouTube,
+        embed_src: "https://www.youtube.com/embed/3kktPT5cJnE",
+        lineup: STREAM_LINEUP_EP00,
+        game_info: "Blinds 10/20 · Freeroll 2k Starting Stack + 1 Rebuy",
+    },
+    Episode {
+        number: "EP. 01",
+        title: "Episode 1",
+        platform: Platform::YouTube,
+        embed_src: "https://www.youtube.com/embed/7buLpyOZCsI",
+        lineup: STREAM_LINEUP_EP01,
+        game_info: "Blinds $1/$1 · Freeroll $100 Starting Stack + 1 Rebuy",
+    },
+];
 
 const TOURNAMENT_EPISODES: &[Episode] = &[Episode {
     number: "VOL. 03",
     title: "FINAL DAY Highlights - 3rd annual Berkeley x Stanford Poker Tournament!",
     platform: Platform::YouTube,
     embed_src: "https://www.youtube.com/embed/xwhVQmdWD0k",
+    lineup: &[],
+    game_info: "",
 }];
 
 #[component]
@@ -60,6 +111,7 @@ pub fn StreamGamePage() -> impl IntoView {
                 accent="#FDB515"
                 episodes=STREAM_EPISODES
             />
+            <PlayCallout />
             <EpisodeSection
                 heading="Tournament Series"
                 subheading="Highlights from the Berkeley x Stanford Poker Tournament."
@@ -128,6 +180,42 @@ fn HeroBanner() -> impl IntoView {
 }
 
 #[component]
+fn PlayCallout() -> impl IntoView {
+    view! {
+        <section class="py-10 border-b border-white/5">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="rounded-xl border-2 border-[#FDB515]/40 bg-gradient-to-b from-[#1a2030] to-[#0B0E14] p-6 md:p-8">
+                    <h2
+                        class="text-xl md:text-2xl font-black text-white uppercase tracking-tight mb-3"
+                        style="font-family: 'Archivo Black', sans-serif;"
+                    >
+                        "Want a Chance to Play on Our Livestream Game?"
+                    </h2>
+                    <ul class="space-y-1.5 text-gray-300 font-mono text-sm mb-4">
+                        <li>"• $300 freeroll cash game"</li>
+                        <li>"• We cover your buy-in plus one rebuy — it costs you nothing to play"</li>
+                        <li>"• Players are randomly selected each episode, so new faces make it to the table every time"</li>
+                        <li>"• Open to P@B members only"</li>
+                        <li>"• You must be comfortable being on Twitch/YouTube and recorded"</li>
+                    </ul>
+                    <p class="text-gray-400 font-mono text-xs mb-4">
+                        "Interested? Join our Discord and watch for an announcement when the next round of player selections opens."
+                    </p>
+                    <a
+                        href="https://discord.gg/SbS9UbZW2a"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FDB515] text-[#0B0E14] font-bold text-sm uppercase tracking-wide hover:bg-white transition-colors"
+                    >
+                        "Join the Discord"
+                    </a>
+                </div>
+            </div>
+        </section>
+    }
+}
+
+#[component]
 fn EpisodeSection(
     heading: &'static str,
     subheading: &'static str,
@@ -149,7 +237,7 @@ fn EpisodeSection(
                 </div>
                 <p class="text-gray-300 font-mono text-sm mb-10 pl-[26px]">{subheading}</p>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
                     {episodes.iter().map(|ep| view! { <StreamCard episode=ep accent=accent /> }).collect::<Vec<_>>()}
                 </div>
             </div>
@@ -184,9 +272,76 @@ fn StreamCard(episode: &'static Episode, accent: &'static str) -> impl IntoView 
                 ></iframe>
             </div>
             <div class="pt-4 px-2 pb-1">
-                <span class="font-mono text-xs tracking-[0.2em]" style=number_style>{episode.number}</span>
+                <span class="font-mono text-xs tracking-[0.2em]" style=number_style.clone()>{episode.number}</span>
                 <h3 class="text-white font-bold text-lg leading-snug mt-1">{episode.title}</h3>
+                {if !episode.game_info.is_empty() {
+                    view! {
+                        <p class="text-gray-400 font-mono text-xs mt-1">{episode.game_info}</p>
+                    }.into_any()
+                } else {
+                    view! {}.into_any()
+                }}
             </div>
+            {if !episode.lineup.is_empty() {
+                view! { <LineupTable lineup=episode.lineup accent=accent number_style=number_style.clone() /> }.into_any()
+            } else {
+                view! {}.into_any()
+            }}
         </div>
+    }
+}
+
+#[component]
+fn LineupTable(lineup: &'static [LineupEntry], accent: &'static str, number_style: String) -> impl IntoView {
+    view! {
+        <details class="mt-3 mx-2 mb-2 group">
+            <summary class="cursor-pointer select-none list-none flex items-center gap-2 px-2 py-1.5 rounded font-mono text-xs uppercase tracking-wide text-gray-300 hover:text-white transition-colors">
+                <span class="transition-transform duration-150 group-open:rotate-90" style=number_style>"▸"</span>
+                "Lineup & Results"
+            </summary>
+            <div class="mt-2 overflow-x-auto rounded-lg border border-white/10">
+                <table class="w-full text-sm font-mono">
+                    <thead>
+                        <tr class="bg-white/5 text-gray-400 uppercase text-[11px] tracking-wide">
+                            <th class="text-left px-3 py-2 font-normal">"Player"</th>
+                            <th class="text-left px-3 py-2 font-normal">"Alias"</th>
+                            <th class="text-left px-3 py-2 font-normal">"Result"</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {lineup
+                            .iter()
+                            .map(|p| {
+                                let result = if p.result.is_empty() { "—" } else { p.result };
+                                let result_cell = if result.starts_with('-') {
+                                    view! {
+                                        <td class="px-3 py-2 whitespace-nowrap" title="Eliminated">
+                                            <svg class="w-3 h-3 fill-red-500" viewBox="0 0 16 16">
+                                                <polygon points="8,2 15,14 1,14"></polygon>
+                                            </svg>
+                                        </td>
+                                    }.into_any()
+                                } else if result.starts_with('+') {
+                                    view! {
+                                        <td class="px-3 py-2 whitespace-nowrap font-bold text-green-400">{result}</td>
+                                    }.into_any()
+                                } else {
+                                    view! {
+                                        <td class="px-3 py-2 whitespace-nowrap text-gray-300">{result}</td>
+                                    }.into_any()
+                                };
+                                view! {
+                                    <tr class="border-t border-white/5">
+                                        <td class="px-3 py-2 text-white whitespace-nowrap">{p.name}</td>
+                                        <td class="px-3 py-2 whitespace-nowrap" style=format!("color: {accent};")>{p.alias}</td>
+                                        {result_cell}
+                                    </tr>
+                                }
+                            })
+                            .collect::<Vec<_>>()}
+                    </tbody>
+                </table>
+            </div>
+        </details>
     }
 }
