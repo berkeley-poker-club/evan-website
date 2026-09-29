@@ -6,6 +6,8 @@ use crate::components::MediaCarousel;
 const DECAL: &str = "/decal";
 const JOIN_FORM: &str = "https://forms.gle/yVsAAJ5PLBtrgWUx8";
 const STANFORD_JOIN_FORM: &str = "https://forms.gle/iX7oCxR32DdWNAn16";
+const BERKELEY_TOURNAMENT_SIGNUP: &str = "https://forms.gle/xRqJpxuvH1iGbtAKA";
+const STANFORD_TOURNAMENT_SIGNUP: &str = "https://forms.gle/u8qADPKYDPBSZAJQ6";
 
 
 #[component]
@@ -271,6 +273,24 @@ fn UpcomingEventsSection() -> impl IntoView {
                             ]
                             highlight=true
                         />
+                        <div class="flex flex-col sm:flex-row justify-center gap-4">
+                            <a
+                                href=BERKELEY_TOURNAMENT_SIGNUP
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center justify-center bg-[#003262] hover:bg-[#0A4D8C] text-[#FDB515] font-semibold py-3 px-6 rounded-lg transition-colors"
+                            >
+                                "Berkeley Tournament Signup"
+                            </a>
+                            <a
+                                href=STANFORD_TOURNAMENT_SIGNUP
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center justify-center bg-[#8C1515] hover:bg-[#A31E1E] text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+                            >
+                                "Stanford Tournament Signup"
+                            </a>
+                        </div>
                         <EventCard
                             title="Berkeley Poker Bots Competition"
                             date="January–March"
