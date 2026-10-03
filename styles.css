@@ -1542,6 +1542,10 @@ body {
   max-width: 500px;
 }
 
+.max-w-xl {
+  max-width: 36rem;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -2158,6 +2162,11 @@ body {
 
 .bg-\[\#B2A08E\]\/70 {
   background-color: rgb(178 160 142 / 0.7);
+}
+
+.bg-\[\#B5A485\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(181 164 133 / var(--tw-bg-opacity, 1));
 }
 
 .bg-\[\#D9C7A8\] {
@@ -2893,6 +2902,11 @@ body {
   color: rgb(11 14 20 / var(--tw-text-opacity, 1));
 }
 
+.text-\[\#2B2418\] {
+  --tw-text-opacity: 1;
+  color: rgb(43 36 24 / var(--tw-text-opacity, 1));
+}
+
 .text-\[\#2E2620\] {
   --tw-text-opacity: 1;
   color: rgb(46 38 32 / var(--tw-text-opacity, 1));
@@ -3324,6 +3338,11 @@ body {
 .hover\:bg-\[\#B2A08E\]:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(178 160 142 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-\[\#C4B596\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(196 181 150 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:bg-blue-600:hover {
@@ -3775,6 +3794,10 @@ body {
 
   .md\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-\[5fr_4fr\] {
+    grid-template-columns: 5fr 4fr;
   }
 
   .md\:flex-row {

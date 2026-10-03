@@ -1,6 +1,6 @@
 use leptos::prelude::*;
 use leptos_meta::Title;
-use crate::components::MediaCarousel;
+use crate::components::{MediaCarousel, OptimizedImage};
 
 
 const DECAL: &str = "/decal";
@@ -8,6 +8,7 @@ const JOIN_FORM: &str = "https://forms.gle/yVsAAJ5PLBtrgWUx8";
 const STANFORD_JOIN_FORM: &str = "https://forms.gle/iX7oCxR32DdWNAn16";
 const BERKELEY_TOURNAMENT_SIGNUP: &str = "https://forms.gle/xRqJpxuvH1iGbtAKA";
 const STANFORD_TOURNAMENT_SIGNUP: &str = "https://forms.gle/u8qADPKYDPBSZAJQ6";
+const GUEST_TOURNAMENT_SIGNUP: &str = "https://docs.google.com/forms/d/e/1FAIpQLSdiXPmdQ2ywbZI8N5ZcKsTA5nWD9d2lDcAjQZMVN0TOu_C-4Q/viewform?usp=header";
 
 
 #[component]
@@ -115,6 +116,16 @@ fn HeroSection() -> impl IntoView {
                             class="inline-flex items-center justify-center bg-[#8C1515] hover:bg-[#A31E1E] text-white font-semibold py-3 px-6 rounded-lg transition-colors"
                         >
                             "Stanford Tournament Signup"
+                        </a>
+                    </div>
+                    <div class="flex justify-center mt-4">
+                        <a
+                            href=GUEST_TOURNAMENT_SIGNUP
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center bg-[#B5A485] hover:bg-[#C4B596] text-[#2B2418] font-semibold py-3 px-6 rounded-lg transition-colors"
+                        >
+                            "Guest Schools Tournament Signup"
                         </a>
                     </div>
                 </div>
@@ -235,6 +246,7 @@ fn WhatWeDoSection() -> impl IntoView {
                         description="Through a custom RFID-enabled table from BBO Poker Tables and a production partnership with PokerGFX, we broadcast live poker to our audience — covering game nights, stream games, and our tournaments."
                         color="blue"
                         link="/stream-game"
+                        image="/public/images/streamgame_snapshot.png"
                     />
                 </div>
             </div>
@@ -248,6 +260,7 @@ fn WhatWeDoCard(
     description: &'static str,
     color: &'static str,
     link: &'static str,
+    #[prop(optional)] image: Option<&'static str>,
 ) -> impl IntoView {
     let border_color = match color {
         "blue" => "border-blue-600",
@@ -263,6 +276,14 @@ fn WhatWeDoCard(
                 "block bg-white dark:bg-slate-800/90 ring-1 ring-black/5 dark:ring-white/10 rounded-lg shadow-lg p-8 hover:shadow-xl hover:brightness-105 dark:hover:brightness-125 transition-all border-l-4 {}",border_color)>
             <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">{title}</h3>
             <p class="text-gray-600 dark:text-gray-300 leading-relaxed">{description}</p>
+            {image.map(|src| view! {
+                <OptimizedImage
+                    src=src
+                    alt=title
+                    class="mt-6 w-full max-w-xl rounded-lg shadow-md"
+                    loading="lazy"
+                />
+            })}
         </a>
     }
 }
@@ -307,6 +328,16 @@ fn UpcomingEventsSection() -> impl IntoView {
                                 class="inline-flex items-center justify-center bg-[#8C1515] hover:bg-[#A31E1E] text-white font-semibold py-3 px-6 rounded-lg transition-colors"
                             >
                                 "Stanford Tournament Signup"
+                            </a>
+                        </div>
+                        <div class="flex justify-center mt-4">
+                            <a
+                                href=GUEST_TOURNAMENT_SIGNUP
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center justify-center bg-[#B5A485] hover:bg-[#C4B596] text-[#2B2418] font-semibold py-3 px-6 rounded-lg transition-colors"
+                            >
+                                "Guest Schools Tournament Signup"
                             </a>
                         </div>
                         <EventCard
