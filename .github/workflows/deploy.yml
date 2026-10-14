@@ -27,7 +27,7 @@ jobs:
         with:
           targets: wasm32-unknown-unknown
 
-      - run: cargo install trunk
+      - run: cargo install trunk --locked --version 0.21.14
 
       - uses: actions/setup-node@v4
         with:

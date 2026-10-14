@@ -1,5 +1,6 @@
 use leptos::prelude::*;
 use leptos_meta::Title;
+use crate::components::OptimizedImage;
 
 const YOUTUBE_URL: &str = "https://youtube.com/@pokeratberkeley?si=FDNtvp8VSFir_Vk-";
 const TWITCH_URL: &str = "http://twitch.tv/pokeratberkeley";
@@ -183,7 +184,15 @@ fn HeroBanner() -> impl IntoView {
 fn PlayCallout() -> impl IntoView {
     view! {
         <section class="py-10 border-b border-white/5">
-            <div class="max-w-4xl mx-auto px-6">
+            <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-[5fr_4fr] items-center gap-6">
+                <div>
+                    <OptimizedImage
+                        src="/public/images/streamgame_snapshot.png"
+                        alt="Poker at Berkeley livestream"
+                        class="w-full h-auto rounded-xl"
+                        loading="lazy"
+                    />
+                </div>
                 <div class="rounded-xl border-2 border-[#FDB515]/40 bg-gradient-to-b from-[#1a2030] to-[#0B0E14] p-6 md:p-8">
                     <h2
                         class="text-xl md:text-2xl font-black text-white uppercase tracking-tight mb-3"

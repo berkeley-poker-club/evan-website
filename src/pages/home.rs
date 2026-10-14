@@ -1,6 +1,6 @@
 use leptos::prelude::*;
 use leptos_meta::Title;
-use crate::components::MediaCarousel;
+use crate::components::{MediaCarousel, OptimizedImage};
 
 
 const DECAL: &str = "/decal";
@@ -215,6 +215,7 @@ fn WhatWeDoSection() -> impl IntoView {
                         description="Through a custom RFID-enabled table from BBO Poker Tables and a production partnership with PokerGFX, we broadcast live poker to our audience — covering game nights, stream games, and our tournaments."
                         color="blue"
                         link="/stream-game"
+                        image="/public/images/streamgame_snapshot.png"
                     />
                 </div>
             </div>
@@ -228,6 +229,7 @@ fn WhatWeDoCard(
     description: &'static str,
     color: &'static str,
     link: &'static str,
+    #[prop(optional)] image: Option<&'static str>,
 ) -> impl IntoView {
     let border_color = match color {
         "blue" => "border-blue-600",
@@ -243,6 +245,14 @@ fn WhatWeDoCard(
                 "block bg-white dark:bg-slate-800/90 ring-1 ring-black/5 dark:ring-white/10 rounded-lg shadow-lg p-8 hover:shadow-xl hover:brightness-105 dark:hover:brightness-125 transition-all border-l-4 {}",border_color)>
             <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">{title}</h3>
             <p class="text-gray-600 dark:text-gray-300 leading-relaxed">{description}</p>
+            {image.map(|src| view! {
+                <OptimizedImage
+                    src=src
+                    alt=title
+                    class="mt-6 w-full max-w-xl rounded-lg shadow-md"
+                    loading="lazy"
+                />
+            })}
         </a>
     }
 }
