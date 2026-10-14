@@ -100,7 +100,6 @@ pub fn PokerBotsPage() -> impl IntoView {
                         <PokerBotsSponsor name="Jane Street" url="https://www.janestreet.com/" tier_underline="decoration-amber-300" />
                         <PokerBotsSponsor name="QRT" url="https://www.qube-rt.com/" tier_underline="decoration-amber-300" />
                         <PokerBotsSponsor name="Citadel" url="https://www.citadel.com/" tier_underline="decoration-slate-300" />
-                        <PokerBotsSponsor name="HRT" url="https://www.hudsonrivertrading.com/" tier_underline="decoration-slate-300" />
                         <PokerBotsSponsor name="Duper" url="https://www.duper.gg/" tier_underline="decoration-orange-400" />
                     </div>
                     <p class="mt-10 text-center text-base text-cyan-100 sm:text-lg">

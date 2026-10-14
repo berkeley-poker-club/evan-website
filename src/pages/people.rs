@@ -192,6 +192,55 @@ fn BoardSection() -> impl IntoView {
                         bio=|| view! { <></> }.into_any()
                         linkedin="https://www.linkedin.com/in/tanyashenzhang/"
                     />
+                    <MemberCard
+                        name="Stella Liu"
+                        role="Officer"
+                        image="/public/images/officers/stella.webp"
+                        bio=|| view! { <></> }.into_any()
+                        linkedin=""
+                    />
+                    <MemberCard
+                        name="Kenneth Lee"
+                        role="Officer"
+                        image="/public/images/officers/kenneth.webp"
+                        bio=|| view! { <></> }.into_any()
+                        linkedin=""
+                    />
+                    <MemberCard
+                        name="Anjana Niranjanan"
+                        role="Officer"
+                        image="/public/images/officers/anjana.webp"
+                        bio=|| view! { <></> }.into_any()
+                        linkedin=""
+                    />
+                    <MemberCard
+                        name="Eamon Jia"
+                        role="Officer"
+                        image="/public/images/officers/eamon.webp"
+                        bio=|| view! { <></> }.into_any()
+                        linkedin=""
+                    />
+                    <MemberCard
+                        name="Suyeon Shin"
+                        role="Officer"
+                        image="/public/images/officers/suyeon.webp"
+                        bio=|| view! { <></> }.into_any()
+                        linkedin="https://www.linkedin.com/in/suyeon-shin-031860416?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+                    />
+                    <MemberCard
+                        name="Arav Kumar"
+                        role="Officer"
+                        image="/public/images/officers/arav.webp"
+                        bio=|| view! { <></> }.into_any()
+                        linkedin=""
+                    />
+                    <MemberCard
+                        name="Shuang “Bryce” Wu"
+                        role="Officer"
+                        image="/public/images/officers/shuangbrycewu.webp"
+                        bio=|| view! { <></> }.into_any()
+                        linkedin=""
+                    />
                 </div>
             </div>
         </section>

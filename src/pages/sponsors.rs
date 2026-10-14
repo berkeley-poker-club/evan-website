@@ -77,14 +77,14 @@ fn SponsorsSection() -> impl IntoView {
                     color="#A8A9AD"
                     sponsors=vec![
                         TierSponsor {
-                            name: "HRT",
-                            chip: "/public/images/sponsors/chip-hrt.webp",
-                            url: "https://www.hudsonrivertrading.com/",
-                        },
-                        TierSponsor {
                             name: "Citadel Securities",
                             chip: "/public/images/sponsors/chip-citadel.webp",
                             url: "https://www.citadel.com/",
+                        },
+                        TierSponsor {
+                            name: "Susquehanna",
+                            chip: "/public/images/sponsors/chip-susquehanna.webp",
+                            url: "https://sig.com/",
                         },
                     ]
                 />
