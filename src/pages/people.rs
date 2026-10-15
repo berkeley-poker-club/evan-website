@@ -204,7 +204,7 @@ fn BoardSection() -> impl IntoView {
                         role="Officer"
                         image="/public/images/officers/kenneth.webp"
                         bio=|| view! { <></> }.into_any()
-                        linkedin=""
+                        linkedin="https://www.linkedin.com/in/kenneth-lee-3b2846217?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
                     />
                     <MemberCard
                         name="Anjana Niranjanan"
