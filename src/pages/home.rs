@@ -12,7 +12,7 @@ const STANFORD_JOIN_FORM: &str = "https://forms.gle/iX7oCxR32DdWNAn16";
 pub fn HomePage() -> impl IntoView {
     view! {
         <Title text="Poker at Berkeley" />
-        <div class="min-h-screen bg-stone-100 dark:bg-gray-900">
+        <div class="min-h-screen bg-[#c8d1d9] dark:bg-gray-900">
             <style>
                 "@keyframes pageLoadOverlayFade {
                     0% { opacity: 1; }
@@ -83,7 +83,7 @@ fn HeroSection() -> impl IntoView {
             </style>
             <div class="absolute inset-0" style="background-color: rgba(0, 0, 0, 0.30);"></div>
             <div class="absolute inset-0" style="z-index: 5; background-color: #000; pointer-events: none; animation: pageLoadOverlayFade 1s ease-out forwards;"></div>
-            <div class="absolute bottom-0 inset-x-0 h-32 z-10 pointer-events-none block dark:hidden" style="background: linear-gradient(to bottom, transparent 0%, #f5f5f4 65%, #f5f5f4 100%);"></div>
+            <div class="absolute bottom-0 inset-x-0 h-32 z-10 pointer-events-none block dark:hidden" style="background: linear-gradient(to bottom, transparent 0%, #c8d1d9 65%, #c8d1d9 100%);"></div>
             <div class="absolute bottom-0 inset-x-0 h-32 z-10 pointer-events-none hidden dark:block" style="background: linear-gradient(to bottom, transparent 0%, #1f2937 65%, #1f2937 100%);"></div>
             <div class="relative z-10 text-center text-white max-w-6xl mx-auto px-6">
                 <div class="max-w-3xl mx-auto px-6">
@@ -143,7 +143,7 @@ fn AboutSection() -> impl IntoView {
 #[component]
 fn StatCard(number: &'static str, label: &'static str) -> impl IntoView {
     view! {
-        <div class="bg-white dark:bg-slate-800/90 ring-1 ring-black/5 dark:ring-white/10 rounded-lg shadow-lg p-6 text-center">
+        <div class="bg-[#dde3e8] dark:bg-slate-800/90 ring-1 ring-black/5 dark:ring-white/10 rounded-lg shadow-lg p-6 text-center">
             <div class="text-3xl font-bold text-gray-900 dark:text-white mb-1">{number}</div>
             <div class="text-gray-600 dark:text-gray-300 text-sm">{label}</div>
         </div>
@@ -232,7 +232,7 @@ fn WhatWeDoCard(
     #[prop(optional)] image: Option<&'static str>,
 ) -> impl IntoView {
     let border_color = match color {
-        "blue" => "border-blue-600",
+        "blue" => "border-[#2a5189] dark:border-blue-600",
         "green" => "border-green-600",
         "purple" => "border-purple-600",
         _ => "border-gray-600",
@@ -242,7 +242,7 @@ fn WhatWeDoCard(
         <a
             href=link
             class=format!(
-                "block bg-white dark:bg-slate-800/90 ring-1 ring-black/5 dark:ring-white/10 rounded-lg shadow-lg p-8 hover:shadow-xl hover:brightness-105 dark:hover:brightness-125 transition-all border-l-4 {}",border_color)>
+                "block bg-[#dde3e8] dark:bg-slate-800/90 ring-1 ring-black/5 dark:ring-white/10 rounded-lg shadow-lg p-8 hover:shadow-xl hover:brightness-105 dark:hover:brightness-125 transition-all border-l-4 {}",border_color)>
             <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">{title}</h3>
             <p class="text-gray-600 dark:text-gray-300 leading-relaxed">{description}</p>
             {image.map(|src| view! {
@@ -322,22 +322,22 @@ fn EventCard(
     highlight: bool,
 ) -> impl IntoView {
     let border_class = if highlight {
-        "border-l-4 border-l-blue-600"
+        "border-l-4 border-l-[#2a5189] dark:border-l-blue-600"
     } else {
         "border-l-4 border-l-gray-300 dark:border-l-gray-600"
     };
 
     view! {
-        <div class=format!("bg-gray-50 dark:bg-gray-700 rounded-lg p-6 {}", border_class)>
+        <div class=format!("bg-[#d6dde3] dark:bg-gray-700 rounded-lg p-6 {}", border_class)>
             <div class="mb-4">
                 <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{title}</h4>
-                <p class="text-blue-600 dark:text-blue-400 font-semibold">{date}</p>
+                <p class="text-[#2a5189] dark:text-blue-400 font-semibold">{date}</p>
             </div>
             <ul class="space-y-2">
                 {details.into_iter().map(|detail| {
                     view! {
                         <li class="flex items-start space-x-2">
-                            <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                            <div class="w-2 h-2 bg-[#2a5189] dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
                             <span class="text-gray-700 dark:text-gray-300 text-sm">{detail}</span>
                         </li>
                     }

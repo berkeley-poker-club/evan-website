@@ -29,7 +29,7 @@ fn AppShell() -> impl IntoView {
     let is_pokerbots = move || location.pathname.get().starts_with("/pokerbots");
 
     view! {
-        <div class=move || if is_pokerbots() { "bg-[#02070d]" } else { "min-h-screen bg-gray-50 dark:bg-gray-900" }>
+        <div class=move || if is_pokerbots() { "bg-[#02070d]" } else { "min-h-screen bg-[#c8d1d9] dark:bg-gray-900" }>
             {move || (!is_pokerbots()).then(|| view! { <Navigation /> })}
                     <main>
                         <Routes fallback=|| view! {

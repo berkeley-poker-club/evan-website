@@ -33,7 +33,7 @@ fn HeroBanner() -> impl IntoView {
 #[component]
 fn ResourcesSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-white dark:bg-gray-800">
+        <section class="py-20 bg-[#c8d1d9] dark:bg-gray-800">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     <ResourceCategory
@@ -103,13 +103,13 @@ fn ResourceCategory(
     items: Vec<(&'static str, &'static str, &'static str)>,
 ) -> impl IntoView {
     view! {
-        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-8 shadow-md">
+        <div class="bg-[#d6dde3] dark:bg-gray-700 rounded-lg p-8 shadow-md">
             <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">{title}</h3>
             <p class="text-gray-600 dark:text-gray-300 mb-6">{description}</p>
             <ul class="space-y-4">
                 {items.into_iter().map(|(name, desc, url)| {
                     view! {
-                        <li class="border-l-2 border-blue-600 pl-4">
+                        <li class="border-l-2 border-[#2a5189] dark:border-blue-600 pl-4">
                             {if url.is_empty() {
                                 view! {
                                     <div>
@@ -123,7 +123,7 @@ fn ResourceCategory(
                                         <a
                                             href=url
                                             target="_blank"
-                                            class="font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+                                            class="font-semibold text-[#2a5189] dark:text-blue-400 hover:text-[#1f3d68] dark:hover:text-blue-300 transition-colors"
                                         >
                                             {name}
                                         </a>

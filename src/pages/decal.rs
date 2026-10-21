@@ -94,12 +94,12 @@ fn HeroBanner() -> impl IntoView {
 #[component]
 fn CourseDescriptionSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-white dark:bg-gray-800">
+        <section class="py-20 bg-[#c8d1d9] dark:bg-gray-800">
             <div class="max-w-4xl mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-8">
                     "Course Description"
                 </h2>
-                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-8">
+                <div class="bg-[#d6dde3] dark:bg-gray-700 rounded-lg p-8">
                     <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
                         "This course introduces the fundamentals of poker with an emphasis on strategic thinking and decision-making, open to students of all experience levels. While basic rules will be covered quickly, most of the course focuses on higher-level concepts in 6-max No-Limit Texas Hold'em—the most widely played form of poker today."
                     </p>
@@ -118,7 +118,7 @@ fn CourseDescriptionSection() -> impl IntoView {
 #[component]
 fn HistorySection() -> impl IntoView {
     view! {
-        <section class="pt-10 pb-10 bg-gray-100 dark:bg-gray-800">
+        <section class="pt-10 pb-10 bg-[#dcd8cc] dark:bg-gray-800">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="flex flex-col lg:flex-row gap-12 items-center">
                     <div class="text-left lg:w-1/2">
@@ -133,9 +133,9 @@ fn HistorySection() -> impl IntoView {
                             class="w-full h-auto object-contain object-top rounded-lg shadow-lg"
                             loading="lazy"
                         />
-                        <p class="text-base italic text-gray-400 mt-2">
+                        <p class="text-base italic text-gray-600 dark:text-gray-400 mt-2">
                             "After that, Daneshgar used cash he won in a poker tournament as seed funding for his first company, "
-                            <a href="https://bloomnation.com/" target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-300">"BloomNation"</a>
+                            <a href="https://bloomnation.com/" target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-800 dark:hover:text-gray-300">"BloomNation"</a>
                             ", which would go on to raise tens of millions."
                         </p>
                     </div>
@@ -148,7 +148,7 @@ fn HistorySection() -> impl IntoView {
 #[component]
 fn CourseOverviewSection() -> impl IntoView {
     view! {
-        <section class="pt-16 pb-20 bg-gray-50 dark:bg-gray-900">
+        <section class="pt-16 pb-20 bg-[#c8d1d9] dark:bg-gray-900">
             <div class="max-w-6xl mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
                     "Course Details"
@@ -157,7 +157,7 @@ fn CourseOverviewSection() -> impl IntoView {
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     <div>
                         <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">"Quick Facts"</h3>
-                        <div class="space-y-4 bg-white dark:bg-gray-700 rounded-lg p-6 shadow-md">
+                        <div class="space-y-4 bg-[#dde3e8] dark:bg-gray-700 rounded-lg p-6 shadow-md">
                             <CourseDetail label="Course Number" value="STAT 198" />
                             <CourseDetail label="Units" value="2 Units" />
                             <CourseDetail label="Meeting Time" value="TBD" />
@@ -193,25 +193,25 @@ fn CourseOverviewSection() -> impl IntoView {
 #[component]
 fn CourseStructureSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-white dark:bg-gray-800">
+        <section class="py-20 bg-[#c8d1d9] dark:bg-gray-800">
             <div class="max-w-6xl mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
                     "Course Structure"
                 </h2>
 
                 <div class="max-w-4xl mx-auto space-y-8">
-                    <div class="bg-blue-50 dark:bg-blue-900 rounded-lg p-8 border-l-4 border-blue-600">
+                    <div class="bg-blue-50 dark:bg-blue-900 rounded-lg p-8 border-l-4 border-[#2a5189] dark:border-blue-600">
                         <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">"Class Format"</h3>
                         <p class="text-lg text-gray-700 dark:text-gray-300 mb-4">
                             "This course meets twice a week, with each class lasting 2 hours and divided into two parts:"
                         </p>
                         <ul class="space-y-3">
                             <li class="flex items-start space-x-3">
-                                <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="w-2 h-2 bg-[#2a5189] dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
                                 <span class="text-gray-700 dark:text-gray-300">"60 minutes of lecture covering poker theory and strategic decision-making"</span>
                             </li>
                             <li class="flex items-start space-x-3">
-                                <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="w-2 h-2 bg-[#2a5189] dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
                                 <span class="text-gray-700 dark:text-gray-300">"60 minutes of guided playing session using play money on PokerNow"</span>
                             </li>
                         </ul>
@@ -233,14 +233,14 @@ fn CourseStructureSection() -> impl IntoView {
 #[component]
 fn CourseScheduleSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-gray-50 dark:bg-gray-900">
+        <section class="py-20 bg-[#c8d1d9] dark:bg-gray-900">
             <div class="max-w-7xl mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-4">
                     "Course Schedule"
                 </h2>
                 <p class="text-center text-gray-600 dark:text-gray-400 mb-12">"Subject to change"</p>
 
-                <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-x-auto">
+                <div class="bg-[#dde3e8] dark:bg-gray-700 rounded-lg shadow-lg overflow-x-auto">
                     <table class="w-full">
                         <thead class="bg-blue-600 text-white">
                             <tr>
@@ -351,7 +351,7 @@ fn ScheduleRow(
     #[prop(optional)] slides: Option<Vec<(&'static str, &'static str)>>,
 ) -> impl IntoView {
     view! {
-        <tr class="hover:bg-gray-50 dark:hover:bg-gray-600">
+        <tr class="hover:bg-[#cfd7de] dark:hover:bg-gray-600">
             <td class="px-4 py-4 text-center font-semibold text-gray-900 dark:text-white">{week}</td>
             <td class="px-4 py-4">
                 <ul class="space-y-2">
@@ -371,7 +371,7 @@ fn ScheduleRow(
                             {slide_list.into_iter().map(|(label, url)| {
                                 view! {
                                     <li>
-                                        <a href=url target="_blank" class="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline">
+                                        <a href=url target="_blank" class="text-sm text-[#2a5189] dark:text-blue-400 hover:text-[#1f3d68] dark:hover:text-blue-300 underline">
                                             {label}
                                         </a>
                                     </li>
@@ -388,7 +388,7 @@ fn ScheduleRow(
 #[component]
 fn CourseDetail(label: &'static str, value: &'static str) -> impl IntoView {
     view! {
-        <div class="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-600">
+        <div class="flex justify-between items-center py-2 border-b border-[#b8c2cb] dark:border-gray-600">
             <span class="text-gray-600 dark:text-gray-400 font-medium">{label}</span>
             <span class="text-gray-900 dark:text-white font-semibold">{value}</span>
         </div>
@@ -410,8 +410,8 @@ fn LearningObjective(text: &'static str) -> impl IntoView {
 #[component]
 fn TopicItem(week: &'static str, topic: &'static str) -> impl IntoView {
     view! {
-        <div class="flex items-start space-x-3 p-4 bg-white dark:bg-gray-700 rounded-lg">
-            <div class="text-blue-600 dark:text-blue-400 font-bold text-sm flex-shrink-0 pt-1">
+        <div class="flex items-start space-x-3 p-4 bg-[#dde3e8] dark:bg-gray-700 rounded-lg">
+            <div class="text-[#2a5189] dark:text-blue-400 font-bold text-sm flex-shrink-0 pt-1">
                 {week}
             </div>
             <div class="text-gray-700 dark:text-gray-300 text-sm">
@@ -424,7 +424,7 @@ fn TopicItem(week: &'static str, topic: &'static str) -> impl IntoView {
 #[component]
 fn InstructorsSection() -> impl IntoView {
     view! {
-        <section id="course-staff" class="scroll-mt-6 py-20 bg-gray-50 dark:bg-gray-900">
+        <section id="course-staff" class="scroll-mt-6 py-20 bg-[#c8d1d9] dark:bg-gray-900">
             <div class="max-w-6xl mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
                     "Course Staff"
@@ -498,7 +498,7 @@ fn InstructorCard(
     let obfuscated_email = email.replace('.', " [dot] ");
 
     view! {
-        <div class="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+        <div class="border border-[#b8c2cb] dark:border-gray-700 bg-[#dde3e8] dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg">
             <div class="w-full h-72 md:h-80 lg:h-72 xl:h-80">
                 <img src=image alt=name class="w-full h-72 md:h-80 lg:h-72 xl:h-80 object-cover" loading="lazy" />
             </div>
@@ -514,14 +514,14 @@ fn InstructorCard(
 #[component]
 fn GradingSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-white dark:bg-gray-800">
+        <section class="py-20 bg-[#c8d1d9] dark:bg-gray-800">
             <div class="max-w-6xl mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
                     "Grading & Requirements"
                 </h2>
 
                 <div class="max-w-4xl mx-auto">
-                    <div class="bg-blue-50 dark:bg-blue-900 rounded-lg p-8 mb-8 border-l-4 border-blue-600">
+                    <div class="bg-blue-50 dark:bg-blue-900 rounded-lg p-8 mb-8 border-l-4 border-[#2a5189] dark:border-blue-600">
                         <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">"Pass Requirement"</h3>
                         <p class="text-lg text-gray-700 dark:text-gray-300">
                             "To receive a 'P' (Pass) for this course, students must complete the Final Project and achieve an overall score of 70% or higher."
@@ -551,7 +551,7 @@ fn GradingSection() -> impl IntoView {
                         />
                     </div>
 
-                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
+                    <div class="bg-[#d6dde3] dark:bg-gray-700 rounded-lg p-6">
                         <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">"Important Note"</h3>
                         <p class="text-gray-700 dark:text-gray-300">
                             "This course uses play money only—no real money is wagered at any time. The focus is on probability, statistics, and decision-making, not gambling."
@@ -570,10 +570,10 @@ fn GradingItem(
     description: &'static str,
 ) -> impl IntoView {
     view! {
-        <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 border-t-4 border-blue-600">
+        <div class="bg-[#dde3e8] dark:bg-gray-700 rounded-lg shadow-md p-6 border-t-4 border-[#2a5189] dark:border-blue-600">
             <div class="flex justify-between items-center mb-3">
                 <h4 class="text-lg font-bold text-gray-900 dark:text-white">{category}</h4>
-                <span class="text-2xl font-bold text-blue-600">{percentage}</span>
+                <span class="text-2xl font-bold text-[#2a5189] dark:text-blue-600">{percentage}</span>
             </div>
             <p class="text-sm text-gray-600 dark:text-gray-400">{description}</p>
         </div>
@@ -594,7 +594,7 @@ fn ApplySection(title: &'static str) -> impl IntoView {
                             href=DECAL_APPLICATION_FORM
                             target="_blank"
                             rel="noopener"
-                            class="bg-white text-slate-900 font-semibold py-3 px-6 rounded-lg shadow-md ring-2 ring-white/40 hover:bg-slate-50 hover:shadow-lg transition-all"
+                            class="bg-[#dde3e8] text-slate-900 font-semibold py-3 px-6 rounded-lg shadow-md ring-2 ring-white/40 hover:bg-slate-50 hover:shadow-lg transition-all"
                         >
                             "Apply"
                         </a>
@@ -620,9 +620,9 @@ fn ApplySection(title: &'static str) -> impl IntoView {
 #[component]
 fn DecalApplyBar() -> impl IntoView {
     view! {
-        <section class="pt-8 pb-6 bg-slate-900">
+        <section class="pt-8 pb-6 bg-[#d6dde3] dark:bg-slate-900">
             <div class="px-6 md:px-16 text-center mb-10">
-                <p class="text-base md:text-lg text-white/80 leading-relaxed">
+                <p class="text-base md:text-lg text-gray-700 dark:text-white/80 leading-relaxed">
                     "The Poker DeCal is a 2-unit student-run course offered through UC Berkeley's Statistics Department every semester. The curriculum was developed entirely by Poker at Berkeley and is one of the largest and most established DeCals on campus."
                 </p>
             </div>
@@ -632,7 +632,7 @@ fn DecalApplyBar() -> impl IntoView {
                         href=DECAL_APPLICATION_FORM
                         target="_blank"
                         rel="noopener"
-                        class="bg-white text-slate-900 font-semibold py-3 px-6 rounded-lg shadow-md ring-2 ring-white/40 hover:bg-slate-50 hover:shadow-lg transition-all"
+                        class="bg-[#2a5189] text-white dark:bg-[#dde3e8] dark:text-slate-900 font-semibold py-3 px-6 rounded-lg shadow-md ring-2 ring-white/40 hover:bg-[#1f3d68] dark:hover:bg-slate-50 hover:shadow-lg transition-all"
                     >
                         "Apply"
                     </a>
@@ -649,10 +649,10 @@ fn DecalApplyBar() -> impl IntoView {
                         "Syllabus"
                     </a>
                 </div>
-                <p class="text-sm text-white/80 mt-6">
+                <p class="text-sm text-gray-700 dark:text-white/80 mt-6">
                     "Applications Due: TBD"
                 </p>
-                <p class="text-sm text-white/80">
+                <p class="text-sm text-gray-700 dark:text-white/80">
                     "2 Units | Section Times: TBD"
                 </p>
             </div>

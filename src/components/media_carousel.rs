@@ -6,7 +6,7 @@ pub fn MediaCarousel(
     images: Vec<&'static str>,
 ) -> impl IntoView {
     view! {
-        <section class="pt-12 pb-8 bg-white dark:bg-gray-900">
+        <section class="pt-12 pb-8 bg-[#c8d1d9] dark:bg-gray-900">
 
             <div class="max-w-7xl mx-auto px-6">
                 <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">

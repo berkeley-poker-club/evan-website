@@ -46,7 +46,7 @@ fn MemberSection() -> impl IntoView {
     let (active_form, set_active_form) = signal::<Option<&'static str>>(None);
 
     view! {
-        <section id="member" class="scroll-mt-24 py-20 bg-white dark:bg-gray-800">
+        <section id="member" class="scroll-mt-24 py-20 bg-[#c8d1d9] dark:bg-gray-800">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div>
@@ -55,19 +55,19 @@ fn MemberSection() -> impl IntoView {
                                 <span>"For a small registration fee you have access to:"</span>
                             </li>
                             <li class="flex items-start space-x-3">
-                                <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="w-2 h-2 bg-[#2a5189] dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
                                 <span><b>"All Poker @ Berkeley tournaments, game nights, and events"</b></span>
                             </li>
                             <li class="flex items-start space-x-3">
-                                <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="w-2 h-2 bg-[#2a5189] dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
                                 <span>"A free, customizable player card."</span>
                             </li>
                             <li class="flex items-start space-x-3">
-                                <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="w-2 h-2 bg-[#2a5189] dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
                                 <span>"A place in the Poker @ Berkeley resume book used by our sponsors, and networking opportunities with our sponsors."</span>
                             </li>
                             <li class="flex items-start space-x-3">
-                                <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="w-2 h-2 bg-[#2a5189] dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
                                 <span>"Access to tournament prize pools worth a total of $10000+ per year."</span>
                             </li>
                         </ul>

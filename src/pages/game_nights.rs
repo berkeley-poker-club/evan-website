@@ -36,7 +36,7 @@ fn HeroBanner() -> impl IntoView {
 #[component]
 fn GameNightsSection() -> impl IntoView {
     view! {
-        <section id="game-nights" class="scroll-mt-24 py-20 bg-gray-50 dark:bg-gray-900">
+        <section id="game-nights" class="scroll-mt-24 py-20 bg-[#c8d1d9] dark:bg-gray-900">
             <div class="max-w-6xl mx-auto px-6">
                 <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-6 text-center">
                     "Game Nights"
@@ -167,7 +167,7 @@ fn InfoCard(
     bullets: Vec<&'static str>,
 ) -> impl IntoView {
     view! {
-        <article class="w-full max-w-[380px] self-stretch rounded-lg bg-white dark:bg-gray-800 p-6 shadow-sm ring-1 ring-black/5 dark:ring-white/10">
+        <article class="w-full max-w-[380px] self-stretch rounded-lg bg-[#dde3e8] dark:bg-gray-800 p-6 shadow-sm ring-1 ring-black/5 dark:ring-white/10">
             <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
                 {title}
             </h3>

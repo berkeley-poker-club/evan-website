@@ -45,7 +45,7 @@ fn HeroBanner() -> impl IntoView {
 #[component]
 fn OfficerSection() -> impl IntoView {
     view! {
-        <section id="officer" class="scroll-mt-24 py-20 bg-gray-50 dark:bg-gray-900">
+        <section id="officer" class="scroll-mt-24 py-20 bg-[#c8d1d9] dark:bg-gray-900">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div class="flex flex-col items-center gap-4 text-center">
@@ -74,22 +74,22 @@ fn OfficerSection() -> impl IntoView {
                     <div>
                         <ul class="space-y-3 text-gray-700 dark:text-gray-300">
                             <li class="flex items-start space-x-3">
-                                <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="w-2 h-2 bg-[#2a5189] dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
                                 <div>
                                     <p>"Poker @ Berkeley is a purely officer-driven club. Officers are a tight-knit group committed to building the poker community in Berkeley and beyond. Despite varied academic interests, our members share a passion for poker that translates into lifelong friendships."</p>
                                     <p class="mt-3">"Our officer applications are now open and all students are welcome to apply — undergrad (including freshman) and grad encouraged."</p>
                                 </div>
                             </li>
                             <li class="flex items-start space-x-3">
-                                <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="w-2 h-2 bg-[#2a5189] dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
                                 <span>"Officers build projects, run the best events on campus, compete in outside tournaments, and enjoy socials and club retreats, both poker and non-poker alike."</span>
                             </li>
                             <li class="flex items-start space-x-3">
-                                <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="w-2 h-2 bg-[#2a5189] dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
                                 <span>"We partner with big names in poker tech and quant finance, including a recent collaboration with BBO Poker Tables to build a custom Poker @ Berkeley RFID table, a partnership with PokerGFX to run our own live stream, and work with GTO Wizard and PokerNow."</span>
                             </li>
                             <li class="flex items-start space-x-3">
-                                <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="w-2 h-2 bg-[#2a5189] dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
                                 <span>"These partnerships give you the chance to work closely with real industry tools and sponsors."</span>
                             </li>
                         </ul>
@@ -103,7 +103,7 @@ fn OfficerSection() -> impl IntoView {
 #[component]
 fn BoardCollageSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-white dark:bg-gray-800">
+        <section class="py-20 bg-[#c8d1d9] dark:bg-gray-800">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="flex flex-col md:flex-row gap-6">
                     <img
@@ -127,7 +127,7 @@ fn BoardCollageSection() -> impl IntoView {
 #[component]
 fn OfficerFaqSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-white dark:bg-gray-800">
+        <section class="py-20 bg-[#c8d1d9] dark:bg-gray-800">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     <div>
@@ -135,7 +135,7 @@ fn OfficerFaqSection() -> impl IntoView {
                             "Officer FAQ"
                         </h2>
                         <div class="space-y-4">
-                            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 shadow-sm">
+                            <div class="bg-[#d6dde3] dark:bg-gray-700 rounded-lg p-6 shadow-sm">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                                     "What do officers do?"
                                 </h3>
@@ -143,7 +143,7 @@ fn OfficerFaqSection() -> impl IntoView {
                                     "Officers primarily help organize and run club events/tournaments, manage communications, and handle sponsorship relations. Specific responsibilities may vary based on the officer role."
                                 </p>
                             </div>
-                            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 shadow-sm">
+                            <div class="bg-[#d6dde3] dark:bg-gray-700 rounded-lg p-6 shadow-sm">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                                     "What qualities are you looking for in officers?"
                                 </h3>
@@ -151,7 +151,7 @@ fn OfficerFaqSection() -> impl IntoView {
                                     "We look for individuals who are passionate about poker, have strong organizational and communication skills, and are committed to contributing to the club's growth and success. Some mathematical background is a plus, but not necessarily required. Other skills including design, programming, teaching, and marketing are also highly valued."
                                 </p>
                             </div>
-                            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 shadow-sm">
+                            <div class="bg-[#d6dde3] dark:bg-gray-700 rounded-lg p-6 shadow-sm">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                                     "Can officers participate in tournaments?"
                                 </h3>
@@ -163,7 +163,7 @@ fn OfficerFaqSection() -> impl IntoView {
                                     <li>"Officers get a lot of cool merch, food, etc., the EV of which is possibly higher than the EV of your prize pool winnings in tournaments."</li>
                                 </ol>
                             </div>
-                            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 shadow-sm">
+                            <div class="bg-[#d6dde3] dark:bg-gray-700 rounded-lg p-6 shadow-sm">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                                     "I applied last semester but wasn't selected. Can I reapply?"
                                 </h3>
@@ -171,7 +171,7 @@ fn OfficerFaqSection() -> impl IntoView {
                                     "Absolutely! We encourage previous applicants to reapply, especially if they have gained new experiences or skills since their last application."
                                 </p>
                             </div>
-                            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 shadow-sm">
+                            <div class="bg-[#d6dde3] dark:bg-gray-700 rounded-lg p-6 shadow-sm">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                                     "How many officers are typically selected each semester?"
                                 </h3>

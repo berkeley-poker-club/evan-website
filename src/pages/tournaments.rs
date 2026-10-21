@@ -255,7 +255,7 @@ pub fn TournamentsPage() -> impl IntoView {
         <Title text="Tournaments | Poker at Berkeley" />
         <div class="min-h-screen">
             <HeroBanner />
-            <div class="bg-gray-100 dark:bg-gray-900">
+            <div class="bg-[#dcd8cc] dark:bg-gray-900">
                 <MediaCarousel
                     title="Spring 2026 Stanford x Berkeley Highlights"
                     images=STANFORD26_IMAGES.to_vec()
@@ -294,7 +294,7 @@ fn MediaCarousel(
         </style>
         <section class="py-6">
             <div class="max-w-7xl mx-auto px-4 sm:px-6">
-                <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-4 sm:p-6 md:p-8 shadow-sm">
+                <div class="bg-[#dde3e8] dark:bg-gray-800 border border-[#b8c2cb] dark:border-gray-700 rounded-2xl p-4 sm:p-6 md:p-8 shadow-sm">
                     <h2
                         class="text-2xl sm:text-3xl mb-2 sm:mb-6 text-gray-900 dark:text-white"
                         style="font-family: 'Figtree', sans-serif; font-weight: 600; letter-spacing: 0.05em;"
@@ -358,12 +358,12 @@ fn HeroBanner() -> impl IntoView {
 #[component]
 fn UpcomingTournamentSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-white dark:bg-gray-800">
+        <section class="py-20 bg-[#c8d1d9] dark:bg-gray-800">
             <div class="max-w-6xl mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-4">
                     "Upcoming Tournaments"
                 </h2>
-                <h3 class="text-2xl font-semibold text-center text-blue-600 dark:text-blue-400 mb-12">
+                <h3 class="text-2xl font-semibold text-center text-[#2a5189] dark:text-blue-400 mb-12">
                     "2026–2027"
                 </h3>
 
@@ -418,22 +418,22 @@ fn UpcomingTournamentCard(
     highlight: bool,
 ) -> impl IntoView {
     let border_class = if highlight {
-        "border-l-4 border-l-blue-600 dark:border-l-blue-400"
+        "border-l-4 border-l-[#2a5189] dark:border-l-blue-400"
     } else {
         "border-l-4 border-l-gray-300 dark:border-l-gray-600"
     };
 
     view! {
-        <div class=format!("bg-gray-50 dark:bg-gray-700 rounded-lg p-6 {}", border_class)>
+        <div class=format!("bg-[#d6dde3] dark:bg-gray-700 rounded-lg p-6 {}", border_class)>
             <div class="mb-4">
                 <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{title}</h4>
-                <p class="text-blue-600 dark:text-blue-400 font-semibold">{date}</p>
+                <p class="text-[#2a5189] dark:text-blue-400 font-semibold">{date}</p>
             </div>
             <ul class="space-y-2">
                 {details.into_iter().map(|detail| {
                     view! {
                         <li class="flex items-start space-x-2">
-                            <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                            <div class="w-2 h-2 bg-[#2a5189] dark:bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
                             <span class="text-gray-700 dark:text-gray-300 text-sm">{detail}</span>
                         </li>
                     }
@@ -456,7 +456,7 @@ fn TournamentDetail(label: &'static str, value: &'static str) -> impl IntoView {
 #[component]
 fn TournamentHistorySection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-gray-50 dark:bg-gray-900">
+        <section class="py-20 bg-[#c8d1d9] dark:bg-gray-900">
             <div class="max-w-6xl mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
                     "Past Tournaments"
@@ -527,7 +527,7 @@ fn TournamentHistoryCard(
     notion_link: &'static str,
 ) -> impl IntoView {
     view! {
-        <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+        <div class="bg-[#dde3e8] dark:bg-gray-700 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
             <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{title}</h3>
             <p class="text-gray-600 dark:text-gray-300 mb-4">{date}</p>
 

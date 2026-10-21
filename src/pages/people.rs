@@ -32,7 +32,7 @@ fn HeroBanner() -> impl IntoView {
 #[component]
 fn BoardSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-gray-50 dark:bg-gray-900">
+        <section class="py-20 bg-[#c8d1d9] dark:bg-gray-900">
             <div class="max-w-[1600px] mx-auto px-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <MemberCard
@@ -227,7 +227,7 @@ fn BoardSection() -> impl IntoView {
 #[component]
 fn AlumniSection() -> impl IntoView {
     view! {
-        <section class="py-20 bg-white dark:bg-gray-800">
+        <section class="py-20 bg-[#c8d1d9] dark:bg-gray-800">
             <div class="max-w-6xl mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-8">
                     "Alumni"
@@ -276,10 +276,10 @@ fn MemberCard(
     let has_more = !preview.is_empty();
 
     view! {
-        <div class="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+        <div class="border border-[#b8c2cb] dark:border-gray-700 bg-[#dde3e8] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
             {if image.is_empty() {
                 view! {
-                    <div class="w-full h-72 md:h-80 lg:h-72 xl:h-80 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                    <div class="w-full h-72 md:h-80 lg:h-72 xl:h-80 bg-[#bdc7d0] dark:bg-gray-700 flex items-center justify-center">
                         <span class="text-gray-500 dark:text-gray-300 text-4xl font-bold">
                             {name.chars().next().unwrap_or('?').to_string()}
                         </span>
@@ -298,7 +298,7 @@ fn MemberCard(
                         view! { <span>{name}</span> }.into_any()
                     } else {
                         view! {
-                            <a href=linkedin target="_blank" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <a href=linkedin target="_blank" class="hover:text-[#2a5189] dark:hover:text-blue-400 transition-colors">
                                 {name}
                             </a>
                         }.into_any()
@@ -308,12 +308,12 @@ fn MemberCard(
                     view! {
                         <p class="font-semibold mb-3">
                             <span class="block" style="color: #D4A017;">"President"</span>
-                            <span class="block text-blue-600 dark:text-blue-400">"Head of DeCal"</span>
+                            <span class="block text-[#2a5189] dark:text-blue-400">"Head of DeCal"</span>
                         </p>
                     }.into_any()
                 } else {
                     view! {
-                        <p class="text-blue-600 dark:text-blue-400 font-semibold mb-3 whitespace-pre-line">{role}</p>
+                        <p class="text-[#2a5189] dark:text-blue-400 font-semibold mb-3 whitespace-pre-line">{role}</p>
                     }.into_any()
                 }}
                 {if has_more {
@@ -330,11 +330,11 @@ fn MemberCard(
                             <summary class="cursor-pointer list-none">
                                 <span class="bio-preview">
                                     {preview} "… "
-                                    <span class="font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300">
+                                    <span class="font-semibold text-[#2a5189] dark:text-blue-400 hover:text-[#1f3d68] dark:hover:text-blue-300">
                                         "See more…"
                                     </span>
                                 </span>
-                                <span class="bio-collapse font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300">
+                                <span class="bio-collapse font-semibold text-[#2a5189] dark:text-blue-400 hover:text-[#1f3d68] dark:hover:text-blue-300">
                                     "Show less"
                                 </span>
                             </summary>
@@ -371,7 +371,7 @@ fn AlumniCard(
                     <a
                         href=linkedin
                         target="_blank"
-                        class="text-sm text-gray-700 dark:text-gray-300 font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                        class="text-sm text-gray-700 dark:text-gray-300 font-medium hover:text-[#2a5189] dark:hover:text-blue-400 transition-colors"
                     >
                         {name}
                     </a>

@@ -9,7 +9,7 @@ pub fn ThemeToggle() -> impl IntoView {
     view! {
         <button
             on:click=move |_| toggle()
-            class="p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            class="p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-[#dcd8cc] dark:hover:bg-gray-700 transition-colors"
             aria-label="Toggle theme"
         >
             {move || match ctx.theme.get() {
