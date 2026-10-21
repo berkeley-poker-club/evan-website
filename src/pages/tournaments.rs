@@ -1,5 +1,6 @@
 use leptos::prelude::*;
 use leptos_meta::Title;
+use crate::components::CarouselImage;
 
 const STANFORD26_IMAGES: &[&str] = &[
     "/public/images/stanfxcal26/Q62A1237.webp",
@@ -319,11 +320,11 @@ fn MediaCarousel(
                                     shadow-xl
                                 "
                             >
-                                <img
-                                    src=src
+                                <CarouselImage
+                                    local_src=src
                                     alt=format!("{} photo {}", title, i + 1)
                                     class="w-full aspect-[4/3] h-auto object-cover"
-                                    loading="lazy"
+                                    eager=i == 0
                                 />
                             </div>
                         }).collect::<Vec<_>>()}
