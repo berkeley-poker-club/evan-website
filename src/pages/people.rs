@@ -86,7 +86,7 @@ fn BoardSection() -> impl IntoView {
                     <MemberCard
                         name="Evan Luo"
                         role="Finance Director"
-                        image="/public/images/newheadshots/evan2.webp"
+                        image="/public/images/officers/evan.webp"
                         preview="Evan is a junior studying EECS from San Diego."
                         bio=|| view! {
                             <>
@@ -99,8 +99,15 @@ fn BoardSection() -> impl IntoView {
                         linkedin="https://www.linkedin.com/in/theevanluo/"
                     />
                     <MemberCard
-                        name="Pranshu Rao"
+                        name="Szymon Jackowski"
                         role="Head of Sponsorships"
+                        image="/public/images/officers/szymon.webp"
+                        bio=|| view! { <></> }.into_any()
+                        linkedin="https://www.linkedin.com/in/szymonjackowski"
+                    />
+                    <MemberCard
+                        name="Pranshu Rao"
+                        role="Senior Advisor"
                         image="/public/images/officers/pranshu.webp"
                         preview="Pranshu is a Chicago native studying EECS at Berkeley, having spent 10 years in Germany."
                         bio=|| view! {
@@ -127,7 +134,7 @@ fn BoardSection() -> impl IntoView {
                     <MemberCard
                         name="Milly Barandish"
                         role="Head of Emotional Support"
-                        image="/public/images/officers/milly.webp"
+                        image="/public/images/officers/milly2.webp"
                         preview="Milly is originally from Texas, which is why she refuses the"
                         bio=|| view! {
                             <>
@@ -143,17 +150,10 @@ fn BoardSection() -> impl IntoView {
                     />
                     <MemberCard
                         name="Jennifer Ren"
-                        role="Head of Media"
+                        role="Player Card Coordinator"
                         image="/public/images/officers/jen.webp"
                         bio=|| view! { <></> }.into_any()
                         linkedin="https://www.linkedin.com/in/jennifer-ren/"
-                    />
-                    <MemberCard
-                        name="Szymon Jackowski"
-                        role="Sponsorships"
-                        image="/public/images/officers/szymon.webp"
-                        bio=|| view! { <></> }.into_any()
-                        linkedin="https://www.linkedin.com/in/szymonjackowski"
                     />
                     <MemberCard
                         name="Timur Usmonov"
@@ -177,25 +177,18 @@ fn BoardSection() -> impl IntoView {
                         linkedin="https://www.linkedin.com/in/joe-zhou-a6159b230/"
                     />
                     <MemberCard
-                        name="Kenneth Lee"
-                        role="Officer"
-                        image="/public/images/officers/kenneth.webp"
-                        bio=|| view! { <></> }.into_any()
-                        linkedin="https://www.linkedin.com/in/kenneth-lee-3b2846217?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
-                    />
-                    <MemberCard
-                        name="Anjana Niranjanan"
-                        role="Officer"
-                        image="/public/images/officers/anjana.webp"
-                        bio=|| view! { <></> }.into_any()
-                        linkedin=""
-                    />
-                    <MemberCard
                         name="Eamon Jia"
                         role="Officer"
                         image="/public/images/officers/eamon.webp"
                         bio=|| view! { <></> }.into_any()
                         linkedin=""
+                    />
+                    <MemberCard
+                        name="Kenneth Lee"
+                        role="Officer"
+                        image="/public/images/officers/kenneth.webp"
+                        bio=|| view! { <></> }.into_any()
+                        linkedin="https://www.linkedin.com/in/kenneth-lee-3b2846217?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
                     />
                     <MemberCard
                         name="Suyeon Shin"
@@ -208,6 +201,13 @@ fn BoardSection() -> impl IntoView {
                         name="Arav Kumar"
                         role="Officer"
                         image="/public/images/officers/arav.webp"
+                        bio=|| view! { <></> }.into_any()
+                        linkedin=""
+                    />
+                    <MemberCard
+                        name="Anjana Niranjanan"
+                        role="Officer"
+                        image="/public/images/officers/anjana.webp"
                         bio=|| view! { <></> }.into_any()
                         linkedin=""
                     />
@@ -234,11 +234,11 @@ fn AlumniSection() -> impl IntoView {
                 </h2>
 
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
-                    <AlumniCard name="Grace Tang" image="/public/images/newheadshots/grace.jpg" linkedin="https://www.linkedin.com/in/grace-j-tang/" />
-                    <AlumniCard name="Juan Belza-Garcia" image="/public/images/officers/juan.webp" linkedin="https://www.linkedin.com/in/juan-belza/" />
-                    <AlumniCard name="Sriram Srivatsan" image="/public/images/officers/sriram.webp" linkedin="https://www.linkedin.com/in/sriram-eecs/" />
-                    <AlumniCard name="Evan Yeager" image="/public/images/officers/yevan.webp" linkedin="https://www.linkedin.com/in/evanyeager/" />
-                    <AlumniCard name="Johan Ko" image="/public/images/officers/johan.webp" linkedin="https://www.linkedin.com/in/kojohan/" />
+                    <AlumniCard name="Grace Tang" image="/public/images/alumni/grace.webp" linkedin="https://www.linkedin.com/in/grace-j-tang/" />
+                    <AlumniCard name="Juan Belza-Garcia" image="/public/images/alumni/juan.webp" linkedin="https://www.linkedin.com/in/juan-belza/" />
+                    <AlumniCard name="Sriram Srivatsan" image="/public/images/alumni/sriram.webp" linkedin="https://www.linkedin.com/in/sriram-eecs/" />
+                    <AlumniCard name="Evan Yeager" image="/public/images/alumni/yevan.webp" linkedin="https://www.linkedin.com/in/evanyeager/" />
+                    <AlumniCard name="Johan Ko" image="/public/images/alumni/johan.webp" linkedin="https://www.linkedin.com/in/kojohan/" />
                     <AlumniCard name="Welford Chen" image="/public/images/alumni/welford.webp" linkedin="https://www.linkedin.com/in/welford-chen-803084301/" />
                     <AlumniCard name="Ariel Qian" image="/public/images/alumni/ariel.webp" linkedin="https://www.linkedin.com/in/arielqian/" />
                     <AlumniCard name="Samarth Goel" image="/public/images/alumni/samarth.webp" linkedin="https://www.linkedin.com/in/samarthgoel1/" />
