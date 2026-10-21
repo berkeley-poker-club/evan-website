@@ -16,17 +16,8 @@ pub fn PeoplePage() -> impl IntoView {
 #[component]
 fn HeroBanner() -> impl IntoView {
     view! {
-        <section id="banner" class="relative min-h-screen flex items-center justify-center"
-                 style="background-image: url('/public/images/sp26board/standinghearst-pano.webp'); background-size: cover; background-position: center center;">
-            <div class="absolute inset-0" style="background-color: rgba(0, 0, 0, 0.30);"></div>
-            <div class="relative z-10 max-w-4xl mx-auto text-center px-6" style="transform: translateY(150%);">
-                <h1 class="text-5xl md:text-6xl font-bold text-white mb-4" style="font-family: 'Plus Jakarta Sans', sans-serif;">
-                    "Officers"
-                </h1>
-                <p class="text-xl text-white/90">
-                    "Meet the dedicated team behind Poker at Berkeley"
-                </p>
-            </div>
+        <section id="banner" class="relative w-full flex items-center justify-center"
+                 style="background-image: url('/public/images/Officers.webp'); background-size: cover; background-position: center center; aspect-ratio: 5214 / 3221;">
             <div class="absolute bottom-20 left-0 z-10 flex w-full justify-center">
                 <div class="animate-bounce" style="animation-duration: 2.6s;">
                     <svg class="w-10 h-10 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -184,20 +175,6 @@ fn BoardSection() -> impl IntoView {
                         image="/public/images/officers/joe.webp"
                         bio=|| view! { <></> }.into_any()
                         linkedin="https://www.linkedin.com/in/joe-zhou-a6159b230/"
-                    />
-                    <MemberCard
-                        name="Tanya Zhang"
-                        role="Media"
-                        image="/public/images/officers/tanya.webp"
-                        bio=|| view! { <></> }.into_any()
-                        linkedin="https://www.linkedin.com/in/tanyashenzhang/"
-                    />
-                    <MemberCard
-                        name="Stella Liu"
-                        role="Officer"
-                        image="/public/images/officers/stella.webp"
-                        bio=|| view! { <></> }.into_any()
-                        linkedin=""
                     />
                     <MemberCard
                         name="Kenneth Lee"
