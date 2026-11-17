@@ -396,13 +396,38 @@ fn MediaCarousel(
 
 #[component]
 fn HeroBanner() -> impl IntoView {
+    // The photo and the title are separate layers. The photo always spans the full width (sides are
+    // never cropped) and is anchored to the top; the banner is at most 70vh tall, so on wide screens
+    // only the bottom of the photo is cut off, and on phones the whole photo shows.
+    // The inner box has the photo's aspect ratio (1920x1269), so the title keeps its place from the
+    // original composite (cropped from the 5823x3850 overlay at 471,404, 4963px wide:
+    // 8.09% / 10.49% / 85.23%).
     view! {
         <section
             id="banner"
-            class="relative w-full flex items-center justify-center bg-cover"
-            style="height: 70vh; background-image: url('/public/images/tournament-banner5th.webp'); background-position: center 15%;"
+            class="relative w-full"
+            style="aspect-ratio: 1920 / 1269; max-height: 70vh; overflow: hidden;"
         >
-            // The banner image carries its own title, so the page heading is visually hidden (kept for SEO/screen readers).
+            <div style="position: absolute; top: 0; left: 0; width: 100%; aspect-ratio: 1920 / 1269;">
+                <img
+                    src="/public/images/tournament-photo-1920.webp"
+                    srcset="/public/images/tournament-photo-960.webp 960w, /public/images/tournament-photo-1920.webp 1920w"
+                    sizes="100vw"
+                    alt="Players at the Berkeley x Stanford Poker Tournament"
+                    width="1920"
+                    height="1269"
+                    fetchpriority="high"
+                    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+                />
+                <img
+                    src="/public/images/tournament-title.webp"
+                    alt="Berkeley x Stanford 5th Annual Poker Tournament"
+                    width="2400"
+                    height="379"
+                    style="position: absolute; top: 10.49%; left: 8.09%; width: 85.23%; height: auto;"
+                />
+            </div>
+            // The title is an image, so the page heading is visually hidden (kept for SEO/screen readers).
             <h1 style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;">
                 "Tournaments"
             </h1>
