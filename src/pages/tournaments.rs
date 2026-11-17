@@ -2,6 +2,61 @@ use leptos::prelude::*;
 use leptos_meta::Title;
 use crate::components::CarouselImage;
 
+const STANFORD_F26_IMAGES: &[&str] = &[
+    "/public/images/stanfxcal-f26/DSC01316.webp",
+    "/public/images/stanfxcal-f26/DSC01408.webp",
+    "/public/images/stanfxcal-f26/DSC01206.webp",
+    "/public/images/stanfxcal-f26/DSC01121.webp",
+    "/public/images/stanfxcal-f26/DSC01107.webp",
+    "/public/images/stanfxcal-f26/DSC01113.webp",
+    "/public/images/stanfxcal-f26/DSC01119.webp",
+    "/public/images/stanfxcal-f26/DSC01123.webp",
+    "/public/images/stanfxcal-f26/DSC01139.webp",
+    "/public/images/stanfxcal-f26/DSC01158.webp",
+    "/public/images/stanfxcal-f26/DSC01196.webp",
+    "/public/images/stanfxcal-f26/DSC01201.webp",
+    "/public/images/stanfxcal-f26/DSC01220.webp",
+    "/public/images/stanfxcal-f26/DSC01301.webp",
+    "/public/images/stanfxcal-f26/DSC01315.webp",
+    "/public/images/stanfxcal-f26/DSC01434.webp",
+    "/public/images/stanfxcal-f26/DSC01440.webp",
+    "/public/images/stanfxcal-f26/DSC01447.webp",
+    "/public/images/stanfxcal-f26/DSC01457.webp",
+    "/public/images/stanfxcal-f26/DSC01464.webp",
+    "/public/images/stanfxcal-f26/DSC01466.webp",
+    "/public/images/stanfxcal-f26/DSC01471.webp",
+    "/public/images/stanfxcal-f26/DSC01478.webp",
+    "/public/images/stanfxcal-f26/DSC01482.webp",
+    "/public/images/stanfxcal-f26/DSC01483.webp",
+    "/public/images/stanfxcal-f26/DSC01486.webp",
+    "/public/images/stanfxcal-f26/DSC01492.webp",
+    "/public/images/stanfxcal-f26/DSC01501.webp",
+    "/public/images/stanfxcal-f26/DSC01502.webp",
+    "/public/images/stanfxcal-f26/DSC01510.webp",
+    "/public/images/stanfxcal-f26/DSC01512.webp",
+    "/public/images/stanfxcal-f26/DSC01514.webp",
+    "/public/images/stanfxcal-f26/DSC01521.webp",
+    "/public/images/stanfxcal-f26/DSC01523.webp",
+    "/public/images/stanfxcal-f26/DSC01531.webp",
+    "/public/images/stanfxcal-f26/DSC01535.webp",
+    "/public/images/stanfxcal-f26/DSC01536.webp",
+    "/public/images/stanfxcal-f26/DSC01541.webp",
+    "/public/images/stanfxcal-f26/DSC01548.webp",
+    "/public/images/stanfxcal-f26/DSC01549.webp",
+    "/public/images/stanfxcal-f26/DSC01554.webp",
+    "/public/images/stanfxcal-f26/DSC01565.webp",
+    "/public/images/stanfxcal-f26/DSC01566.webp",
+    "/public/images/stanfxcal-f26/DSC01574.webp",
+    "/public/images/stanfxcal-f26/DSC01576.webp",
+    "/public/images/stanfxcal-f26/DSC01577.webp",
+    "/public/images/stanfxcal-f26/DSC01587.webp",
+    "/public/images/stanfxcal-f26/DSC01595.webp",
+    "/public/images/stanfxcal-f26/DSC01599.webp",
+    "/public/images/stanfxcal-f26/DSC01605.webp",
+    "/public/images/stanfxcal-f26/DSC01607.webp",
+    "/public/images/stanfxcal-f26/DSC01609.webp",
+];
+
 const STANFORD26_IMAGES: &[&str] = &[
     "/public/images/stanfxcal26/Q62A1237.webp",
     "/public/images/stanfxcal26/Q62A128-6.webp",
@@ -258,6 +313,10 @@ pub fn TournamentsPage() -> impl IntoView {
             <HeroBanner />
             <div class="bg-[#dcd8cc] dark:bg-gray-900">
                 <MediaCarousel
+                    title="Fall 2026 Stanford x Berkeley Highlights"
+                    images=STANFORD_F26_IMAGES.to_vec()
+                />
+                <MediaCarousel
                     title="Spring 2026 Stanford x Berkeley Highlights"
                     images=STANFORD26_IMAGES.to_vec()
                 />
@@ -341,15 +400,12 @@ fn HeroBanner() -> impl IntoView {
         <section
             id="banner"
             class="relative w-full flex items-center justify-center bg-cover"
-            style="height: 70vh; background-image: url('/public/images/falltourney/DSCF2029.webp'); background-position: 75% bottom;"
+            style="height: 70vh; background-image: url('/public/images/tournament-banner5th.webp'); background-position: center 15%;"
         >
-            <div class="absolute inset-0 bg-black/50"></div>
-            <div class="relative z-10 max-w-4xl mx-auto text-center px-6">
-                <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">Tournaments</h1>
-                <p class="text-xl text-white/90">
-                    "Compete at the highest level with Berkeley's best players"
-                </p>
-            </div>
+            // The banner image carries its own title, so the page heading is visually hidden (kept for SEO/screen readers).
+            <h1 style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;">
+                "Tournaments"
+            </h1>
         </section>
     }
 }
@@ -368,28 +424,18 @@ fn UpcomingTournamentSection() -> impl IntoView {
                     "2026–2027"
                 </h3>
 
-                <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-                    <UpcomingTournamentCard
-                        title="4th Berkeley x Stanford Tournament"
-                        date="Fall 2026"
-                        details=vec![
-                            "150 participants: 75 from Berkeley, 75 from Stanford",
-                            "Online qualifier, 2 full days of in-person play",
-                            "Mini career fairs both in-person days",
-                        ]
-                        highlight=true
-                    />
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     <UpcomingTournamentCard
                         title="Berkeley Poker Bots Competition"
                         date="January–March"
                         details=vec![
                             "More details coming soon",
                         ]
-                        highlight=false
+                        highlight=true
                     />
                     <UpcomingTournamentCard
                         title="5th Berkeley x Stanford Tournament"
-                        date="TBD"
+                        date="Spring 2027"
                         details=vec![
                             "More details coming soon",
                         ]
@@ -397,7 +443,7 @@ fn UpcomingTournamentSection() -> impl IntoView {
                     />
                     <UpcomingTournamentCard
                         title="Jump Trading Mini-Tournament"
-                        date="TBD"
+                        date="Spring 2027"
                         details=vec![
                             "50 people",
                             "1 day in-person",
@@ -465,6 +511,15 @@ fn TournamentHistorySection() -> impl IntoView {
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <TournamentHistoryCard
+                        title="4th Berkeley x Stanford Tournament"
+                        date="October 17-18, 2026"
+                        qualifier_date="October 9, 2026"
+                        prize_pool="$10,000 + $2.5k Guest & Mystery Bounties"
+                        sponsors="Jump Trading, Jane Street, QRT, Citadel Securities, Susquehanna, BBO Poker Tables, PokerGFX"
+                        field="447 Berkeley entrants, 85 Stanford qualifiers, and 27 students from guest schools"
+                        notion_link="https://pokeratberkeley.notion.site/poker?v=8317865cff6482b08c1f88ae5f1c6d68"
+                    />
+                    <TournamentHistoryCard
                         title="Spring 2026 Berkeley x Stanford Tournament"
                         date="Spring 2026"
                         qualifier_date="April 19, 2026"
@@ -526,6 +581,9 @@ fn TournamentHistoryCard(
     prize_pool: &'static str,
     sponsors: &'static str,
     notion_link: &'static str,
+    /// Who played, e.g. entrant counts. Left out when empty.
+    #[prop(optional)]
+    field: &'static str,
 ) -> impl IntoView {
     view! {
         <div class="bg-[#dde3e8] dark:bg-gray-700 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
@@ -533,6 +591,12 @@ fn TournamentHistoryCard(
             <p class="text-gray-600 dark:text-gray-300 mb-4">{date}</p>
 
             <div class=format!("space-y-3 {}", if notion_link.is_empty() { "" } else { "mb-4" })>
+                {(!field.is_empty()).then(|| view! {
+                    <div>
+                        <span class="text-gray-600 dark:text-gray-400 text-sm">"Field:"</span>
+                        <p class="text-gray-800 dark:text-gray-200 text-sm leading-relaxed">{field}</p>
+                    </div>
+                })}
                 <div>
                     <span class="text-gray-600 dark:text-gray-400 text-sm">"Qualifier:"</span>
                     <p class="font-semibold text-gray-900 dark:text-white">{qualifier_date}</p>

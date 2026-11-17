@@ -99,15 +99,8 @@ fn BoardSection() -> impl IntoView {
                         linkedin="https://www.linkedin.com/in/theevanluo/"
                     />
                     <MemberCard
-                        name="Szymon Jackowski"
-                        role="Head of Sponsorships"
-                        image="/public/images/officers/szymon.webp"
-                        bio=|| view! { <></> }.into_any()
-                        linkedin="https://www.linkedin.com/in/szymonjackowski"
-                    />
-                    <MemberCard
                         name="Pranshu Rao"
-                        role="Senior Advisor"
+                        role="Head of Sponsorships"
                         image="/public/images/officers/pranshu.webp"
                         preview="Pranshu is a Chicago native studying EECS at Berkeley, having spent 10 years in Germany."
                         bio=|| view! {
@@ -147,6 +140,13 @@ fn BoardSection() -> impl IntoView {
                             </>
                         }.into_any()
                         linkedin="https://open.spotify.com/playlist/0MQXY5ehHGyycEMDBIGSPu?si=4e8c75a143fe4449"
+                    />
+                    <MemberCard
+                        name="Szymon Jackowski"
+                        role="Sponsorships"
+                        image="/public/images/officers/szymon.webp"
+                        bio=|| view! { <></> }.into_any()
+                        linkedin="https://www.linkedin.com/in/szymonjackowski"
                     />
                     <MemberCard
                         name="Jennifer Ren"

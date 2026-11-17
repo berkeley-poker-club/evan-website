@@ -9,7 +9,11 @@
             name="description"
             content="UC Berkeley's Premier Poker Organization"
         />
-        <link rel="icon" type="image/x-icon" href="/public/images/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/public/images/favicon.ico" sizes="48x48" />
+        <link rel="icon" type="image/png" href="/public/images/icon-32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="/public/images/icon-192.png" sizes="192x192" />
+        <link rel="icon" type="image/png" href="/public/images/icon-512.png" sizes="512x512" />
+        <link rel="apple-touch-icon" href="/public/images/apple-touch-icon.png" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,6 +34,9 @@
         <link data-trunk rel="css" href="styles.css" />
         <link data-trunk rel="copy-dir" href="public" />
         <link data-trunk rel="rust" data-wasm-opt="4" />
+
+        <!-- Spinning 3D homepage chip. Optional: if it fails, the static chip image stays. -->
+        <script defer src="/public/js/chip-spin.js"></script>
 
         <script>
             (function (l) {

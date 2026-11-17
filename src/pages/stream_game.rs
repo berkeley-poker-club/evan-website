@@ -40,21 +40,26 @@ struct Episode {
     embed_src: &'static str,
     lineup: &'static [LineupEntry],
     game_info: &'static str,
+    /// Optional colored line under the title (e.g. which annual tournament).
+    subtitle: &'static str,
+    subtitle_color: &'static str,
+    /// Freeroll losses show a red triangle (busted); paid games show the amount in red.
+    freeroll: bool,
 }
 
 // `result` is left blank ("—") until final results for that specific episode
 // are known — fill in per episode as they come in.
-// 2k starting stack + 1 rebuy = 4000 total in play; 0 means busted out for -4000.
+// 200NL freeroll, $1/$2 blinds: 200 starting stack + 1 rebuy = 400 total in play; 0 means busted out for -400.
 const STREAM_LINEUP_EP00: &[LineupEntry] = &[
-    LineupEntry { name: "Ray Tan", alias: "Ray", result: "+7180" },
-    LineupEntry { name: "Henry Lee", alias: "Henry", result: "+3880" },
-    LineupEntry { name: "Vincent Chen", alias: "Vincent", result: "+950" },
-    LineupEntry { name: "Ethan Hull", alias: "Ethan", result: "-4000" },
-    LineupEntry { name: "Afraz Ahmed", alias: "Afraz", result: "+5220" },
-    LineupEntry { name: "Frances Jing", alias: "Frances", result: "+11660" },
-    LineupEntry { name: "Matthew Naidu", alias: "Martial", result: "-4000" },
-    LineupEntry { name: "Fanou Zhang", alias: "Fan", result: "+2000" },
-    LineupEntry { name: "Tobias Arntzen", alias: "Tobias", result: "+4910" },
+    LineupEntry { name: "Ray Tan", alias: "Ray", result: "+718" },
+    LineupEntry { name: "Henry Lee", alias: "Henry", result: "+388" },
+    LineupEntry { name: "Vincent Chen", alias: "Vincent", result: "+95" },
+    LineupEntry { name: "Ethan Hull", alias: "Ethan", result: "-400" },
+    LineupEntry { name: "Afraz Ahmed", alias: "Afraz", result: "+522" },
+    LineupEntry { name: "Frances Jing", alias: "Frances", result: "+1166" },
+    LineupEntry { name: "Matthew Naidu", alias: "Martial", result: "-400" },
+    LineupEntry { name: "Fanou Zhang", alias: "Fan", result: "+200" },
+    LineupEntry { name: "Tobias Arntzen", alias: "Tobias", result: "+491" },
 ];
 
 // Freeroll cash game, 1/1 blinds, 100 buy-in + 1 rebuy (200 total in play).
@@ -71,6 +76,17 @@ const STREAM_LINEUP_EP01: &[LineupEntry] = &[
     LineupEntry { name: "Arhan Vontela", alias: "Von", result: "+385" },
 ];
 
+// 2K NL, blinds 10/20.
+const STREAM_LINEUP_EP02: &[LineupEntry] = &[
+    LineupEntry { name: "Eamon Jia", alias: "Eamon", result: "+2900" },
+    LineupEntry { name: "Maysa Barandish", alias: "Potripper", result: "-960" },
+    LineupEntry { name: "Joe Zhou", alias: "FlyinRat", result: "-230" },
+    LineupEntry { name: "Vincent Chen", alias: "VChen", result: "+640" },
+    LineupEntry { name: "Juan Belza", alias: "Juanito", result: "+1400" },
+    LineupEntry { name: "Bryce Wu", alias: "BBBrice", result: "+3600" },
+    LineupEntry { name: "Kenneth Lee", alias: "Kenny Beats", result: "-7400" },
+];
+
 const STREAM_EPISODES: &[Episode] = &[
     Episode {
         number: "EP. 00",
@@ -78,7 +94,10 @@ const STREAM_EPISODES: &[Episode] = &[
         platform: Platform::YouTube,
         embed_src: "https://www.youtube.com/embed/3kktPT5cJnE",
         lineup: STREAM_LINEUP_EP00,
-        game_info: "Blinds 10/20 · Freeroll 2k Starting Stack + 1 Rebuy",
+        game_info: "Blinds $1/$2 · 200NL Freeroll + 1 Rebuy",
+        subtitle: "",
+        subtitle_color: "",
+        freeroll: true,
     },
     Episode {
         number: "EP. 01",
@@ -86,18 +105,71 @@ const STREAM_EPISODES: &[Episode] = &[
         platform: Platform::YouTube,
         embed_src: "https://www.youtube.com/embed/7buLpyOZCsI",
         lineup: STREAM_LINEUP_EP01,
-        game_info: "Blinds $1/$1 · Freeroll $100 Starting Stack + 1 Rebuy",
+        game_info: "Blinds $1/$1 · 100NL Freeroll + 1 Rebuy",
+        subtitle: "",
+        subtitle_color: "",
+        freeroll: true,
+    },
+    Episode {
+        number: "EP. 02",
+        title: "Episode 2",
+        platform: Platform::YouTube,
+        embed_src: "https://www.youtube.com/embed/xHCft_JwAeA",
+        lineup: STREAM_LINEUP_EP02,
+        game_info: "Blinds $10/$20 · 2K NL",
+        subtitle: "",
+        subtitle_color: "",
+        freeroll: false,
     },
 ];
 
-const TOURNAMENT_EPISODES: &[Episode] = &[Episode {
-    number: "VOL. 03",
-    title: "FINAL DAY Highlights - 3rd annual Berkeley x Stanford Poker Tournament!",
-    platform: Platform::YouTube,
-    embed_src: "https://www.youtube.com/embed/xwhVQmdWD0k",
-    lineup: &[],
-    game_info: "",
-}];
+// Subtitle colors distinguish each annual tournament.
+const TOURNAMENT_EPISODES: &[Episode] = &[
+    Episode {
+        number: "VOL. 04",
+        title: "FINAL DAY Highlights",
+        platform: Platform::YouTube,
+        embed_src: "https://www.youtube.com/embed/HvSpkZVACP8",
+        lineup: &[],
+        game_info: "",
+        subtitle: "4th annual Berkeley x Stanford Tournament",
+        subtitle_color: "#FF6B7A",
+        freeroll: false,
+    },
+    Episode {
+        number: "VOL. 04",
+        title: "DAY 1 Part 1",
+        platform: Platform::YouTube,
+        embed_src: "https://www.youtube.com/embed/XImlJEHZyaQ",
+        lineup: &[],
+        game_info: "",
+        subtitle: "4th annual Berkeley x Stanford Tournament",
+        subtitle_color: "#FF6B7A",
+        freeroll: false,
+    },
+    Episode {
+        number: "VOL. 04",
+        title: "DAY 1 Part 2",
+        platform: Platform::YouTube,
+        embed_src: "https://www.youtube.com/embed/S4C9DQLvP9I",
+        lineup: &[],
+        game_info: "",
+        subtitle: "4th annual Berkeley x Stanford Tournament",
+        subtitle_color: "#FF6B7A",
+        freeroll: false,
+    },
+    Episode {
+        number: "VOL. 03",
+        title: "FINAL DAY Highlights",
+        platform: Platform::YouTube,
+        embed_src: "https://www.youtube.com/embed/xwhVQmdWD0k",
+        lineup: &[],
+        game_info: "",
+        subtitle: "3rd annual Berkeley x Stanford Tournament",
+        subtitle_color: "#FFA36C",
+        freeroll: false,
+    },
+];
 
 #[component]
 pub fn StreamGamePage() -> impl IntoView {
@@ -114,8 +186,8 @@ pub fn StreamGamePage() -> impl IntoView {
             />
             <PlayCallout />
             <EpisodeSection
-                heading="Tournament Series"
-                subheading="Highlights from the Berkeley x Stanford Poker Tournament."
+                heading="Berkeley x Stanford Poker Tournament"
+                subheading=""
                 accent="#8C1515"
                 episodes=TOURNAMENT_EPISODES
             />
@@ -282,7 +354,27 @@ fn StreamCard(episode: &'static Episode, accent: &'static str) -> impl IntoView 
             </div>
             <div class="pt-4 px-2 pb-1">
                 <span class="font-mono text-xs tracking-[0.2em]" style=number_style.clone()>{episode.number}</span>
-                <h3 class="text-white font-bold text-lg leading-snug mt-1">{episode.title}</h3>
+                {if !episode.subtitle.is_empty() {
+                    // Tournament cards: event line on top, day/part below in a display font.
+                    view! {
+                        <p
+                            class="text-base uppercase leading-snug mt-1"
+                            style=format!("color: {}; font-family: 'JetBrains Mono', monospace; font-weight: 500; letter-spacing: 0.05em;", episode.subtitle_color)
+                        >
+                            {episode.subtitle}
+                        </p>
+                        <h3
+                            class="text-white text-lg uppercase leading-tight mt-1"
+                            style="font-family: 'Outfit', sans-serif; font-weight: 600; letter-spacing: 0.12em;"
+                        >
+                            {episode.title}
+                        </h3>
+                    }.into_any()
+                } else {
+                    view! {
+                        <h3 class="text-white font-bold text-lg leading-snug mt-1">{episode.title}</h3>
+                    }.into_any()
+                }}
                 {if !episode.game_info.is_empty() {
                     view! {
                         <p class="text-gray-400 font-mono text-xs mt-1">{episode.game_info}</p>
@@ -292,7 +384,7 @@ fn StreamCard(episode: &'static Episode, accent: &'static str) -> impl IntoView 
                 }}
             </div>
             {if !episode.lineup.is_empty() {
-                view! { <LineupTable lineup=episode.lineup accent=accent number_style=number_style.clone() /> }.into_any()
+                view! { <LineupTable lineup=episode.lineup freeroll=episode.freeroll accent=accent number_style=number_style.clone() /> }.into_any()
             } else {
                 view! {}.into_any()
             }}
@@ -301,7 +393,7 @@ fn StreamCard(episode: &'static Episode, accent: &'static str) -> impl IntoView 
 }
 
 #[component]
-fn LineupTable(lineup: &'static [LineupEntry], accent: &'static str, number_style: String) -> impl IntoView {
+fn LineupTable(lineup: &'static [LineupEntry], freeroll: bool, accent: &'static str, number_style: String) -> impl IntoView {
     view! {
         <details class="mt-3 mx-2 mb-2 group">
             <summary class="cursor-pointer select-none list-none flex items-center gap-2 px-2 py-1.5 rounded font-mono text-xs uppercase tracking-wide text-gray-300 hover:text-white transition-colors">
@@ -322,7 +414,11 @@ fn LineupTable(lineup: &'static [LineupEntry], accent: &'static str, number_styl
                             .iter()
                             .map(|p| {
                                 let result = if p.result.is_empty() { "—" } else { p.result };
-                                let result_cell = if result.starts_with('-') {
+                                let result_cell = if result.starts_with('-') && !freeroll {
+                                    view! {
+                                        <td class="px-3 py-2 whitespace-nowrap font-bold" style="color: #f87171;">{result}</td>
+                                    }.into_any()
+                                } else if result.starts_with('-') {
                                     view! {
                                         <td class="px-3 py-2 whitespace-nowrap" title="Eliminated">
                                             <svg class="w-3 h-3 fill-red-500" viewBox="0 0 16 16">

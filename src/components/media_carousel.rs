@@ -11,6 +11,7 @@ pub fn cloudinary_url(local: &str) -> Option<String> {
     let rest = local.strip_prefix("/public/images/")?;
     let (local_folder, file) = rest.split_once('/')?;
     let cloud_folder = match local_folder {
+        "stanfxcal-f26" => "fall-2026-stanford",
         "stanfxcal26" => "spring-2026-stanford",
         "qrt-tourney" => "spring-2026-qrt",
         "stanfxcal25" => "spring-2025-stanford",

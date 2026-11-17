@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glitch Hero</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #000; }
+
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .stage {
+    position: absolute;
+    inset: 0;
+    isolation: isolate;
+  }
+
+  /* Every layer is the same full-bleed box, so pieces line up exactly with the photo underneath. */
+  .stage img,
+  .layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .stage img {
+    object-fit: cover;
+    display: block;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  /* --- Photo stack --- */
+  .photo { z-index: 0; opacity: 0; }
+  .photo.is-current { z-index: 1; opacity: 1; }
+  .photo.is-incoming { z-index: 2; opacity: 0; }
+
+  /* --- Glitch pieces: a full-size copy of a photo, clipped to one rectangle and moved by JS --- */
+  .pieces { z-index: 3; }
+  .piece { isolation: isolate; }
+
+  /* Subtle RGB split, only inside a piece: red and cyan copies screened on top, nudged apart. */
+  .piece .ghost {
+    opacity: .55;
+    mix-blend-mode: screen;
+  }
+  .piece .ghost::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    mix-blend-mode: multiply;
+  }
+  .piece .ghost-r { transform: translate(var(--rx), var(--ry)); }
+  .piece .ghost-c { transform: translate(calc(var(--rx) * -1), calc(var(--ry) * -1)); }
+  .piece .ghost-r::after { background: #f00; }
+  .piece .ghost-c::after { background: #0ff; }
+
+  /* Reduced motion: a plain crossfade instead of the glitch. */
+  .photo.is-fading { animation: fade var(--fade-ms) ease both; }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+</style>
+</head>
+<body>
+
+<section class="hero" aria-label="Photos from Stanford x Berkeley">
+  <div class="stage" id="stage">
+    <img class="photo" alt="">
+    <img class="photo" alt="">
+    <div class="layer pieces" id="pieces"></div>
+  </div>
+</section>
+
+<script>
+  // ============================================================
+  // Config
+  // ============================================================
+
+  // Photos: swap these to change what cycles.
+  const BASE = "images/stanfxcal-f26/";
+  // Horizontal (landscape) shots only; the vertical ones crop badly in a wide banner.
+  const PHOTOS = [
+    "DSC01107.webp", "DSC01119.webp", "DSC01123.webp", "DSC01139.webp", "DSC01158.webp",
+    "DSC01196.webp", "DSC01201.webp", "DSC01206.webp", "DSC01220.webp", "DSC01301.webp",
+    "DSC01315.webp", "DSC01408.webp", "DSC01434.webp", "DSC01440.webp", "DSC01447.webp",
+    "DSC01457.webp", "DSC01478.webp", "DSC01483.webp", "DSC01492.webp", "DSC01501.webp",
+    "DSC01502.webp", "DSC01510.webp", "DSC01521.webp", "DSC01531.webp", "DSC01536.webp",
+    "DSC01541.webp", "DSC01548.webp", "DSC01549.webp", "DSC01554.webp", "DSC01565.webp",
+    "DSC01566.webp", "DSC01574.webp", "DSC01576.webp", "DSC01577.webp", "DSC01587.webp",
+    "DSC01595.webp", "DSC01599.webp",
+  ];
+  const HOLD_MS = 2500;             // how long each photo sits still
+
+  // Glitch styles, cycled in shuffled order, never the same one twice in a row.
+  // Remove a name to drop that style.
+  const STYLES = ["block", "corner", "slice", "tear"];
+
+  const GLITCH_MS = [350, 500];     // total transition length, picked randomly in this range
+  const FRAME_MS = 55;              // average length of one hard step
+
+  // Piece counts per style [min, max]
+  const BLOCK_COUNT = [4, 7];
+  const CORNER_COUNT = [6, 11];
+  const SLICE_COUNT = [2, 5];
+  const TEAR_COUNT = [2, 4];
+
+  const INTENSITY = 1.3;            // scales every displacement and the RGB split
+  const RGB_SPLIT_PX = 4;           // RGB offset on glitching pieces, before INTENSITY
+  const FLICKER_CHANCE = 0.4;       // chance of one quick flicker of the new photo before the swap
+
+  // ============================================================
+  // Helpers
+  // ============================================================
+
+  const rand = (min, max) => min + Math.random() * (max - min);
+  const randInt = (min, max) => Math.floor(rand(min, max + 1));
+  const sign = () => (Math.random() < 0.5 ? -1 : 1);
+  const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+  function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  // n sizes spread across [min, max] with jitter, in random order.
+  // Spreading first guarantees no two pieces come out nearly the same size.
+  function unevenSizes(n, min, max) {
+    const step = n > 1 ? (max - min) / (n - 1) : 0;
+    const sizes = Array.from({ length: n }, (_, i) => {
+      const jitter = rand(-0.2, 0.2) * step;
+      return Math.min(max, Math.max(min, min + i * step + jitter));
+    });
+    return shuffle(sizes);
+  }
+
+  // ============================================================
+  // Glitch styles
+  // Each returns pieces: { x, y, w, h } in % of the frame, a pixel displacement (dx, dy),
+  // whether it gets the RGB split, and whether it "holds" (snaps into place and stays
+  // until the swap) or blinks out.
+  // ============================================================
+
+  const px = (n) => n * INTENSITY;
+
+  const GENERATORS = {
+    // 1. A few rectangles of clearly different sizes, shifted a few pixels, then snapping in.
+    block() {
+      const n = randInt(...BLOCK_COUNT);
+      const widths = unevenSizes(n, 8, 42);
+      const heights = unevenSizes(n, 6, 36);
+      return widths.map((w, i) => {
+        const h = heights[i];
+        return {
+          x: rand(0, 100 - w), y: rand(0, 100 - h), w, h,
+          dx: px(rand(4, 14)) * sign(), dy: px(rand(0, 6)) * sign(),
+          rgb: Math.random() < 0.6, hold: true,
+        };
+      });
+    },
+
+    // 2. Tiny rectangles and short vertical slivers hugging the corners and edges,
+    //    plus one or two big corner chunks.
+    corner() {
+      const n = randInt(...CORNER_COUNT);
+      const pieces = [];
+      for (let i = 0; i < n; i++) {
+        const sliver = Math.random() < 0.45;
+        const w = sliver ? rand(0.6, 2.2) : rand(2.5, 9);
+        const h = sliver ? rand(6, 20) : rand(1.5, 7);
+        // Hug one of the four edges; along that edge, bias toward the corners.
+        const edge = randInt(0, 3);
+        const along = Math.random() < 0.7 ? pick([rand(0, 20), rand(80, 100)]) : rand(0, 100);
+        const inset = rand(0, 10);
+        let x, y;
+        if (edge === 0) { x = along; y = inset; }              // top
+        else if (edge === 1) { x = along; y = 100 - inset - h; } // bottom
+        else if (edge === 2) { x = inset; y = along; }           // left
+        else { x = 100 - inset - w; y = along; }                 // right
+        pieces.push({
+          x: Math.min(Math.max(x, 0), 100 - w), y: Math.min(Math.max(y, 0), 100 - h), w, h,
+          dx: px(rand(3, 12)) * sign(), dy: sliver ? px(rand(4, 14)) * sign() : 0,
+          rgb: Math.random() < 0.5, hold: false,
+        });
+      }
+      // Plus one or two big chunks growing out of different corners, so the style still has weight.
+      const corners = shuffle([[0, 0], [1, 0], [0, 1], [1, 1]]).slice(0, randInt(1, 2));
+      const bigW = unevenSizes(corners.length, 38, 58);
+      const bigH = unevenSizes(corners.length, 34, 55);
+      corners.forEach(([right, bottom], i) => {
+        const w = bigW[i], h = bigH[i];
+        pieces.push({
+          x: right ? 100 - w : 0, y: bottom ? 100 - h : 0, w, h,
+          dx: px(rand(10, 28)) * sign(), dy: px(rand(0, 10)) * sign(),
+          rgb: true, hold: Math.random() < 0.5,
+        });
+      });
+      return pieces;
+    },
+
+    // 3. A couple of wide horizontal bands, one thick and one thin, shoved sideways.
+    slice() {
+      const n = randInt(...SLICE_COUNT);
+      return unevenSizes(n, 3, 30).map((h) => ({
+        x: 0, y: rand(0, 100 - h), w: 100, h,
+        dx: px(rand(18, 60)) * sign(), dy: 0,
+        rgb: Math.random() < 0.5, hold: Math.random() < 0.4,
+      }));
+    },
+
+    // 4. Two or three vertical bands of uneven width, sliding up or down, with the RGB split.
+    tear() {
+      const n = randInt(...TEAR_COUNT);
+      return unevenSizes(n, 5, 28).map((w) => ({
+        x: rand(0, 100 - w), y: 0, w, h: 100,
+        dx: 0, dy: px(rand(12, 45)) * sign(),
+        rgb: true, hold: Math.random() < 0.4,
+      }));
+    },
+  };
+
+  // Shuffled bag of styles; refills so the new first style never repeats the last one.
+  let styleBag = [];
+  let lastStyle = null;
+  function nextStyle() {
+    if (!styleBag.length) {
+      styleBag = shuffle([...STYLES]);
+      if (styleBag.length > 1 && styleBag[styleBag.length - 1] === lastStyle) {
+        [styleBag[0], styleBag[styleBag.length - 1]] = [styleBag[styleBag.length - 1], styleBag[0]];
+      }
+    }
+    lastStyle = styleBag.pop();
+    return lastStyle;
+  }
+
+  // ============================================================
+  // DOM
+  // ============================================================
+
+  const stage = document.getElementById("stage");
+  const piecesEl = document.getElementById("pieces");
+  const photos = [...stage.querySelectorAll(".photo")];
+  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
+  const src = (i) => BASE + PHOTOS[i % PHOTOS.length];
+
+  function imgLayer(url, className = "") {
+    const img = document.createElement("img");
+    img.alt = "";
+    img.src = url;
+    if (className) {
+      const wrap = document.createElement("div");
+      wrap.className = "layer " + className;
+      wrap.appendChild(img);
+      return wrap;
+    }
+    return img;
+  }
+
+  // A piece is a full-frame copy of the photo clipped to its rectangle. Moving the whole
+  // piece moves the window and its contents together, so it reads as a displaced chunk.
+  function buildPiece(p, url) {
+    const el = document.createElement("div");
+    el.className = "layer piece";
+    el.style.clipPath = `inset(${p.y}% ${100 - p.x - p.w}% ${100 - p.y - p.h}% ${p.x}%)`;
+    el.style.visibility = "hidden";
+    el.appendChild(imgLayer(url));
+    if (p.rgb) {
+      // Split along the direction of movement: sideways for horizontal shifts, vertical for tears.
+      const split = px(RGB_SPLIT_PX) * rand(0.6, 1.2);
+      const vertical = Math.abs(p.dy) > Math.abs(p.dx);
+      el.style.setProperty("--rx", vertical ? "0px" : split + "px");
+      el.style.setProperty("--ry", vertical ? split + "px" : "0px");
+      el.appendChild(imgLayer(url, "ghost ghost-r"));
+      el.appendChild(imgLayer(url, "ghost ghost-c"));
+    }
+    piecesEl.appendChild(el);
+    return { ...p, el };
+  }
+
+  function preload(url) {
+    const img = new Image();
+    img.src = url;
+    return img.decode().catch(() => {});
+  }
+
+  // ============================================================
+  // Transition
+  // ============================================================
+
+  let front = 0; // which of the two .photo elements is currently showing
+
+  async function glitchTo(i) {
+    const current = photos[front];
+    const incoming = photos[front ^ 1];
+    const url = src(i);
+
+    incoming.src = url;
+    await incoming.decode().catch(() => {});
+    incoming.classList.add("is-incoming");
+
+    if (reduceMotion.matches) {
+      const ms = GLITCH_MS[1];
+      stage.style.setProperty("--fade-ms", ms + "ms");
+      incoming.style.opacity = "";
+      incoming.classList.add("is-fading");
+      await sleep(ms);
+      incoming.classList.remove("is-fading");
+    } else {
+      await runGlitch(incoming, url);
+    }
+
+    current.classList.remove("is-current");
+    incoming.classList.remove("is-incoming");
+    incoming.classList.add("is-current");
+    incoming.style.opacity = "";
+    incoming.style.transform = "";
+    front ^= 1;
+  }
+
+  // Plays the glitch as a handful of hard frames of uneven length (no easing):
+  //   piece frames -> swap frame (new photo, small jolt) -> settle frame.
+  async function runGlitch(incoming, url) {
+    const total = rand(...GLITCH_MS);
+    const frameCount = Math.max(5, Math.round(total / FRAME_MS));
+    const pieceFrames = frameCount - 2;
+    const frameLen = () => (total / frameCount) * rand(0.7, 1.3);
+
+    const pieces = GENERATORS[nextStyle()]().map((p) => buildPiece(p, url));
+
+    // Each piece pops in and out on its own frames, so they don't all move in lockstep.
+    pieces.forEach((p, k) => {
+      p.start = k === 0 ? 0 : randInt(0, pieceFrames - 2);
+      p.end = randInt(p.start + 1, pieceFrames - 1);
+    });
+
+    const flickerFrame = Math.random() < FLICKER_CHANCE ? randInt(1, pieceFrames - 1) : -1;
+
+    for (let f = 0; f < pieceFrames; f++) {
+      const flicker = f === flickerFrame;
+      // A flicker flashes the whole new photo for a single frame, then it's gone again.
+      incoming.style.opacity = flicker ? "1" : "0";
+      piecesEl.style.visibility = flicker ? "hidden" : "";
+
+      for (const p of pieces) {
+        const active = f >= p.start && f <= p.end;
+        const snapped = p.hold && f >= p.end; // held pieces land aligned and stay put
+        if (!active && !snapped) {
+          p.el.style.visibility = "hidden";
+          continue;
+        }
+        // Jump between a few uneven offsets rather than easing toward zero.
+        const k = snapped ? 0 : pick([1, -0.45, 0.7, 1.25, 0.3]);
+        p.el.style.visibility = "visible";
+        p.el.style.transform = `translate(${p.dx * k}px, ${p.dy * k}px)`;
+      }
+      await sleep(frameLen());
+    }
+
+    // Swap: the full new photo lands with a small jolt, then settles on the next frame.
+    piecesEl.replaceChildren();
+    piecesEl.style.visibility = "";
+    incoming.style.opacity = "1";
+    incoming.style.transform = `translate(${px(rand(2, 5)) * sign()}px, 0)`;
+    await sleep(frameLen());
+    incoming.style.transform = "";
+    await sleep(frameLen());
+  }
+
+  // ============================================================
+  // Loop
+  // ============================================================
+
+  async function run() {
+    let index = 0;
+    while (true) {
+      await glitchTo(index);
+      const next = preload(src(index + 1));
+      await sleep(HOLD_MS);
+      await next;
+      // Don't burn transitions while the tab is in the background.
+      while (document.hidden) {
+        await new Promise((r) => document.addEventListener("visibilitychange", r, { once: true }));
+      }
+      index = (index + 1) % PHOTOS.length;
+    }
+  }
+
+  preload(src(0)).then(run);
+</script>
+</body>
+</html>

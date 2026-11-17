@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chip Hero</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+
+  /* Demo background only, so the transparent canvas has something to show through. */
+  body {
+    background: radial-gradient(ellipse at 50% 40%, #1b2a4a 0%, #0b1020 70%);
+    color: #fff;
+    font-family: system-ui, sans-serif;
+  }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    /* Horizontal swipes rotate the chip; vertical swipes still scroll the page. */
+    touch-action: pan-y;
+  }
+
+  /* The chip's square canvas. Scales with the screen, never too small or too large. */
+  .chip-stage {
+    width: clamp(240px, 55vmin, 560px);
+    aspect-ratio: 1;
+  }
+  .chip-stage canvas { display: block; width: 100%; height: 100%; }
+
+  /* Placeholder for the photo carousel that goes under the hero. */
+  .carousel-placeholder {
+    min-height: 60vh;
+    display: grid;
+    place-items: center;
+    border-top: 1px dashed rgba(255, 255, 255, .25);
+    opacity: .6;
+  }
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+
+<section class="hero" id="hero">
+  <div class="chip-stage" id="chip-stage"></div>
+</section>
+
+<section class="carousel-placeholder" id="carousel">
+  Photo carousel goes here
+</section>
+
+<script type="module">
+import * as THREE from "three";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+
+// ============================================================
+// Config
+// ============================================================
+
+// Face maps. `disc` is the chip's circle in the flat image, in image pixels (measured; the two
+// images differ in size). The normal and roughness files are exported by scripts/bake_chip_maps.py,
+// which holds the same disc values and inset, so all the maps line up.
+const FRONT_MAPS = {  // Berkeley
+  flat: "images/chip/front_flat.png",
+  normal: "images/chip/front_normal.png",
+  roughness: "images/chip/front_rough_final.png",
+  disc: { x: 625.8, y: 624, r: 618.3 },
+};
+const BACK_MAPS = {   // Stanford
+  flat: "images/chip/back_flat.png",
+  normal: "images/chip/back_normal.png",
+  roughness: "images/chip/back_rough_final.png",
+  disc: { x: 545.2, y: 543.5, r: 543.4 },
+};
+const FACE_MAP_SIZE = 2048;        // size of the masked color map, in pixels
+const FACE_MASK_INSET = 0.01;      // circular mask, inset from the disc edge so the image background never shows
+
+// Relief, shared by both faces.
+const NORMAL_SCALE = 3;            // strength of the normal map; much higher and the plastic grain looks speckled
+
+// Rotation
+const MAX_YAW_DEG = 180;  // horizontal rotation at the screen edge (180 = back fully facing you)
+const MAX_TILT_DEG = 30;  // vertical tilt cap
+
+// Easing: a spring pulls the chip toward the cursor target.
+// Lower stiffness = slower and heavier. Lower damping = more overshoot.
+const SPRING_STIFFNESS = 28;
+const SPRING_DAMPING = 7.5;
+
+// Idle behavior
+const IDLE_DELAY_MS = 3000;       // no input for this long, then start floating
+const IDLE_WOBBLE_YAW_DEG = 25;   // auto-rotate wobble amount
+const IDLE_WOBBLE_TILT_DEG = 8;
+const IDLE_FLOAT_HEIGHT = 0.06;   // float amount, in chip radii
+
+// Touch / device tilt
+const DRAG_SENSITIVITY = 0.6;     // degrees of rotation per pixel dragged
+const DEVICE_TILT_RANGE_DEG = 30; // phone tilt that maps to full rotation
+
+// Chip shape (radius 1 world unit; the on-screen size comes from .chip-stage in CSS)
+const CHIP_DIAMETER_TO_THICKNESS = 14; // 14:1; lower = thicker chip
+const CHIP_THICKNESS = 2 / CHIP_DIAMETER_TO_THICKNESS;
+const CHIP_BEVEL = 0.008;         // tiny chamfer on the face edges
+
+// Rim: one neutral color scheme all the way around (saturation under 10%).
+const RIM_BASE_COLOR = "#8a8884";  // muted gray
+const RIM_BLOCK_COLOR = "#e6e5e2"; // warm off-white
+// Edge blocks, matched to the blocks on the flat maps:
+// 6 blocks centered at 0°, 60°, 120°... (0° = 3 o'clock), each about 18° wide.
+// Measured: the front is even; the back's four diagonal blocks sit about 2.3° closer to its 0°/180° blocks.
+const RIM_BLOCKS = 6;
+const RIM_BLOCK_DEG = 17;         // a touch narrower than the face blocks, leaving a small gap at the seam
+const RIM_OFFSET_DEG = 0;         // nudge the rim blocks around the edge (+ = counterclockwise)
+const RIM_GROOVES = 360;          // fine vertical grooves around the edge
+const RIM_GROOVE_DEPTH = 0.6;     // bump strength of the grooves
+
+const MAX_PIXEL_RATIO = 2;
+
+// ============================================================
+// Setup
+// ============================================================
+
+const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const maxYaw = THREE.MathUtils.degToRad(reducedMotion ? 6 : MAX_YAW_DEG);
+const maxTilt = THREE.MathUtils.degToRad(reducedMotion ? 4 : MAX_TILT_DEG);
+
+const hero = document.getElementById("hero");
+const stage = document.getElementById("chip-stage");
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setClearColor(0x000000, 0); // transparent, so the page shows through
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, MAX_PIXEL_RATIO));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.NoToneMapping; // so front-on colors match the PNGs
+stage.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 50);
+camera.position.set(0, 0, 4.6);
+
+// A soft studio environment gives the glossy surface something to reflect.
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+// ============================================================
+// Lighting: soft key, cool side light raking across the relief, gentle fill.
+// The strengths add up so that front-on colors match the flat PNGs (there is no tone mapping).
+// ============================================================
+
+scene.add(new THREE.HemisphereLight(0xffffff, 0x223355, 0.35));
+
+const keyLight = new THREE.DirectionalLight(0xffffff, 2.45);
+keyLight.position.set(-2.5, 3, 4);
+scene.add(keyLight);
+
+// Low and to the side. From behind and above, this light turned the top of the face white at an angle.
+const rimLight = new THREE.DirectionalLight(0x9fc4ff, 0.5);
+rimLight.position.set(4, -0.6, 0.8);
+scene.add(rimLight);
+
+const fillLight = new THREE.DirectionalLight(0xffffff, 1);
+fillLight.position.set(3, -2, 3);
+scene.add(fillLight);
+
+// ============================================================
+// Textures
+// ============================================================
+
+const maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
+
+function canvasTexture(canvas) {
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = maxAnisotropy;
+  return tex;
+}
+
+// Placeholder face: a colored disc with a dashed inlay ring and a label.
+function placeholderFace(bg, accent, label) {
+  const size = 1024;
+  const c = document.createElement("canvas");
+  c.width = c.height = size;
+  const g = c.getContext("2d");
+  const mid = size / 2;
+
+  g.fillStyle = bg;
+  g.fillRect(0, 0, size, size);
+
+  g.strokeStyle = accent;
+  g.lineWidth = 28;
+  g.setLineDash([60, 40]);
+  g.beginPath();
+  g.arc(mid, mid, size * 0.42, 0, Math.PI * 2);
+  g.stroke();
+
+  g.setLineDash([]);
+  g.lineWidth = 8;
+  g.beginPath();
+  g.arc(mid, mid, size * 0.34, 0, Math.PI * 2);
+  g.stroke();
+
+  g.fillStyle = accent;
+  g.font = `bold ${size * 0.1}px system-ui, sans-serif`;
+  g.textAlign = "center";
+  g.textBaseline = "middle";
+  g.fillText(label, mid, mid);
+  return canvasTexture(c);
+}
+
+// Crops the flat image so the masked disc exactly fills the square; the face's UV circle touches
+// the square's edges, so nothing outside the mask is reachable.
+function maskedColorMap(img, disc) {
+  const S = FACE_MAP_SIZE, r = disc.r * (1 - FACE_MASK_INSET);
+  const c = document.createElement("canvas");
+  c.width = c.height = S;
+  const g = c.getContext("2d");
+  g.imageSmoothingQuality = "high";
+  // Corners first: the disc enlarged until they hold only chip colors, so the image background
+  // can't bleed back in through the blurrier mipmap levels used at a distance.
+  const grown = S * Math.SQRT2, inset = (S - grown) / 2;
+  g.drawImage(img, disc.x - r, disc.y - r, r * 2, r * 2, inset, inset, grown, grown);
+  g.beginPath();
+  g.arc(S / 2, S / 2, S / 2, 0, Math.PI * 2);
+  g.clip();
+  g.drawImage(img, disc.x - r, disc.y - r, r * 2, r * 2, 0, 0, S, S);
+  return c;
+}
+
+// Loads one face's maps and applies them to its material.
+// If a file fails to load, the face shows the placeholder instead.
+async function applyFaceMaps(material, maps, fallback) {
+  try {
+    const textures = new THREE.TextureLoader();
+    const linearTexture = async (path) => {
+      const tex = await textures.loadAsync(path); // stays linear: this is data, not color
+      tex.anisotropy = maxAnisotropy;
+      return tex;
+    };
+    const [flat, normal, roughness] = await Promise.all([
+      new THREE.ImageLoader().loadAsync(maps.flat),
+      linearTexture(maps.normal),
+      linearTexture(maps.roughness),
+    ]);
+    material.map = canvasTexture(maskedColorMap(flat, maps.disc));
+    material.normalMap = normal;
+    material.normalScale.set(NORMAL_SCALE, NORMAL_SCALE);
+    material.roughnessMap = roughness;
+    material.roughness = 1; // the map holds the final roughness values
+  } catch {
+    material.map = fallback;
+  }
+  material.needsUpdate = true;
+}
+
+// Maps an angle on the chip (degrees, 0 = 3 o'clock, counterclockwise as seen from the front)
+// to a horizontal position on the rim texture. The rim lathe starts at 6 o'clock, hence +90.
+const RIM_TEX_W = 4096;
+const rimX = (deg) => ((((deg + 90) % 360) + 360) % 360) / 360 * RIM_TEX_W;
+
+// Draws one block per slot, wrapping across the texture seam when needed.
+function drawRimBlocks(g, h) {
+  for (let i = 0; i < RIM_BLOCKS; i++) {
+    const center = (360 / RIM_BLOCKS) * i + RIM_OFFSET_DEG;
+    const x = rimX(center - RIM_BLOCK_DEG / 2);
+    const w = (RIM_BLOCK_DEG / 360) * RIM_TEX_W;
+    g.fillRect(x, 0, w, h);
+    if (x + w > RIM_TEX_W) g.fillRect(x - RIM_TEX_W, 0, w, h);
+  }
+}
+
+// Rim color: off-white blocks on a muted gray base.
+function rimTexture() {
+  const h = 32;
+  const c = document.createElement("canvas");
+  c.width = RIM_TEX_W;
+  c.height = h;
+  const g = c.getContext("2d");
+  g.fillStyle = RIM_BASE_COLOR;
+  g.fillRect(0, 0, RIM_TEX_W, h);
+  g.fillStyle = RIM_BLOCK_COLOR;
+  drawRimBlocks(g, h);
+  return canvasTexture(c);
+}
+
+// Rim bump: fine vertical grooves all the way around, with uneven spacing and depth
+// so it reads as molded clay rather than a regular pattern.
+function rimBumpTexture() {
+  const h = 8;
+  const c = document.createElement("canvas");
+  c.width = RIM_TEX_W;
+  c.height = h;
+  const g = c.getContext("2d");
+  g.fillStyle = "#808080";
+  g.fillRect(0, 0, RIM_TEX_W, h);
+  const pitch = RIM_TEX_W / RIM_GROOVES;
+  for (let i = 0; i < RIM_GROOVES; i++) {
+    const shade = 90 + Math.floor(Math.random() * 30);
+    g.fillStyle = `rgb(${shade},${shade},${shade})`;
+    g.fillRect(i * pitch + Math.random() * pitch * 0.3, 0, pitch * (0.25 + Math.random() * 0.2), h);
+  }
+  const tex = new THREE.CanvasTexture(c);
+  tex.anisotropy = maxAnisotropy;
+  return tex;
+}
+
+// ============================================================
+// Chip geometry
+// ============================================================
+
+// The rim is a lathe (a profile spun around the axis) with a tiny bevel top and bottom.
+// It's built around Y, then turned so the chip's faces point at the camera (+Z / -Z).
+function rimGeometry() {
+  const r = 1, half = CHIP_THICKNESS / 2, b = CHIP_BEVEL;
+  const pts = [];
+  const arcSteps = 2; // just enough to soften the corner, not a rounded edge
+  // Bottom bevel: from the bottom face edge out to the side wall.
+  for (let i = 0; i <= arcSteps; i++) {
+    const a = (i / arcSteps) * (Math.PI / 2);
+    pts.push(new THREE.Vector2(r - b + Math.sin(a) * b, -half + b - Math.cos(a) * b));
+  }
+  // Top bevel: from the side wall in to the top face edge.
+  for (let i = 0; i <= arcSteps; i++) {
+    const a = (i / arcSteps) * (Math.PI / 2);
+    pts.push(new THREE.Vector2(r - b + Math.cos(a) * b, half - b + Math.sin(a) * b));
+  }
+  const geo = new THREE.LatheGeometry(pts, 128);
+  geo.rotateX(Math.PI / 2);
+  return geo;
+}
+
+// Shared glossy-plastic look.
+const surface = { roughness: 0.42, metalness: 0, clearcoat: 0.7, clearcoatRoughness: 0.25, envMapIntensity: 0.6 };
+
+const chip = new THREE.Group();
+scene.add(chip);
+
+const rim = new THREE.Mesh(rimGeometry(), new THREE.MeshPhysicalMaterial({
+  ...surface,
+  map: rimTexture(),
+  bumpMap: rimBumpTexture(),
+  bumpScale: RIM_GROOVE_DEPTH,
+}));
+chip.add(rim);
+
+const faceRadius = 1 - CHIP_BEVEL;
+
+// The faces are matte, with restrained reflections, so their colors read true.
+const faceSurface = { roughness: 1, metalness: 0, clearcoat: 0, envMapIntensity: 0.2, specularIntensity: 0.3 };
+
+const frontMat = new THREE.MeshPhysicalMaterial({ ...faceSurface });
+const front = new THREE.Mesh(new THREE.CircleGeometry(faceRadius, 128), frontMat);
+front.position.z = CHIP_THICKNESS / 2;
+chip.add(front);
+
+// The back is flipped around Y so it reads upright (not mirrored) when the chip turns around.
+const backMat = new THREE.MeshPhysicalMaterial({ ...faceSurface });
+const backGeo = new THREE.CircleGeometry(faceRadius, 128);
+backGeo.rotateY(Math.PI);
+const back = new THREE.Mesh(backGeo, backMat);
+back.position.z = -CHIP_THICKNESS / 2;
+chip.add(back);
+
+applyFaceMaps(frontMat, FRONT_MAPS, placeholderFace("#003262", "#fdb515", "BERKELEY"));
+applyFaceMaps(backMat, BACK_MAPS, placeholderFace("#8c1515", "#ffffff", "STANFORD"));
+
+// ============================================================
+// Input -> target rotation
+// ============================================================
+
+const target = { yaw: 0, tilt: 0 };
+let lastInput = -Infinity; // timestamp of the last real input; drives idle mode
+
+const clamp = THREE.MathUtils.clamp;
+const deg = THREE.MathUtils.degToRad;
+
+function markInput() { lastInput = performance.now(); }
+
+// Mouse: cursor position over the whole window maps straight to rotation.
+// Center = front facing; edges = MAX_YAW_DEG; up/down = tilt.
+window.addEventListener("pointermove", (e) => {
+  if (e.pointerType !== "mouse") return;
+  const nx = (e.clientX / window.innerWidth) * 2 - 1;  // -1 left, 1 right
+  const ny = (e.clientY / window.innerHeight) * 2 - 1; // -1 top, 1 bottom
+  target.yaw = nx * maxYaw;
+  target.tilt = ny * maxTilt; // positive X rotation tips the face down, so cursor up tips it up
+  markInput();
+});
+
+// Touch: horizontal drag spins the chip from wherever it is.
+let drag = null;
+hero.addEventListener("pointerdown", (e) => {
+  if (e.pointerType === "mouse") return;
+  drag = { x: e.clientX, y: e.clientY, yaw: target.yaw, tilt: target.tilt };
+  requestOrientation();
+  markInput();
+});
+hero.addEventListener("pointermove", (e) => {
+  if (!drag) return;
+  target.yaw = clamp(drag.yaw + deg((e.clientX - drag.x) * DRAG_SENSITIVITY), -maxYaw, maxYaw);
+  target.tilt = clamp(drag.tilt + deg((e.clientY - drag.y) * DRAG_SENSITIVITY), -maxTilt, maxTilt);
+  markInput();
+});
+const endDrag = () => { drag = null; };
+hero.addEventListener("pointerup", endDrag);
+hero.addEventListener("pointercancel", endDrag);
+
+// Device tilt: phone roll turns the chip, pitch tilts it.
+// Readings are relative to how the phone was held at the first reading.
+let tiltBase = null;
+let lastTilt = null;
+function onOrientation(e) {
+  if (e.gamma == null || e.beta == null || drag) return;
+  if (!tiltBase) tiltBase = { beta: e.beta, gamma: e.gamma };
+  const nx = clamp((e.gamma - tiltBase.gamma) / DEVICE_TILT_RANGE_DEG, -1, 1);
+  const ny = clamp((e.beta - tiltBase.beta) / DEVICE_TILT_RANGE_DEG, -1, 1);
+  target.yaw = nx * maxYaw;
+  target.tilt = -ny * maxTilt;
+  // A phone in hand always jitters a little; only count noticeable movement as input.
+  if (!lastTilt || Math.abs(e.gamma - lastTilt.gamma) + Math.abs(e.beta - lastTilt.beta) > 2) {
+    lastTilt = { beta: e.beta, gamma: e.gamma };
+    markInput();
+  }
+}
+
+// iOS needs permission from inside a user gesture; other browsers deliver events right away.
+let orientationRequested = false;
+function requestOrientation() {
+  if (orientationRequested || reducedMotion) return;
+  orientationRequested = true;
+  const DOE = window.DeviceOrientationEvent;
+  if (DOE && typeof DOE.requestPermission === "function") {
+    DOE.requestPermission().then((state) => {
+      if (state === "granted") window.addEventListener("deviceorientation", onOrientation);
+    }).catch(() => {});
+  }
+}
+if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission !== "function" && !reducedMotion) {
+  window.addEventListener("deviceorientation", onOrientation);
+}
+
+// ============================================================
+// Animation: spring toward target, idle float, render
+// ============================================================
+
+// One spring per axis so the chip has weight and a touch of overshoot.
+const spring = { yaw: 0, tilt: 0, vYaw: 0, vTilt: 0 };
+let idleBlend = 0; // eases 0 -> 1 when idle, so the wobble fades in instead of popping
+
+function step(dt, t) {
+  const idle = !reducedMotion && performance.now() - lastInput > IDLE_DELAY_MS;
+  idleBlend += ((idle ? 1 : 0) - idleBlend) * Math.min(1, dt * 1.5);
+
+  // While idle, the target drifts in a slow wobble around front-facing.
+  const goalYaw = THREE.MathUtils.lerp(target.yaw, Math.sin(t * 0.45) * deg(IDLE_WOBBLE_YAW_DEG), idleBlend);
+  const goalTilt = THREE.MathUtils.lerp(target.tilt, Math.sin(t * 0.7 + 1) * deg(IDLE_WOBBLE_TILT_DEG), idleBlend);
+
+  const damping = Math.exp(-SPRING_DAMPING * dt);
+  spring.vYaw = (spring.vYaw + (goalYaw - spring.yaw) * SPRING_STIFFNESS * dt) * damping;
+  spring.vTilt = (spring.vTilt + (goalTilt - spring.tilt) * SPRING_STIFFNESS * dt) * damping;
+  spring.yaw += spring.vYaw * dt;
+  spring.tilt += spring.vTilt * dt;
+
+  // Default Euler order applies tilt in world space, so "up" means up even when the back is showing.
+  chip.rotation.set(spring.tilt, spring.yaw, 0);
+  chip.position.y = Math.sin(t * 1.1) * IDLE_FLOAT_HEIGHT * idleBlend;
+}
+
+const clock = new THREE.Clock();
+let rafId = null;
+
+function frame() {
+  rafId = requestAnimationFrame(frame);
+  const dt = Math.min(clock.getDelta(), 1 / 20); // avoid a big jump after a hitch
+  step(dt, clock.elapsedTime);
+  renderer.render(scene, camera);
+}
+
+function start() {
+  if (rafId !== null) return;
+  clock.getDelta(); // discard the time spent paused
+  frame();
+}
+function stop() {
+  if (rafId === null) return;
+  cancelAnimationFrame(rafId);
+  rafId = null;
+}
+
+// Only render while the tab is visible and the hero is on screen.
+let heroVisible = true;
+const updateRunning = () => (!document.hidden && heroVisible ? start() : stop());
+document.addEventListener("visibilitychange", updateRunning);
+new IntersectionObserver(([entry]) => {
+  heroVisible = entry.isIntersecting;
+  updateRunning();
+}).observe(hero);
+
+// Keep the canvas matched to the CSS-sized stage.
+new ResizeObserver(() => {
+  const size = stage.clientWidth;
+  renderer.setSize(size, size, false);
+  renderer.render(scene, camera);
+}).observe(stage);
+
+updateRunning();
+</script>
+</body>
+</html>

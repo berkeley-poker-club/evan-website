@@ -1,5 +1,6 @@
 use leptos::prelude::*;
 use leptos_meta::Title;
+use crate::components::OptimizedImage;
 
 const JOIN_FORM: &str = "https://forms.gle/yVsAAJ5PLBtrgWUx8";
 const STANFORD_JOIN_FORM: &str = "https://forms.gle/iX7oCxR32DdWNAn16";
@@ -18,18 +19,20 @@ pub fn GameNightsPage() -> impl IntoView {
 #[component]
 fn HeroBanner() -> impl IntoView {
     view! {
-        <section id="banner" class="relative py-40"
-                 style="background-image: url('/public/images/stanfxcal26/Q62A1176.webp'); background-size: cover; background-position: center 65%;">
-            <div class="absolute inset-0" style="background-color: rgba(0, 0, 0, 0.30);"></div>
-            <div class="relative z-10 max-w-4xl mx-auto text-center px-6">
-                <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">
+        // Photo has the P@B logo on the table, so the title sits below it instead of on top.
+        <section id="banner" class="relative"
+                 style="height: 60vh; background-image: url('/public/images/gamenights.webp'); background-size: cover; background-position: center;">
+        </section>
+        <div class="pt-16 pb-4 bg-[#c8d1d9] dark:bg-gray-900">
+            <div class="max-w-4xl mx-auto text-center px-6">
+                <h1 class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
                     "Game Nights"
                 </h1>
-                <p class="text-xl text-white/90">
-                    "Weekly poker with the Poker at Berkeley community"
+                <p class="text-xl text-gray-700 dark:text-gray-300">
+                    "Weekly poker with the Poker at Berkeley & Stanford community"
                 </p>
             </div>
-        </section>
+        </div>
     }
 }
 
@@ -38,9 +41,14 @@ fn GameNightsSection() -> impl IntoView {
     view! {
         <section id="game-nights" class="scroll-mt-24 py-20 bg-[#c8d1d9] dark:bg-gray-900">
             <div class="max-w-6xl mx-auto px-6">
-                <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-6 text-center">
-                    "Game Nights"
-                </h2>
+                <div class="max-w-3xl mx-auto mb-8">
+                    <OptimizedImage
+                        src="public/images/stanfxcal-f26/DSC01220.webp"
+                        alt="Players at a Poker at Berkeley table"
+                        class="w-full h-auto rounded-lg shadow-lg"
+                        loading="lazy"
+                    />
+                </div>
                 <p class="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto text-center mb-6">
                     "We host game nights every Friday, open to all P@B members, both Berkeley and Stanford. All stakes are welcome, ranging from micro to mid, and we run a free instructional table for anyone looking to learn. Come play, meet the community, and run it up."
                 </p>
